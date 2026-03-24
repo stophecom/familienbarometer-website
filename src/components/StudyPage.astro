@@ -9,9 +9,10 @@ import type { Lang } from '../utils/i18n';
 interface Props {
   data: StudyPage;
   lang: Lang;
+  isCurrentYear?: boolean;
 }
 
-const { data, lang } = Astro.props;
+const { data, lang, isCurrentYear = false } = Astro.props;
 
 const quoteHeading = {
   de: 'Verantwortliche',
@@ -30,7 +31,7 @@ const pastStudiesHeading = {
   title={data.meta.title}
   description={data.meta.description}
   lang={lang}
-  year={data.year}
+  year={isCurrentYear ? undefined : data.year}
 >
   <!-- Hero -->
   <HeroSection
