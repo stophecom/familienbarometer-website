@@ -1,0 +1,461 @@
+/* ==========================================================================
+   Familienbarometer – Global Styles
+   ========================================================================== */
+
+/* ---------- Design Tokens ---------- */
+:root {
+  --color-dark-blue: #394454;
+  --color-coral: #f04e5a;
+  --color-coral-dark: #d94450;
+  --color-light-gray: #eff3f6;
+  --color-white: #ffffff;
+  --color-navy: #1f2539;
+  --color-text: var(--color-navy);
+  --color-text-light: var(--color-white);
+
+  --font-primary: 'Source Sans 3', 'Source Sans Pro', 'HelveticaNeue-Light',
+    'Helvetica Neue', Arial, 'Lucida Grande', sans-serif;
+  --font-secondary: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+
+  --container-max-width: 1140px;
+  --container-padding: 1.5rem;
+
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 5rem;
+  --spacing-xxl: 7rem;
+}
+
+/* ---------- Reset / Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--color-text);
+  background-color: var(--color-light-gray);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+/* ---------- Skip Link ---------- */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: var(--color-coral);
+  color: var(--color-white);
+  padding: 0.75rem 1.5rem;
+  z-index: 1000;
+  font-weight: 600;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* ---------- Container ---------- */
+.container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+/* ---------- Section ---------- */
+.section {
+  padding-block: var(--spacing-xl);
+}
+
+.section--dark {
+  background-color: var(--color-dark-blue);
+  color: var(--color-text-light);
+}
+
+.section--coral {
+  background-color: var(--color-coral);
+  color: var(--color-text-light);
+}
+
+.section--light {
+  background-color: var(--color-light-gray);
+  color: var(--color-text);
+}
+
+/* ---------- Typography ---------- */
+.heading-1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.heading-2 {
+  font-size: clamp(1.75rem, 4vw, 3.4375rem);
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+}
+
+.heading-2--coral {
+  color: var(--color-coral);
+}
+
+.heading-2--white {
+  color: var(--color-white);
+}
+
+.heading-3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+}
+
+.text-intro {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.text-body {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--color-white);
+  background: transparent;
+  color: var(--color-white);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  text-decoration: none;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background-color: var(--color-white);
+  color: var(--color-dark-blue);
+}
+
+.btn--coral {
+  border-color: var(--color-coral);
+  color: var(--color-coral);
+}
+
+.btn--coral:hover,
+.btn--coral:focus-visible {
+  background-color: var(--color-coral);
+  color: var(--color-white);
+}
+
+/* ---------- Horizontal Rule ---------- */
+.hr {
+  border: none;
+  border-top: 2px solid var(--color-coral);
+  margin-block: var(--spacing-md);
+}
+
+.hr--white {
+  border-top-color: var(--color-white);
+}
+
+/* ---------- Two Column Layout ---------- */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .two-col {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------- Card Grid ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------- Past Study Card ---------- */
+.study-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-coral);
+  color: var(--color-white);
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: 1.5rem;
+  font-weight: 700;
+  transition: background-color 0.2s;
+}
+
+.study-card:hover,
+.study-card:focus-visible {
+  background-color: var(--color-coral-dark);
+}
+
+.study-card__arrow {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+}
+
+/* ---------- Social Links ---------- */
+.social-links {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--color-white);
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.social-links a:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ---------- Donut Charts ---------- */
+.donut-charts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+  justify-content: center;
+}
+
+.donut-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 200px;
+}
+
+.donut-chart__ring {
+  width: 160px;
+  height: 160px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.donut-chart__circle-bg {
+  fill: none;
+  stroke: #d0d5dc;
+  stroke-width: 8;
+}
+
+.donut-chart__circle-fg {
+  fill: none;
+  stroke: var(--color-coral);
+  stroke-width: 8;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: stroke-dashoffset 1s ease-in-out;
+}
+
+.donut-chart__percentage {
+  font-size: 2.5rem;
+  font-weight: 700;
+  fill: var(--color-coral);
+}
+
+.donut-chart__caption {
+  font-size: 0.875rem;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+.section--coral .donut-chart__circle-bg {
+  stroke: rgba(255, 255, 255, 0.3);
+}
+
+.section--coral .donut-chart__circle-fg {
+  stroke: var(--color-white);
+}
+
+.section--coral .donut-chart__percentage {
+  fill: var(--color-white);
+}
+
+.section--coral .donut-chart__caption {
+  color: var(--color-white);
+}
+
+/* ---------- Quote Section ---------- */
+.quote-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .quote-block {
+    flex-direction: row;
+    gap: var(--spacing-lg);
+  }
+}
+
+.quote-person {
+  flex: 1;
+  text-align: center;
+}
+
+.quote-person__image {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-inline: auto;
+  margin-bottom: var(--spacing-sm);
+}
+
+.quote-person__name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.quote-person__title {
+  font-size: 0.875rem;
+  margin-bottom: var(--spacing-sm);
+  opacity: 0.8;
+}
+
+.quote-person__text {
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: var(--spacing-sm);
+}
+
+.quote-person__email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.quote-person__email:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Three Column Footer ---------- */
+.footer-cols {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+@media (min-width: 768px) {
+  .footer-cols {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.footer-col__heading {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-coral);
+}
+
+.footer-col p,
+.footer-col a {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.footer-col a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 0.8125rem;
+  padding-top: var(--spacing-md);
+}
+
+.footer-bottom__links {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.footer-bottom__links a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Responsive Utilities ---------- */
+@media (max-width: 767px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}

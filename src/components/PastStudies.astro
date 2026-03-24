@@ -1,0 +1,44 @@
+---
+import type { PastStudy } from '../utils/content';
+
+interface Props {
+  heading: string;
+  studies: PastStudy[];
+}
+
+const { heading, studies } = Astro.props;
+---
+
+<section class="section section--light" id="section-5">
+  <div class="container">
+    <h2 class="heading-2 heading-2--coral">{heading}</h2>
+    <div class="card-grid">
+      {
+        studies.map((study) => (
+          <a
+            href={study.url}
+            class="study-card"
+            target={study.external ? '_blank' : undefined}
+            rel={study.external ? 'noopener' : undefined}
+          >
+            <span>{study.label}</span>
+            <svg
+              class="study-card__arrow"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M5 12h14m0 0l-6-6m6 6l-6 6"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

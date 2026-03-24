@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import type { Lang } from '../../utils/i18n';
+import { languages } from '../../utils/i18n';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+
+const impressumData = {
+  de: {
+    title: 'Impressum - Familienbarometer',
+    heading: 'Impressum',
+    content: `<p><strong>Herausgeberin</strong><br/>
+Pax, Schweizerische Lebensversicherungs-Gesellschaft AG<br/>
+Aeschenplatz 13<br/>
+4002 Basel</p>
+
+<p><strong>In Zusammenarbeit mit</strong><br/>
+Pro Familia Schweiz<br/>
+Marktgasse 36<br/>
+3011 Bern</p>
+
+<p><strong>Studienleitung</strong><br/>
+Empiricon AG<br/>
+Winterthurerstrasse 702<br/>
+8051 Zürich</p>
+
+<p><strong>Kommunikation</strong><br/>
+Rüedt Communication<br/>
+Schaffhauserstrasse 18<br/>
+8006 Zürich</p>
+
+<p><strong>Webdesign und Umsetzung</strong><br/>
+now advertising agency</p>`,
+  },
+  fr: {
+    title: 'Mentions légales - Baromètre des familles',
+    heading: 'Mentions légales',
+    content: `<p><strong>Éditeur</strong><br/>
+Pax, Société suisse d'assurance sur la vie SA<br/>
+Aeschenplatz 13<br/>
+4002 Bâle</p>
+
+<p><strong>En collaboration avec</strong><br/>
+Pro Familia Suisse<br/>
+Marktgasse 36<br/>
+3011 Berne</p>
+
+<p><strong>Direction de l'étude</strong><br/>
+Empiricon AG<br/>
+Winterthurerstrasse 702<br/>
+8051 Zurich</p>
+
+<p><strong>Communication</strong><br/>
+Rüedt Communication<br/>
+Schaffhauserstrasse 18<br/>
+8006 Zurich</p>
+
+<p><strong>Design web et réalisation</strong><br/>
+now advertising agency</p>`,
+  },
+  it: {
+    title: 'Colophon - Barometro delle famiglie',
+    heading: 'Colophon',
+    content: `<p><strong>Editrice</strong><br/>
+Pax, Società svizzera di assicurazione sulla vita SA<br/>
+Aeschenplatz 13<br/>
+4002 Basilea</p>
+
+<p><strong>In collaborazione con</strong><br/>
+Pro Familia Svizzera<br/>
+Marktgasse 36<br/>
+3011 Berna</p>
+
+<p><strong>Direzione dello studio</strong><br/>
+Empiricon AG<br/>
+Winterthurerstrasse 702<br/>
+8051 Zurigo</p>
+
+<p><strong>Comunicazione</strong><br/>
+Rüedt Communication<br/>
+Schaffhauserstrasse 18<br/>
+8006 Zurigo</p>
+
+<p><strong>Web design e realizzazione</strong><br/>
+now advertising agency</p>`,
+  },
+};
+
+const data = impressumData[lang];
+---
+
+<BaseLayout title={data.title} lang={lang} canonicalPath={`/${lang}/impressum`}>
+  <section class="section section--dark hero-mini">
+    <div class="container">
+      <h1 class="heading-1">{data.heading}</h1>
+    </div>
+  </section>
+  <section class="section section--light">
+    <div class="container impressum-content">
+      <Fragment set:html={data.content} />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-mini {
+    padding-top: 6rem;
+    padding-bottom: var(--spacing-lg);
+  }
+
+  .impressum-content {
+    max-width: 720px;
+  }
+
+  .impressum-content :global(p) {
+    margin-bottom: var(--spacing-md);
+    line-height: 1.7;
+  }
+
+  .impressum-content :global(strong) {
+    color: var(--color-coral);
+  }
+</style>

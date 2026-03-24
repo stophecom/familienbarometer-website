@@ -1,0 +1,889 @@
+<!doctype html>
+<html class="content webfonts--loading notranslate" lang="de" translate="no">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="color-scheme" content="light">
+	<meta name="feroot" content="/res/">
+	<meta name="portalroot" content="">
+
+	<link rel="preload" href="/res/fonts/SourceSans/SourceSansPro-Light.woff2" as="font" crossorigin>
+	<link rel="preload" href="/res/fonts/SourceSans/SourceSansPro-LightIt.woff2" as="font" crossorigin>
+	<link rel="preload" href="/res/fonts/SourceSans/SourceSansPro-Regular.woff2" as="font" crossorigin>
+	<link rel="preload" href="/res/fonts/SourceSans/SourceSansPro-It.woff2" as="font" crossorigin>
+	<link rel="preload" href="/res/fonts/SourceSans/SourceSansPro-Semibold.woff2" as="font" crossorigin>
+	<link rel="preload" href="/res/fonts/SourceSans/SourceSansPro-SemiboldIt.woff2" as="font" crossorigin>
+	<link rel="preload" href="/res/fonts/SourceSans/SourceSansPro-Bold.woff2" as="font" crossorigin>
+	<link rel="preload" href="/res/fonts/SourceSans/SourceSansPro-BoldIt.woff2" as="font" crossorigin>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/res/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/res/favicon-16x16.png">
+  <link rel="manifest" href="/res/site.webmanifest">
+  <link rel="mask-icon" href="/res/safari-pinned-tab.svg" color="#3b3a53">
+  <meta name="msapplication-TileColor" content="#3b3a53">
+  <meta name="theme-color" content="#3b3a53">
+  <meta name="google" content="notranslate" />
+  <meta name="pagetype" content="content">
+  <meta name="trackingpagetype" content="content">
+  <meta name="google-site-verification" content="2hNPS1MisL5pih8-RyTTYdOTsWpeqAb6Lz2dJcyqjHI" />
+<meta name="description" content="" />
+
+<meta name="title" content="404 - Seite nicht gefunden">
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="">
+
+<meta property="og:title" content="404 - Seite nicht gefunden">
+<meta property="og:description" content="">
+<meta property="og:image" content="">
+<meta property="og:image:alt" content="404 - Seite nicht gefunden">
+<meta property="og:url" content="https://delegierte.pax.ch/de/meta/404">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+
+<meta name="twitter:title" content="404 - Seite nicht gefunden">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://delegierte.pax.ch/de/meta/404">
+
+
+<meta name="content-group" content="Meta">
+
+<link rel="canonical" href="https://delegierte.pax.ch/de/meta/404">
+<link rel="alternate" href="https://delegierte.pax.ch/de/meta/404" hreflang="x-default"/>
+
+	<link rel="alternate" href="https://delegierte.pax.ch/fr/meta/404" hreflang="fr"/>
+
+	<link rel="alternate" href="https://delegierte.pax.ch/de/meta/404" hreflang="de"/>
+
+	<link rel="alternate" href="https://delegierte.pax.ch/it/meta/404" hreflang="it"/>
+
+
+
+<meta http-equiv="language" content="de_CH">
+<meta property="og:locale" content="de_CH">
+
+<meta property="og:type" content="website">
+
+<meta name="application-name" content="Pax">
+<meta name="apple-mobile-web-app-title" content="Pax">
+<meta property="og:site_name" content="Pax" />
+
+<title>404 - Seite nicht gefunden - Pax</title>
+
+
+	<link rel="stylesheet" href="/res/stylesheets/global.css?cb=db87d135c23abfdd2811e2226aefd2f13c83d7d7">
+  
+  
+</head>
+<body>
+
+<a class="skip-to-content" href="#main" role="navigation" aria-label="Zum Inhalt springen">
+  Zum Inhalt springen
+</a>
+
+<script type="text/javascript">
+  window.PAX = window.PAX || {};
+
+  PAX.Translations = PAX.Translations || {};
+  PAX.Translations.GeneralError = "Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.";
+  PAX.Translations.DateFormatError = "Das Datum wurde in einem falschen Format eingegeben. Bitte im Format «mm/dd/yy» eingeben.";
+  PAX.Translations.DownloadNoResults = "Es wurden keine Dokumente gefunden.";
+  PAX.Translations.MoreResults = "Mehr Resultate";
+  PAX.Translations.BFOpen = "Öffnen";
+  PAX.Translations.BFClose = "Schliessen";
+  PAX.Translations.SearchCategoryProduct = "";
+  PAX.Translations.SearchCategoryPage = "Websites";
+  PAX.Translations.SearchCategoryDownloads = "Dokumente";
+  PAX.Translations.SearchNoResults = "Keine Resultate gefunden";
+  PAX.Translations.SearchLabel = "Suche";
+  PAX.Translations.SearchPlaceholder = "Suchbegriff eingeben";
+  PAX.Translations.SearchMore = "Mehr";
+  PAX.Translations.SearchButton = "Suchen";
+  PAX.Translations.SearchAside = "Häufige Suchbegriffe";
+  PAX.Translations.SearchFilter = "Filter";
+  PAX.Translations.SearchAreasLabel = "Unternehmensbereich";
+  PAX.Translations.SearchAreaCurrent = "Aktueller Bereich";
+  PAX.Translations.SearchAreaAll = "Alle Bereiche von Pax";
+  PAX.Translations.SearchFileTypeLabel = "Inhaltstyp";
+  PAX.Translations.SearchFileTypeWebsites = "Alle Inhalte";
+  PAX.Translations.SearchFileTypeDocuments = "Dokumente";
+  PAX.Translations.SearchResultLabelSingular = "Resultat";
+  PAX.Translations.SearchResultLabelPlural = "Resultate";
+  PAX.Translations.NavigationSwitch = "wechseln";
+  PAX.Translations.PortalBusinessTitleLoggedIn = "Vertriebspartner und Firmenkunden";
+  PAX.Translations.PortalBusinessHeadline = "Unternehmenskunden";
+  PAX.Translations.PortalPrivateHeadline = "Privatkunden";
+  PAX.Translations.PortalBusinessTitleLoggedOut = "Portal";
+  PAX.Translations.PortalBusinessLogin = "Berufliche Vorsorge Online";
+  PAX.Translations.PortalBusinessHome = "Zum Portal";
+  PAX.Translations.PortalBusinessLogout = "Abmelden";
+  PAX.Translations.PortalBusinessRegistration = "Registrieren";
+  PAX.Translations.PortalPartnerHeadline = "Pax Partner";
+  PAX.Translations.PortalPartnerLogin = "Vertriebspartner-Portal";
+  PAX.Translations.PortalPartnerLogout = "_portal_partner_logout";
+  PAX.Translations.PortalPartnerHome = "_portal_partner_home";
+  PAX.Translations.PortalPartnerTitleLoggedIn = "_portal_partner_title_loggedin";
+  PAX.Translations.PortalPartnerTitleLoggedOut = "Pax Partner";
+  PAX.Translations.PortalPrivateTitle = "Anmelden";
+  PAX.Translations.PortalPrivatePortal = "Zum Portal";
+  PAX.Translations.PortalPrivateLogin = "Kundenportal Private Vorsorge";
+  PAX.Translations.PortalPrivateLogout = "Abmelden";
+  PAX.Translations.PortalPrivateVocationalTitle = "Kundenportal Berufliche Vorsorge";
+  PAX.Translations.PortalPrivateVocationalPortal = "Zum Portal";
+  PAX.Translations.PortalPrivateVocationalLogin = "Kundenportal Berufliche Vorsorge";
+  PAX.Translations.PortalPrivateVocationalLogout = "Abmelden";
+  PAX.Translations.PortalDelegatesTitle = "Delegierten-Portal";
+  PAX.Translations.PortalDelegatesSettings = "Einstellungen";
+  PAX.Translations.PortalDelegatesLogout = "Abmelden";
+  PAX.Translations.PortalDelegatesLogin = "Delegierten-Portal";
+  PAX.Translations.PortalLoggedOutLead = "Melden Sie sich beim Pax Portal für Vertriebspartner und Firmenkunden an. Sie profitieren von einem direkten Zugang zu unseren Offertentool und Applikationen für Vertriebspartner.";
+  PAX.Translations.PortalLoggedOutSuperTitle = "FÜR VERTRIEBSPARTNER UND FIRMENKUNDEN";
+  PAX.Translations.PortalLoggedOutTitle = "Pax Portal Login";
+  PAX.Translations.PortalLoggedOutSectionTitle = "Pax Portal";
+  PAX.Translations.PortalLoggedOutSectionLabel = "Für die Anmeldung wird ein Access Code an ihr Mobiltelefon gesendet.";
+  PAX.Translations.PortalLoggedOutLogin = "Login für Vertriebspartner und Firmenkunden";
+  PAX.Translations.PortalLoggedOutRegister = "Passwort vergessen";
+  PAX.Translations.PortalLoggedOutLostPassword = "";
+  PAX.Translations.PortalLoggedInSuperTitle = "Pax Portal";
+  PAX.Translations.PortalLoggedInTitle = "Willkommen, {username}";
+  PAX.Translations.PortalLoggedInUserID = "User ID";
+  PAX.Translations.PortalLoggedInLastname = "Nachname";
+  PAX.Translations.PortalLoggedInFirstname = "Vorname";
+  PAX.Translations.PortalLoggedInLastLogin = "Letztes Login";
+  PAX.Translations.PortalLoggedInAppsServicesTitle = "Applikationen";
+  PAX.Translations.PortalLoggedInAdminTitle = "Administration";
+  PAX.Translations.PortalLoggedInLoopError = "Zu viele Anmeldeereignisse empfangen. Deaktivieren der Portal-Integration.";
+</script>
+
+<script type="text/javascript">
+  window.PAX = window.PAX || {};
+
+  PAX.Settings = PAX.Settings || {};
+  PAX.Settings.Meta = PAX.Settings.Meta || {};
+  PAX.Settings.Meta.ClientIP = "31.10.239.254";
+  PAX.Settings.GTM = PAX.Settings.GTM || {};
+  PAX.Settings.GTM.key = "GTM-MQ3GG9V";
+  PAX.Settings.Site = PAX.Settings.Site || {};
+  PAX.Settings.Site.Language = "de";
+  PAX.Settings.Search = PAX.Settings.Search || {};
+  PAX.Settings.Search.key = "AIzaSyDHy0EWXQMAJGRE_in8IcRg7eHXmsZhkzQ";
+  PAX.Settings.Search.id = "46e9ac7199b6827c6";
+
+  PAX.Portal = PAX.Portal || {};
+  PAX.Portal.Delegates = PAX.Portal.Delegates || {};
+  PAX.Portal.Delegates.IsLoggedIn = "false";
+  PAX.Portal.Delegates.LoginUrl = "/de/login";
+  PAX.Portal.Delegates.LogoutUrl = "/de/logout";
+  PAX.Portal.Business = PAX.Portal.Business || {};
+  PAX.Portal.Business.Target = "/de/portal";
+  PAX.Portal.Business.LoginMethod = "/chain/";
+  PAX.Portal.Business.Registration = "";
+  PAX.Portal.Business.ServicesInfoAPI  = "/api/portal?lang=de";
+  PAX.Portal.Business.BusinessWAMTerms = "/eua/modify_profil.htm";
+  PAX.Portal.Business.BusinessWAMCheck = "";
+  PAX.Portal.Business.BusinessWAMBaseUrl = "https://portal.pax.ch";
+  PAX.Portal.Business.BusinessWAMAuthUrl = "https://authportal.pax.ch";
+  PAX.Portal.Partner = PAX.Portal.Partner || {};
+  PAX.Portal.Partner.Target = "/de/portal";
+  PAX.Portal.Partner.LoginMethod = "/chain/";
+  PAX.Portal.Partner.LogoutUrl = "https://pax.ch/de/portal";
+  PAX.Portal.Private = PAX.Portal.Private || {};
+  PAX.Portal.Private.LoginUrl = "https://my.pax.ch/de";
+  PAX.Portal.Private.LogoutUrl = "https://my.pax.ch";
+  PAX.Portal.PrivateVocational = PAX.Portal.PrivateVocational || {};
+  PAX.Portal.PrivateVocational.LoginUrl = "https://www.pax.ch/vp";
+  PAX.Portal.PrivateVocational.LogoutUrl = "https://portal.pax.ch/auth-vt/?target=%2Fpkcockpit";
+
+</script>
+
+
+<div class="page accent--prune">
+
+  
+  <main id="main">
+    
+<div class="hero hero--has-background-image hero--clip-background-image">
+  
+  <div class="hero__section hero__section--main">
+      <div class="hero__gradient-background">
+        <!-- Gradient: Only if background image is set-->
+      </div>
+    <div class="hero__background">
+      <div class="hero__background-image-outer">
+        
+
+<figure class="image " >
+  <picture>
+    
+      <source
+      
+
+      srcset="/de/-/media/pax/images/freisteller/dinosaurier.png?as=0&w=360&rev=7df96772d7024805b195aa20585566fa&hash=6C43E8F765E494B9D892CA2BF4E8C76E 360w,/de/-/media/pax/images/freisteller/dinosaurier.png?as=0&w=720&rev=7df96772d7024805b195aa20585566fa&hash=CAC1A6AB467F733B9FCAF09D21E002D3 720w,/de/-/media/pax/images/freisteller/dinosaurier.png?as=0&w=460&rev=7df96772d7024805b195aa20585566fa&hash=3622A1492821E47011FA3FFBC1FABEA1 460w,/de/-/media/pax/images/freisteller/dinosaurier.png?as=0&w=920&rev=7df96772d7024805b195aa20585566fa&hash=E86C54E2F779CCB11E4FA082B6A5367B 920w,/de/-/media/pax/images/freisteller/dinosaurier.png?as=0&w=500&rev=7df96772d7024805b195aa20585566fa&hash=579B5B0C63ED2CC5A6371E19248DA350 500w,/de/-/media/pax/images/freisteller/dinosaurier.png?as=0&w=1000&rev=7df96772d7024805b195aa20585566fa&hash=BB2E30AF04B8AE4DD3A7463ABA87BB04 1000w,/de/-/media/pax/images/freisteller/dinosaurier.png?as=0&w=672&rev=7df96772d7024805b195aa20585566fa&hash=EAAA98AFF2A4D89DFE6E8AE12658CB26 672w,/de/-/media/pax/images/freisteller/dinosaurier.png?as=0&w=912&rev=7df96772d7024805b195aa20585566fa&hash=6AA4F621E7F62AE389E36077F63AEA46 912w,/de/-/media/pax/images/freisteller/dinosaurier.png?as=0&w=1824&rev=7df96772d7024805b195aa20585566fa&hash=917D82B338727130FEEF38F4A677BFA4 1824w,/de/-/media/pax/images/freisteller/dinosaurier.png?as=0&w=1092&rev=7df96772d7024805b195aa20585566fa&hash=96A6823C14AE95D8CBC5E120F49A0B0C 1092w,/de/-/media/pax/images/freisteller/dinosaurier.png?as=0&w=2184&rev=7df96772d7024805b195aa20585566fa&hash=233AFE575E254CBC785E99CAE19C0F8E 2184w,/de/-/media/pax/images/freisteller/dinosaurier.png?as=0&w=1344&rev=7df96772d7024805b195aa20585566fa&hash=EA3F5E1BAD8CCB613723887256A718A8 1344w,/de/-/media/pax/images/freisteller/dinosaurier.png?as=0&w=2688&rev=7df96772d7024805b195aa20585566fa&hash=4C5E45300347967B64F7994A4E844F7F 2688w"
+
+       sizes="(max-width: 400px) 360px, (max-width: 500px) 460px, (max-width: 770px) 500px, (max-width: 990px) 672px, (max-width: 1199px) 912px, (max-width: 1399px) 1092px, 1344px"
+      />
+    
+    <img  alt="Dinosaurier" src="/de/-/media/pax/images/freisteller/dinosaurier.png?as=0&w=2688&rev=7df96772d7024805b195aa20585566fa&hash=4C5E45300347967B64F7994A4E844F7F" loading="lazy" />
+  </picture>
+
+  
+
+  
+</figure>
+
+
+      </div>
+    </div>
+    <div class="hero__outer">
+      <div class="hero__inner">
+        <div class="hero__column hero__column--primary">
+          <div class="hero__column-outer">
+            <div class="hero__column-inner">
+              
+                <h1 class="hero__label">Diese Seite gibt es nicht oder sie existiert nicht mehr</h1>
+              
+              
+                <span class="hero__title">404 - Das war einmal </span>
+              
+
+              
+
+              <div class="hero__cta">
+                
+	<a class="button " href="/de/">Zur&#252;ck zur Startseite</a>
+
+
+
+              
+                
+	<a class="button button--secondary" href="mailto:info@pax.ch">Kontakt</a>
+
+
+
+              
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="hero__section hero__section--content">
+    <div class="hero__secondary-background"></div>
+    <div class="hero__outer">
+      
+      <div class="hero__inner">
+        <div class="hero__column hero__column--secondary">
+          
+          <div class="hero__column-outer">
+            <div class="hero__column-inner">
+              <div class="hero__main">
+                <span class="hero__text">Gesucht statt gefunden. Überprüfen Sie Ihre Eingabe – oder kommen Sie auf uns zu. Denn Pannen gibt’s auch bei Pax. Und dann finden wir schnellstmöglichst eine Lösung.</span>
+              </div>
+              <div class="hero__aside">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  
+</div>
+
+
+
+	
+		<nav class="breadcrumb" aria-labelledby="">
+  <div class="breadcrumb__outer">
+    <div class="breadcrumb__inner">
+      <h2 id="" class="breadcrumb__title">Sie sind hier:</h2>
+      <ul class="breadcrumb__list" vocab="https://schema.org/" typeof="BreadcrumbList">
+        
+          <li class="breadcrumb__item" property="itemListElement" typeof="ListItem">
+            
+              <a class="breadcrumb__entry" href="/de/meta" property="item" typeof="WebPage">
+                <span property="name">Pax</span>
+              </a>
+            
+            <span class='sprite sprite--chevron-right'>
+  <svg viewBox="0 0 16 16" role="presentation"><use xlink:href='#svgicon-Chevron-Right'/></svg>
+</span>
+
+            <meta property="position" content="1">
+          </li>
+        
+          <li class="breadcrumb__item" property="itemListElement" typeof="ListItem">
+            
+              <span class="breadcrumb__entry" property="name">404</span>
+            
+            <span class='sprite sprite--chevron-right'>
+  <svg viewBox="0 0 16 16" role="presentation"><use xlink:href='#svgicon-Chevron-Right'/></svg>
+</span>
+
+            <meta property="position" content="2">
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+	
+
+    
+    
+    
+
+<section class="section  section--background-prune"
+          id="section---footer"
+         >
+  <div class="section__outer">
+      <div class="section__inner">
+        
+        
+<div class="heading" id="heading---das-koennte-sie-auch-interessieren">
+  <div class="heading__outer">
+    <div class="heading__content"><h3>Diese Themen könnten Sie auch interessieren </h3></div>
+  </div>
+</div>
+
+<div class="teaser-container">
+
+  
+
+
+  <div class="teaser-container__outer">
+      <div class="teaser-container__inner">
+      
+
+	    
+        
+          
+<a class="teaser"  href="/de/private-vorsorge" >
+
+  <div class="teaser__outer"  id="private-vorsorge">
+    <div class="teaser__background">
+      
+
+<figure class="image " >
+  <picture>
+    
+      <source
+      
+
+      srcset="/de/-/media/pax/images/flaechenbilder/headerbilder/zukunftsblick-gespiegelt.jpg?as=0&w=360&rev=f4d3ff45c0a149b0be62a2fcaad6742d&hash=8554D3C2906294E4EA36552F97B86B1E 360w,/de/-/media/pax/images/flaechenbilder/headerbilder/zukunftsblick-gespiegelt.jpg?as=0&w=720&rev=f4d3ff45c0a149b0be62a2fcaad6742d&hash=F258F2C85AF6A3EA01EAC13E7C950947 720w,/de/-/media/pax/images/flaechenbilder/headerbilder/zukunftsblick-gespiegelt.jpg?as=0&w=460&rev=f4d3ff45c0a149b0be62a2fcaad6742d&hash=ABC74BBB76DAB13239F582A0388D69AB 460w,/de/-/media/pax/images/flaechenbilder/headerbilder/zukunftsblick-gespiegelt.jpg?as=0&w=920&rev=f4d3ff45c0a149b0be62a2fcaad6742d&hash=5F104E8A3667DF4EEA4408A6E11248C6 920w,/de/-/media/pax/images/flaechenbilder/headerbilder/zukunftsblick-gespiegelt.jpg?as=0&w=500&rev=f4d3ff45c0a149b0be62a2fcaad6742d&hash=A3C72BA2DA61718A055AB45B2975B03D 500w,/de/-/media/pax/images/flaechenbilder/headerbilder/zukunftsblick-gespiegelt.jpg?as=0&w=1000&rev=f4d3ff45c0a149b0be62a2fcaad6742d&hash=D9020BD5FBD65C19A5CA6702D6CFD4B2 1000w,/de/-/media/pax/images/flaechenbilder/headerbilder/zukunftsblick-gespiegelt.jpg?as=0&w=672&rev=f4d3ff45c0a149b0be62a2fcaad6742d&hash=C8D563319853565BB48845856D8BF660 672w,/de/-/media/pax/images/flaechenbilder/headerbilder/zukunftsblick-gespiegelt.jpg?as=0&w=912&rev=f4d3ff45c0a149b0be62a2fcaad6742d&hash=94C79F817841E233D1D2FC1295AC0C0E 912w,/de/-/media/pax/images/flaechenbilder/headerbilder/zukunftsblick-gespiegelt.jpg?as=0&w=1824&rev=f4d3ff45c0a149b0be62a2fcaad6742d&hash=5D4113C8E83CFA59730C4FA22B8B82E1 1824w,/de/-/media/pax/images/flaechenbilder/headerbilder/zukunftsblick-gespiegelt.jpg?as=0&w=1092&rev=f4d3ff45c0a149b0be62a2fcaad6742d&hash=C841A6AF56E7DCBC262E7AD5AB9EA66F 1092w,/de/-/media/pax/images/flaechenbilder/headerbilder/zukunftsblick-gespiegelt.jpg?as=0&w=2184&rev=f4d3ff45c0a149b0be62a2fcaad6742d&hash=06317765421276FFE0D1B8CA3E3509D9 2184w,/de/-/media/pax/images/flaechenbilder/headerbilder/zukunftsblick-gespiegelt.jpg?as=0&w=1344&rev=f4d3ff45c0a149b0be62a2fcaad6742d&hash=1B9D431BEF253781335CCDA86620CFC9 1344w,/de/-/media/pax/images/flaechenbilder/headerbilder/zukunftsblick-gespiegelt.jpg?as=0&w=2688&rev=f4d3ff45c0a149b0be62a2fcaad6742d&hash=FD317A404EDF6433C981A7114FD4CD9E 2688w"
+
+       sizes="(max-width: 400px) 360px, (max-width: 500px) 460px, (max-width: 770px) 500px, (max-width: 990px) 672px, (max-width: 1199px) 912px, (max-width: 1399px) 1092px, 1344px"
+      />
+    
+    <img  alt="Eine Frau schaut in die Papierröhre hinein" src="/de/-/media/pax/images/flaechenbilder/headerbilder/zukunftsblick-gespiegelt.jpg?as=0&w=2688&rev=f4d3ff45c0a149b0be62a2fcaad6742d&hash=FD317A404EDF6433C981A7114FD4CD9E" loading="lazy" />
+  </picture>
+
+  
+
+  
+</figure>
+
+
+    </div>
+    <div class="teaser__inner">
+      <div class="teaser__column">
+        <div class="teaser__column-outer">
+          <div class="teaser__column-inner">
+            <h2 class="teaser__title">Private Vorsorge</h2>
+            
+              <span class="teaser__text">Bleiben Sie mit der privaten Vorsorge im Leben auf der Sonnenseite: Ob Altersvorsorge, Familienabsicherung, Eigenheimfinanzierung oder Selbstständigkeit – wir sind für Sie da. </span>
+            
+            <div class="teaser__footer">
+              <div class="teaser__cta">Mehr erfahren</div>
+              <div class="teaser__button"><span class='sprite sprite--arrow-right-long'>
+  <svg viewBox="0 0 16 16" role="presentation"><use xlink:href='#svgicon-Arrow-Right-Long'/></svg>
+</span>
+</div>
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</a>
+
+
+        
+          
+<a class="teaser"  href="/de/berufliche-vorsorge" >
+
+  <div class="teaser__outer"  id="berufliche-vorsorge">
+    <div class="teaser__background">
+      
+
+<figure class="image " >
+  <picture>
+    
+      <source
+      
+
+      srcset="/de/-/media/pax/images/flaechenbilder/headerbilder/tomatenbauer.jpg?as=0&w=360&rev=e5ccea0530004aa796d7797af870891f&hash=865587D2BE46076A8FD6F57E4BCE3BC0 360w,/de/-/media/pax/images/flaechenbilder/headerbilder/tomatenbauer.jpg?as=0&w=720&rev=e5ccea0530004aa796d7797af870891f&hash=2990C5DE73A7C47EB717EC114FEA1A3C 720w,/de/-/media/pax/images/flaechenbilder/headerbilder/tomatenbauer.jpg?as=0&w=460&rev=e5ccea0530004aa796d7797af870891f&hash=8C8C97F274B3E1772B377E53E42852D8 460w,/de/-/media/pax/images/flaechenbilder/headerbilder/tomatenbauer.jpg?as=0&w=920&rev=e5ccea0530004aa796d7797af870891f&hash=E127DE4FB6D3B69CB8A66D5FBA9F0D26 920w,/de/-/media/pax/images/flaechenbilder/headerbilder/tomatenbauer.jpg?as=0&w=500&rev=e5ccea0530004aa796d7797af870891f&hash=0FC0F82BB6B9DD5A2AB5B9D4D5E70526 500w,/de/-/media/pax/images/flaechenbilder/headerbilder/tomatenbauer.jpg?as=0&w=1000&rev=e5ccea0530004aa796d7797af870891f&hash=04E33A9694E46487175A8413F751F803 1000w,/de/-/media/pax/images/flaechenbilder/headerbilder/tomatenbauer.jpg?as=0&w=672&rev=e5ccea0530004aa796d7797af870891f&hash=C5A7872A6543FD53AA044D3EF902B89E 672w,/de/-/media/pax/images/flaechenbilder/headerbilder/tomatenbauer.jpg?as=0&w=912&rev=e5ccea0530004aa796d7797af870891f&hash=F248C5D454BF3F8477D9DFA029660D48 912w,/de/-/media/pax/images/flaechenbilder/headerbilder/tomatenbauer.jpg?as=0&w=1824&rev=e5ccea0530004aa796d7797af870891f&hash=CD7936D243ADA696005D09F1F8B06E85 1824w,/de/-/media/pax/images/flaechenbilder/headerbilder/tomatenbauer.jpg?as=0&w=1092&rev=e5ccea0530004aa796d7797af870891f&hash=20E923ABBC45393098470584AEAEA355 1092w,/de/-/media/pax/images/flaechenbilder/headerbilder/tomatenbauer.jpg?as=0&w=2184&rev=e5ccea0530004aa796d7797af870891f&hash=A3243A1A9FAAD5E941DD25F4F98E7760 2184w,/de/-/media/pax/images/flaechenbilder/headerbilder/tomatenbauer.jpg?as=0&w=1344&rev=e5ccea0530004aa796d7797af870891f&hash=828EAAD824EE8F56F9884B2AD655A51D 1344w,/de/-/media/pax/images/flaechenbilder/headerbilder/tomatenbauer.jpg?as=0&w=2688&rev=e5ccea0530004aa796d7797af870891f&hash=7D068C22E24F52D9712F53BD497A964D 2688w"
+
+       sizes="(max-width: 400px) 360px, (max-width: 500px) 460px, (max-width: 770px) 500px, (max-width: 990px) 672px, (max-width: 1199px) 912px, (max-width: 1399px) 1092px, 1344px"
+      />
+    
+    <img  alt="Ein Tomatenbauer stapelt die Tomatenkästchen" src="/de/-/media/pax/images/flaechenbilder/headerbilder/tomatenbauer.jpg?as=0&w=2688&rev=e5ccea0530004aa796d7797af870891f&hash=7D068C22E24F52D9712F53BD497A964D" loading="lazy" />
+  </picture>
+
+  
+
+  
+</figure>
+
+
+    </div>
+    <div class="teaser__inner">
+      <div class="teaser__column">
+        <div class="teaser__column-outer">
+          <div class="teaser__column-inner">
+            <h2 class="teaser__title">Berufliche Vorsorge</h2>
+            
+              <span class="teaser__text">Suchen Sie einen Partner für die 2. Säule in der Schweiz? Wir haben die geeignete berufliche Vorsorge für Sie. Einfach, schnell, online. Jetzt Offerte anfordern. </span>
+            
+            <div class="teaser__footer">
+              <div class="teaser__cta">Mehr erfahren</div>
+              <div class="teaser__button"><span class='sprite sprite--arrow-right-long'>
+  <svg viewBox="0 0 16 16" role="presentation"><use xlink:href='#svgicon-Arrow-Right-Long'/></svg>
+</span>
+</div>
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</a>
+
+
+        
+          
+<a class="teaser"  href="/de/vertriebspartner" >
+
+  <div class="teaser__outer"  id="vertriebspartner">
+    <div class="teaser__background">
+      
+
+<figure class="image " >
+  <picture>
+    
+      <source
+      
+
+      srcset="/de/-/media/pax/images/flaechenbilder/headerbilder/velo-skates.jpg?as=0&w=360&rev=739ad78191154e398858e643b44e1a34&hash=2E21DCBC4CA8DCAB8583EE5F21B435A5 360w,/de/-/media/pax/images/flaechenbilder/headerbilder/velo-skates.jpg?as=0&w=720&rev=739ad78191154e398858e643b44e1a34&hash=757DD5EB310EB1128BB7E55FF9B49CA7 720w,/de/-/media/pax/images/flaechenbilder/headerbilder/velo-skates.jpg?as=0&w=460&rev=739ad78191154e398858e643b44e1a34&hash=63D7F77309160137DD83B85D1DBFCBCC 460w,/de/-/media/pax/images/flaechenbilder/headerbilder/velo-skates.jpg?as=0&w=920&rev=739ad78191154e398858e643b44e1a34&hash=E928A8D3CA6DC8B0C2182B729C9679B5 920w,/de/-/media/pax/images/flaechenbilder/headerbilder/velo-skates.jpg?as=0&w=500&rev=739ad78191154e398858e643b44e1a34&hash=C84E7D65D90116ADFEACD9E893E71BE7 500w,/de/-/media/pax/images/flaechenbilder/headerbilder/velo-skates.jpg?as=0&w=1000&rev=739ad78191154e398858e643b44e1a34&hash=38BF134B970DE6FFFB3C4954942EBACF 1000w,/de/-/media/pax/images/flaechenbilder/headerbilder/velo-skates.jpg?as=0&w=672&rev=739ad78191154e398858e643b44e1a34&hash=FABFA4ACC8C4A176266AAC636C96D700 672w,/de/-/media/pax/images/flaechenbilder/headerbilder/velo-skates.jpg?as=0&w=912&rev=739ad78191154e398858e643b44e1a34&hash=35544EEC603F0C6253976CF258951CE3 912w,/de/-/media/pax/images/flaechenbilder/headerbilder/velo-skates.jpg?as=0&w=1824&rev=739ad78191154e398858e643b44e1a34&hash=815B3203DFA0B4781EF97C9B16D6FB98 1824w,/de/-/media/pax/images/flaechenbilder/headerbilder/velo-skates.jpg?as=0&w=1092&rev=739ad78191154e398858e643b44e1a34&hash=352470D4335655B431D660CCE2E27A16 1092w,/de/-/media/pax/images/flaechenbilder/headerbilder/velo-skates.jpg?as=0&w=2184&rev=739ad78191154e398858e643b44e1a34&hash=6DEAC4A4DAABC8A3C598F8BCD61CA85D 2184w,/de/-/media/pax/images/flaechenbilder/headerbilder/velo-skates.jpg?as=0&w=1344&rev=739ad78191154e398858e643b44e1a34&hash=411F8516DC139C8FCF10A9E5AE2F9DB5 1344w,/de/-/media/pax/images/flaechenbilder/headerbilder/velo-skates.jpg?as=0&w=2688&rev=739ad78191154e398858e643b44e1a34&hash=CA0EFA804F2A943BA858893182D340BA 2688w"
+
+       sizes="(max-width: 400px) 360px, (max-width: 500px) 460px, (max-width: 770px) 500px, (max-width: 990px) 672px, (max-width: 1199px) 912px, (max-width: 1399px) 1092px, 1344px"
+      />
+    
+    <img  alt="Ein junger Mann und eine Junge Frauen fahren Velo Skates" src="/de/-/media/pax/images/flaechenbilder/headerbilder/velo-skates.jpg?as=0&w=2688&rev=739ad78191154e398858e643b44e1a34&hash=CA0EFA804F2A943BA858893182D340BA" loading="lazy" />
+  </picture>
+
+  
+
+  
+</figure>
+
+
+    </div>
+    <div class="teaser__inner">
+      <div class="teaser__column">
+        <div class="teaser__column-outer">
+          <div class="teaser__column-inner">
+            <h2 class="teaser__title">Vertriebspartner</h2>
+            
+              <span class="teaser__text">Möchten Sie Ihren Kunden flexible Lösungen für die private oder berufliche Vorsorge bieten? Werden Sie Vertriebspartner für Pax. Einfach, schnell, online.  </span>
+            
+            <div class="teaser__footer">
+              <div class="teaser__cta">Mehr erfahren</div>
+              <div class="teaser__button"><span class='sprite sprite--arrow-right-long'>
+  <svg viewBox="0 0 16 16" role="presentation"><use xlink:href='#svgicon-Arrow-Right-Long'/></svg>
+</span>
+</div>
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</a>
+
+
+        
+          
+<a class="teaser"  href="/de/ueber-pax" >
+
+  <div class="teaser__outer"  id="ueber-pax">
+    <div class="teaser__background">
+      
+
+<figure class="image " >
+  <picture>
+    
+      <source
+      
+
+      srcset="/de/-/media/pax/images/flaechenbilder/headerbilder/medaille.jpg?as=0&w=360&rev=c0a3e551bd7c44c5bf618b3ac3cf9abb&hash=4C42275D28413855C2ABB6852346E17C 360w,/de/-/media/pax/images/flaechenbilder/headerbilder/medaille.jpg?as=0&w=720&rev=c0a3e551bd7c44c5bf618b3ac3cf9abb&hash=AE225F5AFF697F247604773C4A9D4666 720w,/de/-/media/pax/images/flaechenbilder/headerbilder/medaille.jpg?as=0&w=460&rev=c0a3e551bd7c44c5bf618b3ac3cf9abb&hash=BF6F62E753364B355E2A71F2E8F3DE8D 460w,/de/-/media/pax/images/flaechenbilder/headerbilder/medaille.jpg?as=0&w=920&rev=c0a3e551bd7c44c5bf618b3ac3cf9abb&hash=EDB02601E1CE1F1BE849F92E5B135BE6 920w,/de/-/media/pax/images/flaechenbilder/headerbilder/medaille.jpg?as=0&w=500&rev=c0a3e551bd7c44c5bf618b3ac3cf9abb&hash=4282EA046A2C18B68B02BDEDD0A12EEA 500w,/de/-/media/pax/images/flaechenbilder/headerbilder/medaille.jpg?as=0&w=1000&rev=c0a3e551bd7c44c5bf618b3ac3cf9abb&hash=71B212CEDB44C336BF832720F5E4BA1E 1000w,/de/-/media/pax/images/flaechenbilder/headerbilder/medaille.jpg?as=0&w=672&rev=c0a3e551bd7c44c5bf618b3ac3cf9abb&hash=458132A3369C347AB27344BF288BB848 672w,/de/-/media/pax/images/flaechenbilder/headerbilder/medaille.jpg?as=0&w=912&rev=c0a3e551bd7c44c5bf618b3ac3cf9abb&hash=F023D4E5C57CB96F95548E71E678F97C 912w,/de/-/media/pax/images/flaechenbilder/headerbilder/medaille.jpg?as=0&w=1824&rev=c0a3e551bd7c44c5bf618b3ac3cf9abb&hash=3C5FF580928DB0B87D8EE03497B213C0 1824w,/de/-/media/pax/images/flaechenbilder/headerbilder/medaille.jpg?as=0&w=1092&rev=c0a3e551bd7c44c5bf618b3ac3cf9abb&hash=4033456D6B58F32292F61053F94B3FE8 1092w,/de/-/media/pax/images/flaechenbilder/headerbilder/medaille.jpg?as=0&w=2184&rev=c0a3e551bd7c44c5bf618b3ac3cf9abb&hash=366D068D1ECF4E1AAF4DC23F635027FD 2184w,/de/-/media/pax/images/flaechenbilder/headerbilder/medaille.jpg?as=0&w=1344&rev=c0a3e551bd7c44c5bf618b3ac3cf9abb&hash=0C8CC591AACBAFA2080BF8AB76C724CD 1344w,/de/-/media/pax/images/flaechenbilder/headerbilder/medaille.jpg?as=0&w=2688&rev=c0a3e551bd7c44c5bf618b3ac3cf9abb&hash=2C6E177505336AAEAD4AFDB3078FBDF0 2688w"
+
+       sizes="(max-width: 400px) 360px, (max-width: 500px) 460px, (max-width: 770px) 500px, (max-width: 990px) 672px, (max-width: 1199px) 912px, (max-width: 1399px) 1092px, 1344px"
+      />
+    
+    <img  alt="Ein Junge hat seine fünf Medaillen um den Hals gehängt " src="/de/-/media/pax/images/flaechenbilder/headerbilder/medaille.jpg?as=0&w=2688&rev=c0a3e551bd7c44c5bf618b3ac3cf9abb&hash=2C6E177505336AAEAD4AFDB3078FBDF0" loading="lazy" />
+  </picture>
+
+  
+
+  
+</figure>
+
+
+    </div>
+    <div class="teaser__inner">
+      <div class="teaser__column">
+        <div class="teaser__column-outer">
+          <div class="teaser__column-inner">
+            <h2 class="teaser__title">Über uns</h2>
+            
+              <span class="teaser__text">Unsere Kultur bestimmt unser Tun. Unser Tun bestimmt unseren Erfolg. Also ermöglicht unsere Kultur unseren Erfolg. Nehmen wir uns das zu Herzen, entfalten wir die Kraft, gemeinsam das zu erreichen, was wir erreichen wollen.</span>
+            
+            <div class="teaser__footer">
+              <div class="teaser__cta">Mehr erfahren</div>
+              <div class="teaser__button"><span class='sprite sprite--arrow-right-long'>
+  <svg viewBox="0 0 16 16" role="presentation"><use xlink:href='#svgicon-Arrow-Right-Long'/></svg>
+</span>
+</div>
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</a>
+
+
+        
+          
+<a class="teaser"  href="/de/karriere" >
+
+  <div class="teaser__outer"  id="karriere">
+    <div class="teaser__background">
+      
+
+<figure class="image " >
+  <picture>
+    
+      <source
+      
+
+      srcset="/de/-/media/pax/images/flaechenbilder/headerbilder/astronaut.jpg?as=0&w=360&rev=b55523ca45954163b60a4163640d0361&hash=CC0D9842A6CC9EB2EFEDBDF0729BE9F4 360w,/de/-/media/pax/images/flaechenbilder/headerbilder/astronaut.jpg?as=0&w=720&rev=b55523ca45954163b60a4163640d0361&hash=98A24699F4F543049496FABCC4727574 720w,/de/-/media/pax/images/flaechenbilder/headerbilder/astronaut.jpg?as=0&w=460&rev=b55523ca45954163b60a4163640d0361&hash=E8B7B4C73801CF803275FB63AB65E265 460w,/de/-/media/pax/images/flaechenbilder/headerbilder/astronaut.jpg?as=0&w=920&rev=b55523ca45954163b60a4163640d0361&hash=CD812139F0A2E7FE4ECCFD2A74335454 920w,/de/-/media/pax/images/flaechenbilder/headerbilder/astronaut.jpg?as=0&w=500&rev=b55523ca45954163b60a4163640d0361&hash=0749A5ACE9F15197712A65E9AE444A30 500w,/de/-/media/pax/images/flaechenbilder/headerbilder/astronaut.jpg?as=0&w=1000&rev=b55523ca45954163b60a4163640d0361&hash=D75F4E5942BC9A5A4E64090B48129C9A 1000w,/de/-/media/pax/images/flaechenbilder/headerbilder/astronaut.jpg?as=0&w=672&rev=b55523ca45954163b60a4163640d0361&hash=B6FF96C2BF61403EEA3429C55CCE566A 672w,/de/-/media/pax/images/flaechenbilder/headerbilder/astronaut.jpg?as=0&w=912&rev=b55523ca45954163b60a4163640d0361&hash=1215694E51F62B85A81CC9EDE61C1DBA 912w,/de/-/media/pax/images/flaechenbilder/headerbilder/astronaut.jpg?as=0&w=1824&rev=b55523ca45954163b60a4163640d0361&hash=392193642E1C42D573EE0A910387B3B9 1824w,/de/-/media/pax/images/flaechenbilder/headerbilder/astronaut.jpg?as=0&w=1092&rev=b55523ca45954163b60a4163640d0361&hash=7497D9DDCEDB13677F77426FFEA53D19 1092w,/de/-/media/pax/images/flaechenbilder/headerbilder/astronaut.jpg?as=0&w=2184&rev=b55523ca45954163b60a4163640d0361&hash=CC45A4436E1487B8D6BD482AF9F9B5C6 2184w,/de/-/media/pax/images/flaechenbilder/headerbilder/astronaut.jpg?as=0&w=1344&rev=b55523ca45954163b60a4163640d0361&hash=36D7A45202D00A6788010E35ABB77E9F 1344w,/de/-/media/pax/images/flaechenbilder/headerbilder/astronaut.jpg?as=0&w=2688&rev=b55523ca45954163b60a4163640d0361&hash=0A3B073FA7DD13B11A9C1B6741426D66 2688w"
+
+       sizes="(max-width: 400px) 360px, (max-width: 500px) 460px, (max-width: 770px) 500px, (max-width: 990px) 672px, (max-width: 1199px) 912px, (max-width: 1399px) 1092px, 1344px"
+      />
+    
+    <img  alt="Ein Mann im Astronautanzug, der auf einem Fahrrad in der Wüste fährt" src="/de/-/media/pax/images/flaechenbilder/headerbilder/astronaut.jpg?as=0&w=2688&rev=b55523ca45954163b60a4163640d0361&hash=0A3B073FA7DD13B11A9C1B6741426D66" loading="lazy" />
+  </picture>
+
+  
+
+  
+</figure>
+
+
+    </div>
+    <div class="teaser__inner">
+      <div class="teaser__column">
+        <div class="teaser__column-outer">
+          <div class="teaser__column-inner">
+            <h2 class="teaser__title">Ausbildung und Karriere</h2>
+            
+              <span class="teaser__text">Sie suchen eine Chance zur Entfaltung: Sie wollen kein Rädchen sein, sondern ein Motor, der etwas bewegt. Willkommen bei Pax!</span>
+            
+            <div class="teaser__footer">
+              <div class="teaser__cta">Mehr erfahren</div>
+              <div class="teaser__button"><span class='sprite sprite--arrow-right-long'>
+  <svg viewBox="0 0 16 16" role="presentation"><use xlink:href='#svgicon-Arrow-Right-Long'/></svg>
+</span>
+</div>
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</a>
+
+
+        
+      
+
+      </div>
+  </div>
+
+  
+
+</div>
+
+      </div>
+  </div>
+
+</section>
+
+
+
+	  
+
+
+
+
+<div data-nebecbar class="nebecbar">
+  <div class="nebecbar__mobile">
+    <button class="nebecbar__button" data-key="mobile">Kontakt</button>
+  </div>
+  <div class="nebecbar__outer">
+    <div class="nebecbar__inner">
+      <div class="nebecbar__main">
+        <div class="nebecbar__content">
+          
+            <div class="nebecbar__item" data-key="kontakt">
+              
+
+              
+<div class="heading" id="heading">
+  <div class="heading__outer">
+    <div class="heading__content"><h3>Kontakt</h3></div>
+  </div>
+</div>
+
+<div class="richtext " id="intro">
+  <div class="richtext__outer">
+    <div class="richtext__content">Bei Fragen zum Datenschutz hilft Ihnen Pax gerne weiter.</div>
+  </div>
+</div>
+
+<div class="grid ">
+  <div class="grid__outer">
+      <div class="grid__inner">
+        
+        <div class="column">
+          <div class="richtext " id="allgemeiner-kontakt">
+  <div class="richtext__outer">
+    <div class="richtext__content"><a style="font-weight: bold;"><strong></strong></a><strong style="font-weight: bold;">Allgemeiner Kontakt<br />
+<br />
+<a href="mailto:info@pax.ch">info@pax.ch</a><br />
+<a rel="noopener noreferrer" href="tel:+41612776666" target="_blank">+ 41 61 277 66 66</a></strong><br />
+Montag bis Freitag<br />
+08:00 &ndash; 12:00 Uhr<br />
+13:00 &ndash; 17:00 Uhr</div>
+  </div>
+</div>
+
+
+        </div>
+        <div class="column">
+          <div class="richtext " id="datenschutz">
+  <div class="richtext__outer">
+    <div class="richtext__content"><strong>Datenschutzberater von Pax</strong><br />
+<br />
+<strong><a href="http://mailto:datenschutz@pax.ch" target="">datenschutz@pax.ch</a></strong><br /></div>
+  </div>
+</div>
+
+
+        </div>
+      </div>
+  </div>
+</div>
+
+            </div>
+          
+
+          <button class="nebecbar__button nebecbar__close" data-key="close">
+            <span class='sprite sprite--close'>
+  <svg viewBox="0 0 16 16" role="presentation"><use xlink:href='#svgicon-Close'/></svg>
+</span>
+
+          </button>
+        </div>
+
+        <div class="nebecbar__header">
+          
+            <button class="nebecbar__button" data-key="kontakt">Kontakt</button>
+          
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    <footer class="footer" aria-label="Footer">
+  <div class="footer__outer">
+    <div class="footer__inner">
+
+      <div class="footer__column">
+		    <ul class="footer__navigation">
+			    
+			  </ul>
+
+        <div class="">
+        <ul class="footer__languages">
+          <li class="footer__language">
+            <a class="footer__link footer__link--active" href="/de/meta/404">de</a></li><li class="footer__language">
+            <a class="footer__link " href="/fr/meta/404">fr</a></li><li class="footer__language">
+            <a class="footer__link " href="/it/meta/404">it</a></li>
+        </ul>
+        </div>
+      </div>
+
+      <div class="footer__column">
+        <div class="footer__column-block">
+		    
+		    	<ul class="footer__navigation footer__navigation--social">
+		    	  
+		    		
+		    			<li class="footer__entry">
+		    			  <a class="footer__link" href="https://www.facebook.com/paxvorsorge" target="_blank" rel="noopener noreferrer"  title="Facebook">
+		    				<span class='sprite sprite--Facebook '>
+  <svg viewBox="0 0 16 16"
+     role="presentation">
+    <use xlink:href='#svgicon-Facebook'/>
+  </svg>
+</span>
+
+		    			  </a>
+		    			</li>
+		    		
+		    	  
+		    		
+		    			<li class="footer__entry">
+		    			  <a class="footer__link" href="https://www.instagram.com/paxvorsorge" target="_blank" rel="noopener noreferrer"  title="[Enter Link here]">
+		    				<span class='sprite sprite--Instagram '>
+  <svg viewBox="0 0 16 16"
+     role="presentation">
+    <use xlink:href='#svgicon-Instagram'/>
+  </svg>
+</span>
+
+		    			  </a>
+		    			</li>
+		    		
+		    	  
+		    		
+		    			<li class="footer__entry">
+		    			  <a class="footer__link" href="https://www.linkedin.com/company/pax-schweizerische-lebensversicherungs-gesellschaft-ag" target="_blank" rel="noopener noreferrer"  title="LinkedIn">
+		    				<span class='sprite sprite--Linkedin '>
+  <svg viewBox="0 0 16 16"
+     role="presentation">
+    <use xlink:href='#svgicon-Linkedin'/>
+  </svg>
+</span>
+
+		    			  </a>
+		    			</li>
+		    		
+		    	  
+		    		
+		    			<li class="footer__entry">
+		    			  <a class="footer__link" href="https://www.youtube.com/channel/UCjlAVCArItBJHfUE7qN3FBQ" target="_blank" rel="noopener noreferrer"  title="Youtube">
+		    				<span class='sprite sprite--Youtube '>
+  <svg viewBox="0 0 16 16"
+     role="presentation">
+    <use xlink:href='#svgicon-Youtube'/>
+  </svg>
+</span>
+
+		    			  </a>
+		    			</li>
+		    		
+		    	  
+		    	</ul>
+        
+
+
+        
+		      <ul class="footer__navigation footer__navigation--secondary">
+			      
+			    	  
+              <li class="footer__entry"><a class="footer__link" href="/de/meta/datenschutz" title="Datenschutz">Datenschutz</a></li>
+			    	  
+			      
+			    	  
+              <li class="footer__entry"><a class="footer__link" href="#cookie-settings" title="[Enter Link here]">Cookie Settings</a></li>
+			    	  
+			      
+			    	  
+              <li class="footer__entry"><a class="footer__link" href="/de/meta/impressum" title="Impressum">Impressum</a></li>
+			    	  
+			      
+			    	  
+              <li class="footer__entry"><a class="footer__link" href="/de/meta" title="Rechtliche Hinweise">Rechtliche Hinweise</a></li>
+			    	  
+			      
+			    </ul>
+        
+        </div>
+
+        <a class="footer__link footer__logo" href="/de/meta" title="Startseite">
+          
+
+<figure class="image " >
+  <picture>
+    
+      <source
+      
+
+      srcset="/de/-/media/pax/system/pax-logo-claim-de.png?as=0&w=480&rev=f4492daaae514289950c99ad6a7877a4&sc_lang=de&hash=F916F12EE9EBC3F9F2129E1542597FAF 480w,/de/-/media/pax/system/pax-logo-claim-de.png?as=0&w=960&rev=f4492daaae514289950c99ad6a7877a4&sc_lang=de&hash=372F3C5995299040960912E59CC21765 960w,/de/-/media/pax/system/pax-logo-claim-de.png?as=0&w=1280&rev=f4492daaae514289950c99ad6a7877a4&sc_lang=de&hash=5999331267F5A48874AF7AC3CB39E19C 1280w"
+
+       sizes="(max-width: 991px) 98vw, (max-width: 1280px) 92vw, 80vw"
+      />
+    
+    <img  alt="Pax. Vorsorge auf den Punkt gebracht" src="/de/-/media/pax/system/pax-logo-claim-de.png?as=0&w=1280&rev=f4492daaae514289950c99ad6a7877a4&sc_lang=de&hash=5999331267F5A48874AF7AC3CB39E19C" loading="lazy" />
+  </picture>
+
+  
+
+  
+</figure>
+
+
+        </a>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+  </main>
+</div>
+
+
+<!-- the nomodule script is only loaded in legacy browsers such as IE11 -->
+<script nomodule src="/res/javascripts/polyfills.js?cb=db87d135c23abfdd2811e2226aefd2f13c83d7d7"></script>
+<script src="/res/javascripts/main.js?cb=db87d135c23abfdd2811e2226aefd2f13c83d7d7"></script>
+<script src="/res/javascripts/cookie-standalone.js?gtmId=GTM-MQ3GG9V" defer></script>
+
+ 
+</body>
+</html>

@@ -1,0 +1,29 @@
+---
+import StudyPageComponent from '../../components/StudyPage.astro';
+import { getStudyPage, studyYears, currentYear } from '../../utils/content';
+import type { Lang } from '../../utils/i18n';
+import { languages } from '../../utils/i18n';
+
+export function getStaticPaths() {
+  const paths = [];
+  for (const lang of Object.keys(languages)) {
+    // Archive years only (not current year — that's the index page)
+    for (const year of studyYears) {
+      if (year !== currentYear) {
+        paths.push({ params: { lang, year: String(year) } });
+      }
+    }
+  }
+  return paths;
+}
+
+const lang = Astro.params.lang as Lang;
+const year = parseInt(Astro.params.year as string, 10);
+const data = await getStudyPage(lang, year);
+
+if (!data) {
+  return Astro.redirect(`/${lang}/`, 302);
+}
+---
+
+<StudyPageComponent data={data} lang={lang} />

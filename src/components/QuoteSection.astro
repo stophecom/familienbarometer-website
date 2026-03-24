@@ -1,0 +1,65 @@
+---
+import type { Quote } from '../utils/content';
+import type { Lang } from '../utils/i18n';
+import { t } from '../utils/i18n';
+
+interface Props {
+  lang: Lang;
+  heading: string;
+  quotes: Quote[];
+}
+
+const { lang, heading, quotes } = Astro.props;
+---
+
+<section class="section section--light" id="section-4">
+  <div class="container">
+    <h2 class="heading-2 heading-2--coral">{heading}</h2>
+    <div class="quote-block">
+      {
+        quotes.map((quote) => (
+          <div class="quote-person">
+            <img
+              class="quote-person__image"
+              src={quote.image}
+              alt={quote.name}
+              width="160"
+              height="160"
+              loading="lazy"
+            />
+            <p class="quote-person__name">{quote.name}</p>
+            <p class="quote-person__title">{quote.title}</p>
+            <p class="quote-person__text">&laquo;{quote.text}&raquo;</p>
+            {quote.email && (
+              <a
+                class="quote-person__email"
+                href={`mailto:${quote.email}`}
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M22 6l-10 7L2 6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                {quote.email}
+              </a>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

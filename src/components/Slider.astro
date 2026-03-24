@@ -1,0 +1,162 @@
+---
+import type { SliderItem } from '../utils/content';
+
+interface Props {
+  items: SliderItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="slider" data-slider>
+  <div class="slider__track" data-slider-track>
+    {
+      items.map((item) => (
+        <div class="slider__slide">
+          <p class="slider__text">{item.text}</p>
+        </div>
+      ))
+    }
+  </div>
+  <div class="slider__controls">
+    <button class="slider__btn slider__prev" data-slider-prev aria-label="Previous slide">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+      </svg>
+    </button>
+    <div class="slider__pagination" data-slider-pagination></div>
+    <button class="slider__btn slider__next" data-slider-next aria-label="Next slide">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<style>
+  .slider {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slider__track {
+    display: flex;
+    transition: transform 0.4s ease;
+  }
+
+  .slider__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    padding: 2rem;
+    background: var(--color-dark-blue);
+    border-radius: 8px;
+    color: var(--color-white);
+  }
+
+  @media (min-width: 768px) {
+    .slider__slide {
+      flex: 0 0 calc(50% - 0.5rem);
+      margin-right: 1rem;
+    }
+  }
+
+  .slider__text {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .slider__controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .slider__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid var(--color-coral);
+    background: transparent;
+    color: var(--color-coral);
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .slider__btn:hover {
+    background: var(--color-coral);
+    color: var(--color-white);
+  }
+
+  .slider__pagination {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .slider__pagination :global(.slider__dot) {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #d0d5dc;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.2s;
+  }
+
+  .slider__pagination :global(.slider__dot.is-active) {
+    background: var(--color-coral);
+  }
+</style>
+
+<script>
+  document.querySelectorAll('[data-slider]').forEach((slider) => {
+    const track = slider.querySelector('[data-slider-track]') as HTMLElement;
+    const prevBtn = slider.querySelector('[data-slider-prev]');
+    const nextBtn = slider.querySelector('[data-slider-next]');
+    const pagination = slider.querySelector('[data-slider-pagination]');
+    const slides = track?.children;
+    if (!track || !slides || slides.length === 0) return;
+
+    let currentIndex = 0;
+    const isMobile = () => window.innerWidth < 768;
+    const slidesPerView = () => (isMobile() ? 1 : 2);
+    const totalPages = () => Math.ceil(slides.length / slidesPerView());
+
+    function buildDots() {
+      if (!pagination) return;
+      pagination.innerHTML = '';
+      for (let i = 0; i < totalPages(); i++) {
+        const dot = document.createElement('button');
+        dot.className = `slider__dot${i === currentIndex ? ' is-active' : ''}`;
+        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+        dot.addEventListener('click', () => goTo(i));
+        pagination.appendChild(dot);
+      }
+    }
+
+    function goTo(index: number) {
+      const maxIndex = totalPages() - 1;
+      currentIndex = Math.max(0, Math.min(index, maxIndex));
+      const slideWidth = (slides[0] as HTMLElement).offsetWidth;
+      const gap = isMobile() ? 0 : 16;
+      track.style.transform = `translateX(-${currentIndex * (slideWidth + gap) * slidesPerView()}px)`;
+      pagination?.querySelectorAll('.slider__dot').forEach((dot, i) => {
+        dot.classList.toggle('is-active', i === currentIndex);
+      });
+    }
+
+    prevBtn?.addEventListener('click', () => goTo(currentIndex - 1));
+    nextBtn?.addEventListener('click', () => goTo(currentIndex + 1));
+
+    buildDots();
+    window.addEventListener('resize', () => {
+      buildDots();
+      goTo(Math.min(currentIndex, totalPages() - 1));
+    });
+  });
+</script>

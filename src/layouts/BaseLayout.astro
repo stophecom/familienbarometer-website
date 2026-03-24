@@ -1,0 +1,133 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import type { Lang } from '../utils/i18n';
+import { t } from '../utils/i18n';
+
+interface Props {
+  title: string;
+  description?: string;
+  lang: Lang;
+  canonicalPath?: string;
+  year?: number;
+}
+
+const { title, description, lang, canonicalPath, year } = Astro.props;
+
+const siteUrl = 'https://familienbarometer.ch';
+const canonical = canonicalPath
+  ? `${siteUrl}${canonicalPath}`
+  : `${siteUrl}/${lang}${year ? `/${year}` : ''}`;
+
+const gtmId = 'GTM-XXXXXXX'; // Replace with actual GTM ID
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+
+    <!-- Canonical & Hreflang -->
+    <link rel="canonical" href={canonical} />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={`${siteUrl}/de${year ? `/${year}` : ''}`}
+    />
+    <link
+      rel="alternate"
+      hreflang="de"
+      href={`${siteUrl}/de${year ? `/${year}` : ''}`}
+    />
+    <link
+      rel="alternate"
+      hreflang="fr"
+      href={`${siteUrl}/fr${year ? `/${year}` : ''}`}
+    />
+    <link
+      rel="alternate"
+      hreflang="it"
+      href={`${siteUrl}/it${year ? `/${year}` : ''}`}
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={`${lang}_CH`} />
+    <meta
+      property="og:image"
+      content={`${siteUrl}/images/og-familienbarometer.jpg`}
+    />
+    <meta property="og:site_name" content="Familienbarometer" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JSON-LD Structured Data -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'Familienbarometer',
+        url: siteUrl,
+        publisher: {
+          '@type': 'Organization',
+          name: 'Pax, Schweizerische Lebensversicherungs-Gesellschaft AG',
+          url: 'https://www.pax.ch',
+        },
+        inLanguage: ['de-CH', 'fr-CH', 'it-CH'],
+      })}
+    />
+
+    <!-- Google Tag Manager -->
+    <script
+      set:html={`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','${gtmId}');`}
+    />
+  </head>
+  <body>
+    <!-- GTM noscript fallback -->
+    <noscript>
+      <iframe
+        src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
+    <a class="skip-to-content" href="#main-content">
+      {t(lang, 'skip.content')}
+    </a>
+
+    <Header lang={lang} year={year} />
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <Footer lang={lang} />
+  </body>
+</html>

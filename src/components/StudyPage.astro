@@ -1,0 +1,314 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from './HeroSection.astro';
+import QuoteSection from './QuoteSection.astro';
+import PastStudies from './PastStudies.astro';
+import type { StudyPage } from '../utils/content';
+import type { Lang } from '../utils/i18n';
+
+interface Props {
+  data: StudyPage;
+  lang: Lang;
+}
+
+const { data, lang } = Astro.props;
+
+const quoteHeading = {
+  de: 'Verantwortliche',
+  fr: 'Responsables',
+  it: 'Responsabili',
+};
+
+const pastStudiesHeading = {
+  de: 'Vergangene Studien',
+  fr: 'Études passées',
+  it: 'Studi precedenti',
+};
+---
+
+<BaseLayout
+  title={data.meta.title}
+  description={data.meta.description}
+  lang={lang}
+  year={data.year}
+>
+  <!-- Hero -->
+  <HeroSection
+    lang={lang}
+    title={data.title}
+    year={data.year}
+    reportUrl={data.reportUrl}
+    mediaPackageUrl={data.mediaPackageUrl}
+    heroImage={data.heroImage}
+  />
+
+  <!-- Section 1: Study Overview -->
+  <section class="section section--light" id="section-1">
+    <div class="container">
+      <div class="two-col">
+        <div>
+          <h2 class="heading-2 heading-2--coral">{data.introHeading}</h2>
+          <p class="text-intro">{data.leadText}</p>
+          <div class="text-body section1-body" set:html={data.introText} />
+        </div>
+        <div class="section1-charts">
+          {data.chartImages.map((src) => (
+            <img src={src} alt="" loading="lazy" class="chart-image" />
+          ))}
+        </div>
+      </div>
+
+      {/* Slider section - image slides (only on 2026 homepage) */}
+      {data.sliderImages && data.sliderImages.length > 0 && (
+        <div class="image-slider" data-slider>
+          <div class="image-slider__track" data-slider-track>
+            {data.sliderImages.map((src) => (
+              <div class="image-slider__slide">
+                <img src={src} alt="" loading="lazy" />
+              </div>
+            ))}
+          </div>
+          <div class="image-slider__controls">
+            <button class="slider__btn slider__prev" data-slider-prev aria-label="Previous">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </button>
+            <div class="image-slider__pagination" data-slider-pagination></div>
+            <button class="slider__btn slider__next" data-slider-next aria-label="Next">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Section 2: Summary -->
+  <section class="section section--coral" id="section-2">
+    <div class="container">
+      <div class="two-col">
+        <div>
+          <h2 class="heading-2 heading-2--white">{data.summaryHeading}</h2>
+          <div class="text-body summary-text" set:html={data.summaryText} />
+        </div>
+        <div class="section2-illustration">
+          <img src="/images/family-image-section.svg" alt="" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Events (optional) -->
+  {data.events && data.events.length > 0 && (
+    <section class="section section--light" id="section-3">
+      <div class="container">
+        <h2 class="heading-2 heading-2--coral">{data.eventsHeading || 'Events'}</h2>
+        <div class="card-grid">
+          {data.events.map((event) => (
+            <a
+              href={event.url}
+              class="event-teaser"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="event-teaser__title">{event.title}</span>
+              {event.image && (
+                <img src={event.image} alt="" loading="lazy" class="event-teaser__image" />
+              )}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Section 4: Quotes -->
+  <QuoteSection
+    lang={lang}
+    heading={quoteHeading[lang]}
+    quotes={data.quotes}
+  />
+
+  <!-- Section 5: Past Studies -->
+  {data.pastStudies.length > 0 && (
+    <PastStudies
+      heading={pastStudiesHeading[lang]}
+      studies={data.pastStudies}
+    />
+  )}
+</BaseLayout>
+
+<style>
+  .section1-charts {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .chart-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .section1-body {
+    margin-top: var(--spacing-md);
+  }
+
+  .section1-body :global(p) {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .summary-text {
+    color: var(--color-white);
+  }
+
+  .summary-text :global(p) {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .section2-illustration {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .section2-illustration img {
+    max-width: 100%;
+    height: auto;
+    position: sticky;
+    top: 2rem;
+  }
+
+  /* Image Slider */
+  .image-slider {
+    margin-top: var(--spacing-lg);
+    overflow: hidden;
+  }
+
+  .image-slider__track {
+    display: flex;
+    transition: transform 0.4s ease;
+  }
+
+  .image-slider__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+  }
+
+  .image-slider__slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+
+  .image-slider__controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .image-slider__pagination {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .image-slider__pagination :global(.slider__dot) {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #d0d5dc;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.2s;
+  }
+
+  .image-slider__pagination :global(.slider__dot.is-active) {
+    background: var(--color-coral);
+  }
+
+  .slider__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid var(--color-coral);
+    background: transparent;
+    color: var(--color-coral);
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .slider__btn:hover {
+    background: var(--color-coral);
+    color: var(--color-white);
+  }
+
+  /* Event Teaser */
+  .event-teaser {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    background: var(--color-coral);
+    color: var(--color-white);
+    padding: var(--spacing-md);
+    font-weight: 700;
+    font-size: 1.25rem;
+    transition: background-color 0.2s;
+  }
+
+  .event-teaser:hover {
+    background: var(--color-coral-dark);
+  }
+
+  .event-teaser__image {
+    width: 80px;
+    height: auto;
+    flex-shrink: 0;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('[data-slider]').forEach((slider) => {
+    const track = slider.querySelector('[data-slider-track]') as HTMLElement;
+    const prevBtn = slider.querySelector('[data-slider-prev]');
+    const nextBtn = slider.querySelector('[data-slider-next]');
+    const pagination = slider.querySelector('[data-slider-pagination]');
+    const slides = track?.children;
+    if (!track || !slides || slides.length === 0) return;
+
+    let currentIndex = 0;
+
+    function buildDots() {
+      if (!pagination || !slides) return;
+      pagination.innerHTML = '';
+      for (let i = 0; i < slides.length; i++) {
+        const dot = document.createElement('button');
+        dot.className = `slider__dot${i === currentIndex ? ' is-active' : ''}`;
+        dot.setAttribute('aria-label', `Slide ${i + 1}`);
+        dot.addEventListener('click', () => goTo(i));
+        pagination.appendChild(dot);
+      }
+    }
+
+    function goTo(index: number) {
+      if (!slides) return;
+      currentIndex = Math.max(0, Math.min(index, slides.length - 1));
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      pagination?.querySelectorAll('.slider__dot').forEach((dot, i) => {
+        dot.classList.toggle('is-active', i === currentIndex);
+      });
+    }
+
+    prevBtn?.addEventListener('click', () => goTo(currentIndex - 1));
+    nextBtn?.addEventListener('click', () => goTo(currentIndex + 1));
+    buildDots();
+  });
+</script>

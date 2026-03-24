@@ -1,0 +1,35 @@
+---
+interface Props {
+  percentage: number;
+  caption: string;
+}
+
+const { percentage, caption } = Astro.props;
+
+const radius = 60;
+const circumference = 2 * Math.PI * radius;
+const offset = circumference - (percentage / 100) * circumference;
+---
+
+<div class="donut-chart">
+  <svg class="donut-chart__ring" viewBox="0 0 140 140" aria-hidden="true">
+    <circle class="donut-chart__circle-bg" cx="70" cy="70" r={radius}></circle>
+    <circle
+      class="donut-chart__circle-fg"
+      cx="70"
+      cy="70"
+      r={radius}
+      stroke-dasharray={circumference}
+      stroke-dashoffset={offset}></circle>
+    <text
+      class="donut-chart__percentage"
+      x="70"
+      y="70"
+      text-anchor="middle"
+      dominant-baseline="central"
+    >
+      {percentage}%
+    </text>
+  </svg>
+  <p class="donut-chart__caption">{caption}</p>
+</div>

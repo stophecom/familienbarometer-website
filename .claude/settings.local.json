@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -sL -o 2025/grafik-1-de.svg \"https://www.familienbarometer.ch/de/-/media/familienbarometer/images/grafik-1-de/grafik-1-de.svg\")",
+      "Bash(curl -sL -o 2025/grafik-2-de.svg \"https://www.familienbarometer.ch/de/-/media/familienbarometer/images/grafik-2-de/grafik-2-de.svg\")",
+      "Bash(curl -sL -o 2025/grafik-1-fr.svg \"https://www.familienbarometer.ch/fr/-/media/familienbarometer/images/grafik-1-fr/grafik-1-fr.svg\")",
+      "Bash(curl -sL -o 2025/grafik-2-fr.svg \"https://www.familienbarometer.ch/fr/-/media/familienbarometer/images/grafik-2-fr/grafik-2-fr.svg\")",
+      "Bash(curl -sL -o 2025/grafik-1-it.svg \"https://www.familienbarometer.ch/it/-/media/familienbarometer/images/grafik-1-it/grafik-1-it.svg\")",
+      "Bash(find . -type f -exec ls -lh {})",
+      "Bash(sort -k2)",
+      "Bash(curl -sL \"https://www.familienbarometer.ch/de/2024\")",
+      "Bash(sed -n 's/.*<p class=\"\"\"\"[^\"\"\"\"]*quote[^\"\"\"\"]*\"\"\"\">\\\\\\(.*\\\\\\)<\\\\/p>.*/\\\\1/p')",
+      "Bash(curl -sL https://www.familienbarometer.ch/de/2024)",
+      "Read(//tmp/**)",
+      "Bash(for url:*)",
+      "Bash(do echo:*)",
+      "Bash(curl -sL https://www.familienbarometer.ch/it/ grep -n \"section-2\\\\|section-4\" /tmp/fb-it.html)",
+      "Bash(python3 -c \"import sys, html; [print\\(html.unescape\\(l\\), end=''''''''\\) for l in sys.stdin]\")",
+      "Bash(grep -v '^\\\\s*$')",
+      "Bash(npm install:*)",
+      "Bash(npm view:*)",
+      "Bash(npm run:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git rm:*)",
+      "Bash(git commit:*)"
+    ]
+  }
+}
