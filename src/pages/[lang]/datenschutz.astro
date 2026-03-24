@@ -1,0 +1,347 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import type { Lang } from '../../utils/i18n';
+import { languages } from '../../utils/i18n';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+
+const privacyData = {
+  de: {
+    title: 'Datenschutzerklärung - Familienbarometer',
+    heading: 'Datenschutzerklärung',
+    content: `
+<h2>1. Verantwortliche Stellen</h2>
+<p>Verantwortlich für die Datenbearbeitung auf dieser Website sind:</p>
+<p><strong>Pax, Schweizerische Lebensversicherungs-Gesellschaft AG</strong><br/>
+Aeschenplatz 13<br/>
+4002 Basel<br/>
+E-Mail: <a href="mailto:marketing@pax.ch">marketing@pax.ch</a></p>
+<p><strong>Pro Familia Schweiz</strong><br/>
+Marktgasse 36<br/>
+3011 Bern<br/>
+E-Mail: <a href="mailto:info@profamilia.ch">info@profamilia.ch</a></p>
+
+<h2>2. Allgemeines</h2>
+<p>Diese Datenschutzerklärung erläutert, welche Personendaten wir im Zusammenhang mit der Website familienbarometer.ch bearbeiten. Wir richten uns nach dem Schweizer Bundesgesetz über den Datenschutz (DSG) sowie, soweit anwendbar, der EU-Datenschutz-Grundverordnung (DSGVO).</p>
+<p>Unter «Personendaten» verstehen wir alle Angaben, die sich auf eine bestimmte oder bestimmbare natürliche Person beziehen.</p>
+
+<h2>3. Erhebung und Bearbeitung von Personendaten</h2>
+<p>Beim Besuch dieser Website werden automatisch technische Zugriffsdaten erfasst (z.&nbsp;B. IP-Adresse, Zeitpunkt des Zugriffs, aufgerufene Seiten, verwendeter Browser und Betriebssystem). Diese Daten werden zur Sicherstellung des Betriebs und zur Verbesserung des Angebots verwendet und in der Regel nach 90 Tagen gelöscht.</p>
+
+<h2>4. Google Tag Manager</h2>
+<p>Diese Website verwendet den Google Tag Manager, einen Dienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland («Google»). Der Google Tag Manager ist ein technisches Hilfsmittel, mit dem wir Website-Tags verwalten. Der Tag Manager selbst erstellt keine Nutzerprofile und setzt keine Cookies. Er löst jedoch andere Tags aus, die gegebenenfalls Daten erfassen. Der Google Tag Manager greift nicht auf diese Daten zu.</p>
+<p>Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Datenschutzerklärung von Google</a></p>
+
+<h2>5. Google Analytics</h2>
+<p>Diese Website verwendet Google Analytics, einen Webanalysedienst von Google. Google Analytics verwendet Cookies, die eine Analyse der Benutzung der Website ermöglichen. Die durch den Cookie erzeugten Informationen über Ihre Benutzung dieser Website werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert.</p>
+<p>Wir verwenden die Funktion «IP-Anonymisierung» (anonymizeIp). Dadurch wird Ihre IP-Adresse von Google innerhalb von Mitgliedstaaten der EU bzw. des EWR zuvor gekürzt. Nur in Ausnahmefällen wird die volle IP-Adresse an einen Server von Google in den USA übertragen und dort gekürzt.</p>
+<p><strong>Verwendete Cookies:</strong></p>
+<ul>
+<li><code>_ga</code> – Unterscheidung von Nutzern, Speicherdauer: 2 Jahre</li>
+<li><code>_ga_*</code> – Speicherung des Sitzungsstatus, Speicherdauer: 2 Jahre</li>
+</ul>
+<p><strong>Opt-Out:</strong> Sie können die Erfassung durch Google Analytics verhindern, indem Sie das Browser-Add-on zur Deaktivierung von Google Analytics installieren: <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">https://tools.google.com/dlpage/gaoptout</a></p>
+<p>Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Datenschutzerklärung von Google</a></p>
+
+<h2>6. Meta-Pixel (Facebook)</h2>
+<p>Diese Website verwendet das Meta-Pixel (ehemals Facebook-Pixel), einen Dienst der Meta Platforms Ireland Limited, Merrion Road, Dublin 4, D04 X2K5, Irland («Meta»). Das Meta-Pixel ermöglicht es uns, das Verhalten von Nutzern nachzuverfolgen, nachdem diese durch Klicken auf eine Meta-Werbeanzeige auf unsere Website weitergeleitet wurden.</p>
+<p>Dabei werden Daten (z.&nbsp;B. IP-Adresse, Zeitpunkt des Besuchs, aufgerufene Seiten) an Meta übermittelt und dort mit Ihrem Meta-Profil verknüpft, sofern Sie bei Meta eingeloggt sind. Diese Daten werden zur Auswertung, Anzeige von gezielter Werbung und zur Erstellung von Zielgruppen verwendet.</p>
+<p><strong>Verwendete Cookies:</strong></p>
+<ul>
+<li><code>_fbp</code> – Identifikation des Browsers, Speicherdauer: 90 Tage</li>
+<li><code>_fbc</code> – Speicherung des letzten Klicks, Speicherdauer: 90 Tage</li>
+</ul>
+<p><strong>Opt-Out:</strong> Sie können die Erfassung durch das Meta-Pixel über die Werbeeinstellungen in Ihrem Meta-Konto anpassen: <a href="https://www.facebook.com/ads/preferences/" target="_blank" rel="noopener">https://www.facebook.com/ads/preferences/</a></p>
+<p>Weitere Informationen: <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Datenschutzrichtlinie von Meta</a></p>
+
+<h2>7. Google Ads und Conversion Tracking</h2>
+<p>Diese Website verwendet Google Ads Conversion Tracking, einen Dienst von Google. Wenn Sie über eine Google-Anzeige auf unsere Website gelangen, wird von Google Ads ein Cookie auf Ihrem Rechner gesetzt. Dieses Cookie dient der Messung des Erfolgs von Werbekampagnen und ermöglicht uns nachzuvollziehen, ob ein Nutzer über eine Google-Anzeige auf unsere Website gelangt ist.</p>
+<p>Die mithilfe des Conversion-Cookies eingeholten Informationen dienen dazu, Statistiken für Werbetreibende zu erstellen. Wir erfahren die Gesamtzahl der Nutzer, die auf eine Anzeige geklickt haben, erhalten jedoch keine personenbezogenen Informationen.</p>
+<p><strong>Verwendete Cookies:</strong></p>
+<ul>
+<li><code>_gcl_au</code> – Speicherung von Conversion-Informationen, Speicherdauer: 90 Tage</li>
+<li><code>_gcl_aw</code> – Speicherung des Klicks auf eine Anzeige, Speicherdauer: 90 Tage</li>
+</ul>
+<p><strong>Opt-Out:</strong> Sie können personalisierte Werbung in den Google-Einstellungen deaktivieren: <a href="https://adssettings.google.com/" target="_blank" rel="noopener">https://adssettings.google.com/</a></p>
+
+<h2>8. Cookies</h2>
+<p>Cookies sind kleine Textdateien, die auf Ihrem Endgerät gespeichert werden. Wir verwenden auf dieser Website folgende Arten von Cookies:</p>
+<ul>
+<li><strong>Technisch notwendige Cookies:</strong> Diese sind für den Betrieb der Website erforderlich.</li>
+<li><strong>Analyse-Cookies:</strong> Diese helfen uns zu verstehen, wie die Website genutzt wird (Google Analytics).</li>
+<li><strong>Marketing-Cookies:</strong> Diese dienen der Schaltung relevanter Werbung (Meta-Pixel, Google Ads).</li>
+</ul>
+<p>Sie können Ihren Browser so einstellen, dass er Cookies blockiert oder Sie über das Setzen von Cookies informiert. Bitte beachten Sie, dass bei einer Deaktivierung von Cookies die Funktionalität der Website eingeschränkt sein kann.</p>
+
+<h2>9. Datenübermittlung ins Ausland</h2>
+<p>Die oben genannten Dienste können Daten in die USA übermitteln. Die USA verfügen aus Sicht der Schweiz und der EU nicht über ein angemessenes Datenschutzniveau. Wir stützen uns für diese Übermittlungen auf die Standardvertragsklauseln der EU-Kommission sowie auf das berechtigte Interesse an der Analyse und Optimierung unserer Website.</p>
+
+<h2>10. Ihre Rechte</h2>
+<p>Gemäss dem Schweizer Datenschutzgesetz haben Sie folgende Rechte:</p>
+<ul>
+<li><strong>Auskunftsrecht:</strong> Sie können Auskunft darüber verlangen, ob und welche Personendaten wir über Sie bearbeiten.</li>
+<li><strong>Berichtigungsrecht:</strong> Sie können die Berichtigung unrichtiger Personendaten verlangen.</li>
+<li><strong>Löschungsrecht:</strong> Sie können die Löschung Ihrer Personendaten verlangen, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</li>
+<li><strong>Widerspruchsrecht:</strong> Sie können der Bearbeitung Ihrer Daten jederzeit widersprechen.</li>
+</ul>
+<p>Zur Ausübung Ihrer Rechte wenden Sie sich bitte an die oben genannten verantwortlichen Stellen.</p>
+<p>Darüber hinaus haben Sie das Recht, eine Beschwerde beim Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) einzureichen: <a href="https://www.edoeb.admin.ch" target="_blank" rel="noopener">www.edoeb.admin.ch</a></p>
+
+<h2>11. Änderungen</h2>
+<p>Wir können diese Datenschutzerklärung jederzeit anpassen. Die aktuelle Fassung ist auf dieser Website veröffentlicht.</p>
+<p><em>Stand: März 2026</em></p>`,
+  },
+  fr: {
+    title: 'Déclaration de protection des données - Baromètre des familles',
+    heading: 'Déclaration de protection des données',
+    content: `
+<h2>1. Responsables</h2>
+<p>Les responsables du traitement des données sur ce site sont&nbsp;:</p>
+<p><strong>Pax, Société suisse d'assurance sur la vie SA</strong><br/>
+Aeschenplatz 13<br/>
+4002 Bâle<br/>
+E-mail&nbsp;: <a href="mailto:marketing@pax.ch">marketing@pax.ch</a></p>
+<p><strong>Pro Familia Suisse</strong><br/>
+Marktgasse 36<br/>
+3011 Berne<br/>
+E-mail&nbsp;: <a href="mailto:info@profamilia.ch">info@profamilia.ch</a></p>
+
+<h2>2. Généralités</h2>
+<p>La présente déclaration de protection des données explique quelles données personnelles nous traitons en lien avec le site familienbarometer.ch. Nous nous conformons à la loi fédérale suisse sur la protection des données (LPD) ainsi que, dans la mesure applicable, au règlement général européen sur la protection des données (RGPD).</p>
+<p>Par «&nbsp;données personnelles&nbsp;», nous entendons toute information se rapportant à une personne physique identifiée ou identifiable.</p>
+
+<h2>3. Collecte et traitement des données personnelles</h2>
+<p>Lors de la visite de ce site, des données techniques d'accès sont automatiquement enregistrées (p.&nbsp;ex. adresse IP, heure d'accès, pages consultées, navigateur et système d'exploitation utilisés). Ces données sont utilisées pour assurer le fonctionnement et améliorer l'offre, et sont généralement supprimées après 90&nbsp;jours.</p>
+
+<h2>4. Google Tag Manager</h2>
+<p>Ce site utilise Google Tag Manager, un service de Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irlande («&nbsp;Google&nbsp;»). Google Tag Manager est un outil technique qui nous permet de gérer les balises du site. Le Tag Manager lui-même ne crée pas de profils d'utilisateurs et ne place pas de cookies. Il déclenche cependant d'autres balises qui peuvent collecter des données. Google Tag Manager n'accède pas à ces données.</p>
+<p>Plus d'informations&nbsp;: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Politique de confidentialité de Google</a></p>
+
+<h2>5. Google Analytics</h2>
+<p>Ce site utilise Google Analytics, un service d'analyse web de Google. Google Analytics utilise des cookies qui permettent d'analyser l'utilisation du site. Les informations générées par le cookie concernant votre utilisation du site sont généralement transmises à un serveur de Google aux États-Unis et y sont stockées.</p>
+<p>Nous utilisons la fonction «&nbsp;anonymisation IP&nbsp;» (anonymizeIp). Votre adresse IP est ainsi préalablement tronquée par Google au sein des États membres de l'UE ou de l'EEE. Ce n'est que dans des cas exceptionnels que l'adresse IP complète est transmise à un serveur de Google aux États-Unis et y est tronquée.</p>
+<p><strong>Cookies utilisés&nbsp;:</strong></p>
+<ul>
+<li><code>_ga</code> – distinction des utilisateurs, durée de conservation&nbsp;: 2&nbsp;ans</li>
+<li><code>_ga_*</code> – stockage de l'état de la session, durée de conservation&nbsp;: 2&nbsp;ans</li>
+</ul>
+<p><strong>Opt-out&nbsp;:</strong> Vous pouvez empêcher la collecte par Google Analytics en installant le module complémentaire de navigateur pour la désactivation de Google Analytics&nbsp;: <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">https://tools.google.com/dlpage/gaoptout</a></p>
+<p>Plus d'informations&nbsp;: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Politique de confidentialité de Google</a></p>
+
+<h2>6. Pixel Meta (Facebook)</h2>
+<p>Ce site utilise le pixel Meta (anciennement pixel Facebook), un service de Meta Platforms Ireland Limited, Merrion Road, Dublin 4, D04 X2K5, Irlande («&nbsp;Meta&nbsp;»). Le pixel Meta nous permet de suivre le comportement des utilisateurs après qu'ils ont été redirigés vers notre site en cliquant sur une publicité Meta.</p>
+<p>Des données (p.&nbsp;ex. adresse IP, heure de la visite, pages consultées) sont transmises à Meta et associées à votre profil Meta si vous êtes connecté(e). Ces données sont utilisées à des fins d'analyse, d'affichage de publicité ciblée et de création de groupes cibles.</p>
+<p><strong>Cookies utilisés&nbsp;:</strong></p>
+<ul>
+<li><code>_fbp</code> – identification du navigateur, durée de conservation&nbsp;: 90&nbsp;jours</li>
+<li><code>_fbc</code> – stockage du dernier clic, durée de conservation&nbsp;: 90&nbsp;jours</li>
+</ul>
+<p><strong>Opt-out&nbsp;:</strong> Vous pouvez ajuster la collecte via le pixel Meta dans les paramètres publicitaires de votre compte Meta&nbsp;: <a href="https://www.facebook.com/ads/preferences/" target="_blank" rel="noopener">https://www.facebook.com/ads/preferences/</a></p>
+<p>Plus d'informations&nbsp;: <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Politique de confidentialité de Meta</a></p>
+
+<h2>7. Google Ads et suivi des conversions</h2>
+<p>Ce site utilise le suivi des conversions Google Ads, un service de Google. Lorsque vous accédez à notre site via une annonce Google, un cookie est placé sur votre ordinateur par Google Ads. Ce cookie sert à mesurer le succès des campagnes publicitaires et nous permet de savoir si un utilisateur est arrivé sur notre site via une annonce Google.</p>
+<p>Les informations collectées au moyen du cookie de conversion servent à établir des statistiques pour les annonceurs. Nous obtenons le nombre total d'utilisateurs ayant cliqué sur une annonce, mais ne recevons aucune information personnelle.</p>
+<p><strong>Cookies utilisés&nbsp;:</strong></p>
+<ul>
+<li><code>_gcl_au</code> – stockage des informations de conversion, durée de conservation&nbsp;: 90&nbsp;jours</li>
+<li><code>_gcl_aw</code> – stockage du clic sur une annonce, durée de conservation&nbsp;: 90&nbsp;jours</li>
+</ul>
+<p><strong>Opt-out&nbsp;:</strong> Vous pouvez désactiver la publicité personnalisée dans les paramètres Google&nbsp;: <a href="https://adssettings.google.com/" target="_blank" rel="noopener">https://adssettings.google.com/</a></p>
+
+<h2>8. Cookies</h2>
+<p>Les cookies sont de petits fichiers texte stockés sur votre terminal. Nous utilisons sur ce site les types de cookies suivants&nbsp;:</p>
+<ul>
+<li><strong>Cookies techniquement nécessaires&nbsp;:</strong> indispensables au fonctionnement du site.</li>
+<li><strong>Cookies d'analyse&nbsp;:</strong> permettent de comprendre comment le site est utilisé (Google Analytics).</li>
+<li><strong>Cookies marketing&nbsp;:</strong> servent à diffuser des publicités pertinentes (pixel Meta, Google Ads).</li>
+</ul>
+<p>Vous pouvez configurer votre navigateur pour bloquer les cookies ou être informé(e) de leur placement. Veuillez noter que la désactivation des cookies peut limiter les fonctionnalités du site.</p>
+
+<h2>9. Transfert de données à l'étranger</h2>
+<p>Les services mentionnés ci-dessus peuvent transférer des données aux États-Unis. Les États-Unis ne disposent pas d'un niveau de protection des données adéquat du point de vue de la Suisse et de l'UE. Nous nous appuyons pour ces transferts sur les clauses contractuelles types de la Commission européenne ainsi que sur l'intérêt légitime à l'analyse et à l'optimisation de notre site.</p>
+
+<h2>10. Vos droits</h2>
+<p>Conformément à la loi suisse sur la protection des données, vous disposez des droits suivants&nbsp;:</p>
+<ul>
+<li><strong>Droit d'accès&nbsp;:</strong> vous pouvez demander si et quelles données personnelles nous traitons à votre sujet.</li>
+<li><strong>Droit de rectification&nbsp;:</strong> vous pouvez demander la rectification de données personnelles inexactes.</li>
+<li><strong>Droit à l'effacement&nbsp;:</strong> vous pouvez demander la suppression de vos données personnelles, sous réserve d'obligations légales de conservation.</li>
+<li><strong>Droit d'opposition&nbsp;:</strong> vous pouvez vous opposer à tout moment au traitement de vos données.</li>
+</ul>
+<p>Pour exercer vos droits, veuillez vous adresser aux responsables mentionnés ci-dessus.</p>
+<p>Vous avez en outre le droit de déposer une plainte auprès du Préposé fédéral à la protection des données et à la transparence (PFPDT)&nbsp;: <a href="https://www.edoeb.admin.ch" target="_blank" rel="noopener">www.edoeb.admin.ch</a></p>
+
+<h2>11. Modifications</h2>
+<p>Nous pouvons adapter cette déclaration de protection des données à tout moment. La version actuelle est publiée sur ce site.</p>
+<p><em>État&nbsp;: mars 2026</em></p>`,
+  },
+  it: {
+    title: 'Informativa sulla protezione dei dati - Barometro delle famiglie',
+    heading: 'Informativa sulla protezione dei dati',
+    content: `
+<h2>1. Responsabili</h2>
+<p>I responsabili del trattamento dei dati su questo sito sono:</p>
+<p><strong>Pax, Società svizzera di assicurazione sulla vita SA</strong><br/>
+Aeschenplatz 13<br/>
+4002 Basilea<br/>
+E-mail: <a href="mailto:marketing@pax.ch">marketing@pax.ch</a></p>
+<p><strong>Pro Familia Svizzera</strong><br/>
+Marktgasse 36<br/>
+3011 Berna<br/>
+E-mail: <a href="mailto:info@profamilia.ch">info@profamilia.ch</a></p>
+
+<h2>2. Informazioni generali</h2>
+<p>La presente informativa sulla protezione dei dati spiega quali dati personali trattiamo in relazione al sito familienbarometer.ch. Ci atteniamo alla legge federale svizzera sulla protezione dei dati (LPD) e, nella misura applicabile, al regolamento generale europeo sulla protezione dei dati (RGPD).</p>
+<p>Per «dati personali» si intendono tutte le informazioni relative a una persona fisica identificata o identificabile.</p>
+
+<h2>3. Raccolta e trattamento dei dati personali</h2>
+<p>Quando visitate questo sito, vengono automaticamente registrati dati tecnici di accesso (ad es. indirizzo IP, ora di accesso, pagine consultate, browser e sistema operativo utilizzati). Questi dati vengono utilizzati per garantire il funzionamento e migliorare l'offerta e vengono generalmente cancellati dopo 90 giorni.</p>
+
+<h2>4. Google Tag Manager</h2>
+<p>Questo sito utilizza Google Tag Manager, un servizio di Google Ireland Limited, Gordon House, Barrow Street, Dublino 4, Irlanda («Google»). Google Tag Manager è uno strumento tecnico che ci consente di gestire i tag del sito. Il Tag Manager stesso non crea profili utente e non imposta cookie. Tuttavia, attiva altri tag che possono raccogliere dati. Google Tag Manager non accede a questi dati.</p>
+<p>Ulteriori informazioni: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Informativa sulla privacy di Google</a></p>
+
+<h2>5. Google Analytics</h2>
+<p>Questo sito utilizza Google Analytics, un servizio di analisi web di Google. Google Analytics utilizza cookie che consentono di analizzare l'utilizzo del sito. Le informazioni generate dal cookie relative all'utilizzo del sito vengono generalmente trasmesse a un server di Google negli Stati Uniti e lì memorizzate.</p>
+<p>Utilizziamo la funzione «anonimizzazione IP» (anonymizeIp). Il vostro indirizzo IP viene così preventivamente abbreviato da Google negli Stati membri dell'UE o del SEE. Solo in casi eccezionali l'indirizzo IP completo viene trasmesso a un server di Google negli Stati Uniti e lì abbreviato.</p>
+<p><strong>Cookie utilizzati:</strong></p>
+<ul>
+<li><code>_ga</code> – distinzione degli utenti, durata di conservazione: 2 anni</li>
+<li><code>_ga_*</code> – memorizzazione dello stato della sessione, durata di conservazione: 2 anni</li>
+</ul>
+<p><strong>Opt-out:</strong> potete impedire la raccolta da parte di Google Analytics installando il componente aggiuntivo del browser per la disattivazione di Google Analytics: <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">https://tools.google.com/dlpage/gaoptout</a></p>
+<p>Ulteriori informazioni: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Informativa sulla privacy di Google</a></p>
+
+<h2>6. Pixel Meta (Facebook)</h2>
+<p>Questo sito utilizza il pixel Meta (precedentemente pixel Facebook), un servizio di Meta Platforms Ireland Limited, Merrion Road, Dublino 4, D04 X2K5, Irlanda («Meta»). Il pixel Meta ci consente di tracciare il comportamento degli utenti dopo che sono stati reindirizzati al nostro sito cliccando su un annuncio Meta.</p>
+<p>I dati (ad es. indirizzo IP, ora della visita, pagine consultate) vengono trasmessi a Meta e associati al vostro profilo Meta se avete effettuato l'accesso. Questi dati vengono utilizzati per analisi, visualizzazione di pubblicità mirata e creazione di gruppi target.</p>
+<p><strong>Cookie utilizzati:</strong></p>
+<ul>
+<li><code>_fbp</code> – identificazione del browser, durata di conservazione: 90 giorni</li>
+<li><code>_fbc</code> – memorizzazione dell'ultimo clic, durata di conservazione: 90 giorni</li>
+</ul>
+<p><strong>Opt-out:</strong> potete regolare la raccolta tramite il pixel Meta nelle impostazioni pubblicitarie del vostro account Meta: <a href="https://www.facebook.com/ads/preferences/" target="_blank" rel="noopener">https://www.facebook.com/ads/preferences/</a></p>
+<p>Ulteriori informazioni: <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Informativa sulla privacy di Meta</a></p>
+
+<h2>7. Google Ads e monitoraggio delle conversioni</h2>
+<p>Questo sito utilizza il monitoraggio delle conversioni di Google Ads, un servizio di Google. Quando accedete al nostro sito tramite un annuncio Google, Google Ads imposta un cookie sul vostro computer. Questo cookie serve a misurare il successo delle campagne pubblicitarie e ci consente di sapere se un utente è arrivato sul nostro sito tramite un annuncio Google.</p>
+<p>Le informazioni raccolte tramite il cookie di conversione servono a compilare statistiche per gli inserzionisti. Riceviamo il numero totale di utenti che hanno cliccato su un annuncio, ma non riceviamo alcuna informazione personale.</p>
+<p><strong>Cookie utilizzati:</strong></p>
+<ul>
+<li><code>_gcl_au</code> – memorizzazione delle informazioni di conversione, durata di conservazione: 90 giorni</li>
+<li><code>_gcl_aw</code> – memorizzazione del clic su un annuncio, durata di conservazione: 90 giorni</li>
+</ul>
+<p><strong>Opt-out:</strong> potete disattivare la pubblicità personalizzata nelle impostazioni di Google: <a href="https://adssettings.google.com/" target="_blank" rel="noopener">https://adssettings.google.com/</a></p>
+
+<h2>8. Cookie</h2>
+<p>I cookie sono piccoli file di testo memorizzati sul vostro dispositivo. Su questo sito utilizziamo i seguenti tipi di cookie:</p>
+<ul>
+<li><strong>Cookie tecnicamente necessari:</strong> indispensabili per il funzionamento del sito.</li>
+<li><strong>Cookie di analisi:</strong> aiutano a capire come viene utilizzato il sito (Google Analytics).</li>
+<li><strong>Cookie di marketing:</strong> servono a mostrare pubblicità pertinente (pixel Meta, Google Ads).</li>
+</ul>
+<p>Potete configurare il vostro browser in modo che blocchi i cookie o vi informi del loro posizionamento. Si prega di notare che la disattivazione dei cookie può limitare le funzionalità del sito.</p>
+
+<h2>9. Trasferimento di dati all'estero</h2>
+<p>I servizi sopra menzionati possono trasferire dati negli Stati Uniti. Dal punto di vista della Svizzera e dell'UE, gli Stati Uniti non dispongono di un livello adeguato di protezione dei dati. Per questi trasferimenti ci basiamo sulle clausole contrattuali tipo della Commissione europea e sull'interesse legittimo all'analisi e all'ottimizzazione del nostro sito.</p>
+
+<h2>10. I vostri diritti</h2>
+<p>Ai sensi della legge svizzera sulla protezione dei dati, disponete dei seguenti diritti:</p>
+<ul>
+<li><strong>Diritto di accesso:</strong> potete chiedere se e quali dati personali trattiamo su di voi.</li>
+<li><strong>Diritto di rettifica:</strong> potete chiedere la rettifica di dati personali inesatti.</li>
+<li><strong>Diritto alla cancellazione:</strong> potete chiedere la cancellazione dei vostri dati personali, fatto salvo l'obbligo legale di conservazione.</li>
+<li><strong>Diritto di opposizione:</strong> potete opporvi in qualsiasi momento al trattamento dei vostri dati.</li>
+</ul>
+<p>Per esercitare i vostri diritti, rivolgetevi ai responsabili sopra indicati.</p>
+<p>Avete inoltre il diritto di presentare un reclamo all'Incaricato federale della protezione dei dati e della trasparenza (IFPDT): <a href="https://www.edoeb.admin.ch" target="_blank" rel="noopener">www.edoeb.admin.ch</a></p>
+
+<h2>11. Modifiche</h2>
+<p>Possiamo adeguare la presente informativa sulla protezione dei dati in qualsiasi momento. La versione attuale è pubblicata su questo sito.</p>
+<p><em>Stato: marzo 2026</em></p>`,
+  },
+};
+
+const data = privacyData[lang];
+---
+
+<BaseLayout
+  title={data.title}
+  lang={lang}
+  canonicalPath={`/${lang}/datenschutz`}
+>
+  <section class="section section--dark hero-mini">
+    <div class="container">
+      <h1 class="heading-1">{data.heading}</h1>
+    </div>
+  </section>
+  <section class="section section--light">
+    <div class="container privacy-content">
+      <Fragment set:html={data.content} />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-mini {
+    padding-top: 6rem;
+    padding-bottom: var(--spacing-lg);
+  }
+
+  .privacy-content {
+    max-width: 720px;
+  }
+
+  .privacy-content :global(h2) {
+    font-family: var(--font-heading);
+    color: var(--color-coral);
+    font-size: 1.5rem;
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .privacy-content :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .privacy-content :global(p) {
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.7;
+  }
+
+  .privacy-content :global(ul) {
+    margin-bottom: var(--spacing-sm);
+    padding-left: 1.5rem;
+    list-style: disc;
+  }
+
+  .privacy-content :global(li) {
+    line-height: 1.7;
+    margin-bottom: 0.25rem;
+  }
+
+  .privacy-content :global(code) {
+    background: rgba(0, 0, 0, 0.06);
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+  }
+
+  .privacy-content :global(strong) {
+    color: var(--color-coral);
+  }
+
+  .privacy-content :global(a) {
+    color: var(--color-coral);
+    text-decoration: underline;
+  }
+
+  .privacy-content :global(a:hover) {
+    color: var(--color-coral-dark);
+  }
+</style>

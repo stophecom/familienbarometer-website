@@ -77,7 +77,7 @@ const data = footerData[lang];
     <div class="footer-bottom">
       <span>{data.copyright}</span>
       <div class="footer-bottom__links">
-        <a href={data.privacyUrl} target="_blank" rel="noopener">
+        <a href={`/${lang}/datenschutz`}>
           {t(lang, 'footer.privacy')}
         </a>
         <a href={`/${lang}/impressum`}>
