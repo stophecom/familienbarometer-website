@@ -459,6 +459,15 @@ h4 {
   text-decoration: underline;
 }
 
+/* ---------- Hero Mini (sub-pages) ---------- */
+.hero-mini {
+  padding-top: 8rem;
+  padding-bottom: var(--spacing-xl);
+  display: flex;
+  align-items: flex-end;
+  min-height: 280px;
+}
+
 /* ---------- Responsive Utilities ---------- */
 @media (max-width: 767px) {
   .hide-mobile {
