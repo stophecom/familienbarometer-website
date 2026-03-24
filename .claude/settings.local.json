@@ -27,7 +27,9 @@
       "Bash(lsof -ti:4321)",
       "Bash(xargs kill:*)",
       "mcp__Claude_Preview__preview_start",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "WebFetch(domain:www.pax.ch)",
+      "Bash(ls -la /Users/stophe/Projects/familienbarometer-website/public/favicon*)"
     ]
   }
 }

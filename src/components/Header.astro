@@ -5,14 +5,25 @@ import { languages, t } from '../utils/i18n';
 interface Props {
   lang: Lang;
   year?: number;
+  isHome?: boolean;
 }
 
-const { lang, year } = Astro.props;
+const { lang, year, isHome = false } = Astro.props;
 const yearPath = year ? `/${year}` : '';
 ---
 
 <header class="header" role="banner">
   <nav class="header__nav container" aria-label="Main navigation">
+    <!-- Home link (shown on all pages except home) -->
+    {!isHome && (
+      <a href={`/${lang}/`} class="header__home" aria-label="Home">
+        Familienbarometer
+      </a>
+    )}
+
+    <!-- Spacer to push language to the right -->
+    <div class="header__spacer"></div>
+
     <!-- Language Dropdown -->
     <div class="header__lang">
       <button
@@ -50,34 +61,6 @@ const yearPath = year ? `/${year}` : '';
         }
       </ul>
     </div>
-
-    <!-- Hamburger Menu -->
-    <button class="header__hamburger" aria-label={t(lang, 'aria.menu')}>
-      <span class="header__hamburger-line"></span>
-      <span class="header__hamburger-line"></span>
-      <span class="header__hamburger-line"></span>
-    </button>
-
-    <!-- Mobile Nav -->
-    <div class="header__mobile-nav" aria-hidden="true">
-      <button class="header__close" aria-label={t(lang, 'aria.closeMenu')}>
-        &times;
-      </button>
-      <ul>
-        <li>
-          <a href="#section-1">{t(lang, 'nav.currentStudy')}</a>
-        </li>
-        <li>
-          <a href="#section-2">{t(lang, 'nav.summary')}</a>
-        </li>
-        <li>
-          <a href="#section-4">{t(lang, 'nav.responsibles')}</a>
-        </li>
-        <li>
-          <a href="#section-5">{t(lang, 'nav.pastStudies')}</a>
-        </li>
-      </ul>
-    </div>
   </nav>
 </header>
 
@@ -93,10 +76,26 @@ const yearPath = year ? `/${year}` : '';
 
   .header__nav {
     display: flex;
-    justify-content: flex-end;
     align-items: center;
     gap: 1rem;
     padding-top: 1.5rem;
+  }
+
+  .header__home {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-white);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .header__home:hover {
+    color: var(--color-coral);
+  }
+
+  .header__spacer {
+    flex: 1;
   }
 
   /* Language Dropdown */
@@ -152,71 +151,6 @@ const yearPath = year ? `/${year}` : '';
   .header__dropdown a[aria-current='page'] {
     background-color: rgba(255, 255, 255, 0.1);
   }
-
-  /* Hamburger */
-  .header__hamburger {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-  }
-
-  .header__hamburger-line {
-    width: 24px;
-    height: 2px;
-    background: var(--color-white);
-    transition: transform 0.2s;
-  }
-
-  /* Mobile Nav Overlay */
-  .header__mobile-nav {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: min(300px, 80vw);
-    background: var(--color-dark-blue);
-    padding: 2rem;
-    z-index: 200;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .header__mobile-nav.is-open {
-    display: flex;
-  }
-
-  .header__mobile-nav ul {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .header__mobile-nav a {
-    font-size: 1.125rem;
-    font-weight: 600;
-    padding: 0.5rem 0;
-    display: block;
-  }
-
-  .header__mobile-nav a:hover {
-    color: var(--color-coral);
-  }
-
-  .header__close {
-    align-self: flex-end;
-    background: none;
-    border: none;
-    color: var(--color-white);
-    font-size: 2rem;
-    cursor: pointer;
-    padding: 0.5rem;
-    line-height: 1;
-  }
 </style>
 
 <script>
@@ -229,25 +163,6 @@ const yearPath = year ? `/${year}` : '';
     });
   });
 
-  // Hamburger menu toggle
-  document.querySelectorAll('.header__hamburger').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const nav = btn
-        .closest('.header__nav')
-        ?.querySelector('.header__mobile-nav');
-      nav?.classList.add('is-open');
-      nav?.setAttribute('aria-hidden', 'false');
-    });
-  });
-
-  document.querySelectorAll('.header__close').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const nav = btn.closest('.header__mobile-nav');
-      nav?.classList.remove('is-open');
-      nav?.setAttribute('aria-hidden', 'true');
-    });
-  });
-
   // Close dropdown when clicking outside
   document.addEventListener('click', (e) => {
     const target = e.target as HTMLElement;
@@ -257,14 +172,5 @@ const yearPath = year ? `/${year}` : '';
         d.previousElementSibling?.setAttribute('aria-expanded', 'false');
       });
     }
-  });
-
-  // Close mobile nav on anchor click
-  document.querySelectorAll('.header__mobile-nav a').forEach((a) => {
-    a.addEventListener('click', () => {
-      const nav = a.closest('.header__mobile-nav');
-      nav?.classList.remove('is-open');
-      nav?.setAttribute('aria-hidden', 'true');
-    });
   });
 </script>

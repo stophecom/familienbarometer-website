@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import type { Lang } from '../../utils/i18n';
+import { languages } from '../../utils/i18n';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+
+const legalData = {
+  de: {
+    title: 'Rechtliche Hinweise - Familienbarometer',
+    heading: 'Rechtliche Hinweise',
+    content: `
+<h2>1. Allgemeines</h2>
+<p>Der Zugriff auf diese Website und deren Nutzung unterliegen den nachfolgenden Bedingungen. Mit dem Zugriff auf diese Website erklären Sie sich mit diesen Bedingungen einverstanden. Pax und Pro Familia Schweiz behalten sich vor, diese Bedingungen jederzeit ohne Vorankündigung zu ändern.</p>
+<p>Diese Website wird von der Pax, Schweizerische Lebensversicherungs-Gesellschaft AG, und Pro Familia Schweiz betrieben. Es gilt Schweizer Recht. Gerichtsstand ist Basel.</p>
+
+<h2>2. Geltungsbereich</h2>
+<p>Die auf dieser Website enthaltenen Informationen beziehen sich auf die Schweiz. Personen, die von anderen Standorten auf diese Website zugreifen, sind für die Einhaltung der geltenden lokalen Gesetze selbst verantwortlich.</p>
+
+<h2>3. Informationen und Inhalte</h2>
+<p>Die auf dieser Website enthaltenen Informationen und Inhalte dienen ausschliesslich Informationszwecken. Sie stellen keine Angebote, Empfehlungen oder Aufforderungen dar. Die Inhalte basieren auf den Ergebnissen der Studie «Schweizer Familienbarometer» und werden nach bestem Wissen und Gewissen zusammengestellt.</p>
+<p>Pax und Pro Familia Schweiz übernehmen keine Gewähr für die Richtigkeit, Vollständigkeit oder Aktualität der bereitgestellten Informationen. Sollten Ihnen Fehler auffallen, bitten wir um entsprechende Mitteilung.</p>
+
+<h2>4. Haftungsausschluss</h2>
+<p>Pax und Pro Familia Schweiz übernehmen keine Gewähr dafür, dass diese Website frei von Viren oder sonstigen schädlichen Elementen ist und ununterbrochen oder fehlerfrei funktioniert. Jegliche Haftung für direkte oder indirekte Schäden, die sich aus dem Zugang zu dieser Website oder deren Nutzung ergeben, wird im gesetzlich zulässigen Rahmen ausgeschlossen.</p>
+<p>Für Websites Dritter, auf die über Links von dieser Website aus zugegriffen werden kann, übernehmen wir keine Verantwortung. Der Zugriff auf solche Websites erfolgt auf eigenes Risiko.</p>
+
+<h2>5. Urheberrecht</h2>
+<p>Sämtliche Inhalte dieser Website – einschliesslich Texte, Grafiken, Bilder und sonstige Materialien – sind urheberrechtlich geschützt. Sie gehören der Pax, Schweizerische Lebensversicherungs-Gesellschaft AG, Pro Familia Schweiz oder den jeweiligen Rechteinhabern.</p>
+<p>Die Verwendung für private Zwecke ist unter Angabe der Quelle gestattet. Jede weitergehende Nutzung, insbesondere die kommerzielle Verwertung, Vervielfältigung oder Verbreitung, bedarf der vorherigen schriftlichen Zustimmung.</p>
+<p>Die auf dieser Website veröffentlichten Studienberichte und Medienunterlagen dürfen unter Quellenangabe «Schweizer Familienbarometer, Pax / Pro Familia Schweiz» verwendet werden.</p>
+
+<h2>6. Datenschutz</h2>
+<p>Informationen zur Bearbeitung Ihrer Personendaten finden Sie in unserer <a href="/${lang}/datenschutz">Datenschutzerklärung</a>.</p>`,
+  },
+  fr: {
+    title: 'Mentions légales - Baromètre des familles',
+    heading: 'Mentions légales',
+    content: `
+<h2>1. Généralités</h2>
+<p>L'accès à ce site et son utilisation sont soumis aux conditions suivantes. En accédant à ce site, vous acceptez ces conditions. Pax et Pro Familia Suisse se réservent le droit de modifier ces conditions à tout moment sans préavis.</p>
+<p>Ce site est exploité par Pax, Société suisse d'assurance sur la vie SA, et Pro Familia Suisse. Le droit suisse est applicable. Le for juridique est Bâle.</p>
+
+<h2>2. Champ d'application</h2>
+<p>Les informations contenues sur ce site se rapportent à la Suisse. Les personnes qui accèdent à ce site depuis d'autres pays sont elles-mêmes responsables du respect des lois locales applicables.</p>
+
+<h2>3. Informations et contenus</h2>
+<p>Les informations et contenus disponibles sur ce site sont fournis à titre purement informatif. Ils ne constituent ni des offres, ni des recommandations, ni des sollicitations. Les contenus sont basés sur les résultats de l'étude «&nbsp;Baromètre suisse des familles&nbsp;» et sont compilés en toute bonne foi.</p>
+<p>Pax et Pro Familia Suisse ne garantissent pas l'exactitude, l'exhaustivité ou l'actualité des informations fournies. Si vous constatez des erreurs, nous vous prions de nous en informer.</p>
+
+<h2>4. Exclusion de responsabilité</h2>
+<p>Pax et Pro Familia Suisse ne garantissent pas que ce site est exempt de virus ou d'autres éléments nuisibles et qu'il fonctionne de manière ininterrompue ou sans erreur. Toute responsabilité pour les dommages directs ou indirects résultant de l'accès à ce site ou de son utilisation est exclue dans la mesure autorisée par la loi.</p>
+<p>Nous déclinons toute responsabilité pour les sites de tiers accessibles via des liens depuis ce site. L'accès à ces sites se fait à vos propres risques.</p>
+
+<h2>5. Droits d'auteur</h2>
+<p>L'ensemble des contenus de ce site – y compris les textes, graphiques, images et autres matériaux – sont protégés par le droit d'auteur. Ils appartiennent à Pax, Société suisse d'assurance sur la vie SA, Pro Familia Suisse ou aux détenteurs des droits respectifs.</p>
+<p>L'utilisation à des fins privées est autorisée moyennant indication de la source. Toute utilisation ultérieure, en particulier l'exploitation commerciale, la reproduction ou la diffusion, nécessite un accord écrit préalable.</p>
+<p>Les rapports d'études et les documents médias publiés sur ce site peuvent être utilisés avec la mention de la source «&nbsp;Baromètre suisse des familles, Pax / Pro Familia Suisse&nbsp;».</p>
+
+<h2>6. Protection des données</h2>
+<p>Vous trouverez des informations sur le traitement de vos données personnelles dans notre <a href="/${lang}/datenschutz">déclaration de protection des données</a>.</p>`,
+  },
+  it: {
+    title: 'Avvertenze legali - Barometro delle famiglie',
+    heading: 'Avvertenze legali',
+    content: `
+<h2>1. Informazioni generali</h2>
+<p>L'accesso a questo sito e il suo utilizzo sono soggetti alle seguenti condizioni. Accedendo a questo sito, accettate le presenti condizioni. Pax e Pro Familia Svizzera si riservano il diritto di modificare queste condizioni in qualsiasi momento senza preavviso.</p>
+<p>Questo sito è gestito da Pax, Società svizzera di assicurazione sulla vita SA, e Pro Familia Svizzera. Si applica il diritto svizzero. Il foro competente è Basilea.</p>
+
+<h2>2. Campo di applicazione</h2>
+<p>Le informazioni contenute in questo sito si riferiscono alla Svizzera. Le persone che accedono a questo sito da altre sedi sono responsabili del rispetto delle leggi locali applicabili.</p>
+
+<h2>3. Informazioni e contenuti</h2>
+<p>Le informazioni e i contenuti disponibili su questo sito sono forniti esclusivamente a scopo informativo. Non costituiscono offerte, raccomandazioni o sollecitazioni. I contenuti si basano sui risultati dello studio «Barometro svizzero delle famiglie» e sono compilati in buona fede.</p>
+<p>Pax e Pro Familia Svizzera non garantiscono l'esattezza, la completezza o l'attualità delle informazioni fornite. Se notate degli errori, vi preghiamo di segnalarceli.</p>
+
+<h2>4. Esclusione di responsabilità</h2>
+<p>Pax e Pro Familia Svizzera non garantiscono che questo sito sia privo di virus o di altri elementi dannosi e che funzioni in modo ininterrotto o privo di errori. Qualsiasi responsabilità per danni diretti o indiretti derivanti dall'accesso a questo sito o dal suo utilizzo è esclusa nella misura consentita dalla legge.</p>
+<p>Non assumiamo alcuna responsabilità per i siti di terzi accessibili tramite link da questo sito. L'accesso a tali siti avviene a proprio rischio e pericolo.</p>
+
+<h2>5. Diritti d'autore</h2>
+<p>Tutti i contenuti di questo sito – compresi testi, grafici, immagini e altri materiali – sono protetti dal diritto d'autore. Appartengono a Pax, Società svizzera di assicurazione sulla vita SA, Pro Familia Svizzera o ai rispettivi titolari dei diritti.</p>
+<p>L'utilizzo a fini privati è consentito con indicazione della fonte. Qualsiasi ulteriore utilizzo, in particolare lo sfruttamento commerciale, la riproduzione o la diffusione, richiede il previo consenso scritto.</p>
+<p>I rapporti di studio e i documenti per i media pubblicati su questo sito possono essere utilizzati con la menzione della fonte «Barometro svizzero delle famiglie, Pax / Pro Familia Svizzera».</p>
+
+<h2>6. Protezione dei dati</h2>
+<p>Informazioni sul trattamento dei vostri dati personali sono disponibili nella nostra <a href="/${lang}/datenschutz">informativa sulla protezione dei dati</a>.</p>`,
+  },
+};
+
+const data = legalData[lang];
+---
+
+<BaseLayout
+  title={data.title}
+  lang={lang}
+  canonicalPath={`/${lang}/rechtliche-hinweise`}
+>
+  <section class="section section--dark hero-mini">
+    <div class="container">
+      <h1 class="heading-1">{data.heading}</h1>
+    </div>
+  </section>
+  <section class="section section--light">
+    <div class="container legal-content">
+      <Fragment set:html={data.content} />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-mini {
+    padding-top: 6rem;
+    padding-bottom: var(--spacing-lg);
+  }
+
+  .legal-content {
+    max-width: 720px;
+  }
+
+  .legal-content :global(h2) {
+    font-family: var(--font-heading);
+    color: var(--color-coral);
+    font-size: 1.5rem;
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .legal-content :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .legal-content :global(p) {
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.7;
+  }
+
+  .legal-content :global(a) {
+    color: var(--color-coral);
+    text-decoration: underline;
+  }
+
+  .legal-content :global(a:hover) {
+    color: var(--color-coral-dark);
+  }
+
+  .legal-content :global(strong) {
+    color: var(--color-coral);
+  }
+</style>

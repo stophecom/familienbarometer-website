@@ -11,9 +11,10 @@ interface Props {
   lang: Lang;
   canonicalPath?: string;
   year?: number;
+  isHome?: boolean;
 }
 
-const { title, description, lang, canonicalPath, year } = Astro.props;
+const { title, description, lang, canonicalPath, year, isHome = false } = Astro.props;
 
 const siteUrl = 'https://familienbarometer.ch';
 const canonical = canonicalPath
@@ -122,7 +123,7 @@ const gtmId = 'GTM-XXXXXXX'; // Replace with actual GTM ID
       {t(lang, 'skip.content')}
     </a>
 
-    <Header lang={lang} year={year} />
+    <Header lang={lang} year={year} isHome={isHome} />
 
     <main id="main-content">
       <slot />
