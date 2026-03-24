@@ -50,9 +50,9 @@ const pastStudiesHeading = {
       <h2 class="heading-2 heading-2--coral">{data.introHeading}</h2>
       <p class="text-intro">{data.leadText}</p>
       <div class="text-body section1-body" set:html={data.introText} />
-      <div class="section1-charts">
-        {data.chartImages.map((src) => (
-          <img src={src} alt="" loading="lazy" class="chart-image" />
+      <div class="section1-charts" role="group" aria-label={data.introHeading}>
+        {data.chartImages.map((src, i) => (
+          <img src={src} alt={`${data.introHeading} – Grafik ${i + 1}`} loading="lazy" class="chart-image" />
         ))}
       </div>
 
@@ -90,7 +90,7 @@ const pastStudiesHeading = {
       <h2 class="heading-2 heading-2--white">{data.summaryHeading}</h2>
       <div class="text-body summary-text" set:html={data.summaryText} />
       <div class="section2-illustration">
-        <img src="/images/family-image-section.svg" alt="" loading="lazy" />
+        <img src="/images/family-image-section.svg" alt="Illustration einer Familie" loading="lazy" />
       </div>
     </div>
   </section>
@@ -218,37 +218,48 @@ const pastStudiesHeading = {
   }
 
   .image-slider__pagination :global(.slider__dot) {
-    width: 10px;
-    height: 10px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     background: #d0d5dc;
     border: none;
     cursor: pointer;
     padding: 0;
-    transition: background-color 0.2s;
+    transition:
+      background-color 0.2s,
+      transform 0.2s;
+  }
+
+  .image-slider__pagination :global(.slider__dot:hover) {
+    transform: scale(1.2);
   }
 
   .image-slider__pagination :global(.slider__dot.is-active) {
     background: var(--color-coral);
+    transform: scale(1.2);
   }
 
   .slider__btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     border: 2px solid var(--color-coral);
     background: transparent;
     color: var(--color-coral);
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition:
+      background-color 0.2s,
+      transform 0.2s;
   }
 
-  .slider__btn:hover {
+  .slider__btn:hover,
+  .slider__btn:focus-visible {
     background: var(--color-coral);
     color: var(--color-white);
+    transform: scale(1.08);
   }
 
   /* Event Teaser */

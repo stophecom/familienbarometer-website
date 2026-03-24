@@ -48,6 +48,7 @@ body {
   color: var(--color-text);
   background-color: var(--color-light-gray);
   line-height: 1.6;
+  letter-spacing: 0.01em;
 }
 
 img {
@@ -59,6 +60,11 @@ img {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-coral);
+  outline-offset: 2px;
 }
 
 ul,
@@ -158,11 +164,13 @@ h4 {
   line-height: 1.7;
   font-weight: 600;
   font-style: italic;
+  max-width: 70ch;
 }
 
 .text-body {
   font-size: 1rem;
   line-height: 1.7;
+  max-width: 70ch;
 }
 
 /* ---------- Buttons ---------- */
@@ -178,7 +186,9 @@ h4 {
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
   text-decoration: none;
 }
 
@@ -250,12 +260,15 @@ h4 {
   font-size: clamp(1.5rem, 3vw, 2.25rem);
   font-weight: 400;
   line-height: 1.3;
-  transition: background-color 0.2s;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
 }
 
 .study-card:hover,
 .study-card:focus-visible {
   background-color: var(--color-coral-dark);
+  transform: scale(1.02);
 }
 
 .study-card__arrow {
@@ -275,15 +288,18 @@ h4 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.75rem;
+  height: 2.75rem;
   border: 1px solid var(--color-white);
   border-radius: 50%;
-  transition: background-color 0.2s;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
 }
 
 .social-links a:hover {
   background-color: rgba(255, 255, 255, 0.15);
+  transform: scale(1.1);
 }
 
 /* ---------- Donut Charts ---------- */
@@ -355,59 +371,64 @@ h4 {
 
 /* ---------- Quote Section ---------- */
 .quote-block {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
 }
 
 @media (min-width: 768px) {
   .quote-block {
-    flex-direction: row;
-    gap: var(--spacing-lg);
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
   }
 }
 
 .quote-person {
-  flex: 1;
   text-align: center;
 }
 
 .quote-person__image {
-  width: 160px;
-  height: 160px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   object-fit: cover;
   margin-inline: auto;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  border: 4px solid rgba(0, 0, 0, 0.06);
 }
 
 .quote-person__name {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 0.25rem;
 }
 
 .quote-person__title {
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   margin-bottom: var(--spacing-sm);
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 .quote-person__text {
   font-style: italic;
-  line-height: 1.6;
-  margin-bottom: var(--spacing-sm);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-md);
+  max-width: 50ch;
+  margin-inline: auto;
 }
 
 .quote-person__email {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
+  color: var(--color-coral);
+  transition: color 0.2s;
 }
 
 .quote-person__email:hover {
   text-decoration: underline;
+  color: var(--color-coral-dark);
 }
 
 /* ---------- Three Column Footer ---------- */
@@ -436,8 +457,13 @@ h4 {
   line-height: 1.6;
 }
 
+.footer-col a {
+  transition: color 0.2s;
+}
+
 .footer-col a:hover {
   text-decoration: underline;
+  color: var(--color-coral);
 }
 
 .footer-bottom {
@@ -455,8 +481,13 @@ h4 {
   gap: var(--spacing-md);
 }
 
+.footer-bottom__links a {
+  transition: color 0.2s;
+}
+
 .footer-bottom__links a:hover {
   text-decoration: underline;
+  color: var(--color-coral);
 }
 
 /* ---------- Hero Mini (sub-pages) ---------- */
@@ -466,6 +497,47 @@ h4 {
   display: flex;
   align-items: flex-end;
   min-height: 280px;
+}
+
+/* ---------- Coral Top Bar ---------- */
+.coral-topbar {
+  height: 6px;
+  background-color: var(--color-coral);
+}
+
+/* ---------- Back to Top ---------- */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--color-coral);
+  color: var(--color-white);
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s,
+    transform 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top:hover {
+  transform: scale(1.1);
+  background-color: var(--color-coral-dark);
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* ---------- Responsive Utilities ---------- */
@@ -478,5 +550,70 @@ h4 {
 @media (min-width: 768px) {
   .hide-desktop {
     display: none !important;
+  }
+}
+
+/* ---------- Print Stylesheet ---------- */
+@media print {
+  body {
+    background: white;
+    color: black;
+    font-size: 12pt;
+  }
+
+  .header,
+  .footer,
+  .social-links,
+  .back-to-top,
+  .skip-to-content,
+  .hero__topbar,
+  .coral-topbar,
+  .image-slider__controls,
+  .study-card__arrow {
+    display: none !important;
+  }
+
+  .section--dark,
+  .section--coral {
+    background: white !important;
+    color: black !important;
+  }
+
+  .heading-1,
+  .heading-2,
+  .heading-2--coral,
+  .heading-2--white {
+    color: black !important;
+  }
+
+  .heading-1__italic {
+    color: #666 !important;
+  }
+
+  .hero {
+    min-height: auto !important;
+    padding: 2rem 0 !important;
+  }
+
+  .section {
+    padding-block: 1.5rem !important;
+    break-inside: avoid;
+  }
+
+  a[href]::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    color: #666;
+  }
+
+  a[href^='mailto:']::after,
+  a[href^='#']::after,
+  a[href^='/']::after {
+    content: '';
+  }
+
+  .quote-person__image {
+    width: 100px;
+    height: 100px;
   }
 }

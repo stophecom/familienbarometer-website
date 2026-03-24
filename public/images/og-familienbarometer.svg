@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#394454"/>
+  <rect width="1200" height="8" fill="#f04e5a"/>
+  <text x="600" y="240" text-anchor="middle" font-family="Georgia, Merriweather, serif" font-size="72" font-weight="bold" fill="#f04e5a">Schweizer Familien</text>
+  <text x="600" y="330" text-anchor="middle" font-family="Georgia, Merriweather, serif" font-size="72" font-weight="bold" font-style="italic" fill="#ffffff">barometer</text>
+  <text x="600" y="420" text-anchor="middle" font-family="Roboto, Helvetica, Arial, sans-serif" font-size="32" fill="rgba(255,255,255,0.6)">familienbarometer.ch</text>
+  <rect y="622" width="1200" height="8" fill="#f04e5a"/>
+</svg>

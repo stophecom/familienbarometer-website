@@ -1,0 +1,71 @@
+---
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>404 - Seite nicht gefunden | Familienbarometer</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <div class="coral-topbar"></div>
+    <main class="error-page section--dark">
+      <div class="container error-content">
+        <h1 class="heading-1">404</h1>
+        <p class="error-message">
+          Diese Seite wurde nicht gefunden.<br />
+          Cette page n'a pas été trouvée.<br />
+          Questa pagina non è stata trovata.
+        </p>
+        <div class="error-links">
+          <a href="/de/" class="btn" lang="de">Deutsch</a>
+          <a href="/fr/" class="btn" lang="fr">Français</a>
+          <a href="/it/" class="btn" lang="it">Italiano</a>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+
+<style>
+  .error-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .error-content {
+    max-width: 600px;
+  }
+
+  .error-content .heading-1 {
+    font-size: clamp(5rem, 15vw, 10rem);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .error-message {
+    font-size: 1.125rem;
+    line-height: 2;
+    margin-bottom: var(--spacing-lg);
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .error-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>
