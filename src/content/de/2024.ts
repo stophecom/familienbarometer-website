@@ -50,14 +50,7 @@ const data: StudyPage = {
     },
   ],
 
-  pastStudies: [
-    {
-      year: 2023,
-      label: 'Schweizer Familienbarometer 2023',
-      url: 'https://www.pax.ch/de/ueber-pax/berichte/familienbarometer-2023',
-      external: true,
-    },
-  ],
+  pastStudies: [],
 
   meta: {
     title: 'Familienbarometer 2024 - Pax',

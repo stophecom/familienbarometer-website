@@ -17,10 +17,30 @@ const { lang, title, year, reportUrl, mediaPackageUrl, heroImage } =
 const shareUrl = `https://familienbarometer.ch/${lang}`;
 const shareText = encodeURIComponent(title);
 
-// Split title for styling: "Schweizer Familien" in coral bold, "barometer" in coral italic
-const titleParts = title.split(/(?=barometer|baromètre|barometro)/i);
-const mainTitle = titleParts[0]?.trim() || title;
-const italicPart = titleParts[1]?.trim() || '';
+// Split title into lines:
+// DE: "Schweizer" / "Familien" / "barometer" (italic)
+// FR: "Baromètre suisse" / "des familles" (italic for "des familles" part not needed, all coral)
+// IT: "Barometro svizzero" / "delle famiglie"
+// The word containing "barometer/baromètre/barometro" gets split to show the meter-part in italic
+const titleLines: { text: string; italic?: boolean }[] = (() => {
+  if (lang === 'de') {
+    return [
+      { text: 'Schweizer' },
+      { text: 'Familien' },
+      { text: 'barometer', italic: true },
+    ];
+  } else if (lang === 'fr') {
+    return [
+      { text: 'Baromètre suisse' },
+      { text: 'des familles', italic: true },
+    ];
+  } else {
+    return [
+      { text: 'Barometro svizzero' },
+      { text: 'delle famiglie', italic: true },
+    ];
+  }
+})();
 ---
 
 <section class="hero section--dark">
@@ -29,8 +49,12 @@ const italicPart = titleParts[1]?.trim() || '';
 
   <div class="hero__content container">
     <h1 class="heading-1">
-      {mainTitle}<br />
-      {italicPart && <span class="heading-1__italic">{italicPart}</span>}
+      {titleLines.map((line, i) => (
+        <>
+          {i > 0 && <br />}
+          {line.italic ? <span class="heading-1__italic">{line.text}</span> : line.text}
+        </>
+      ))}
     </h1>
     <div class="hero__subtitle">
       <hr class="hr--white" />

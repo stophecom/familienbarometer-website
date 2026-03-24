@@ -1,7 +1,7 @@
 export const languages = {
   de: 'Deutsch',
-  fr: 'Französisch',
-  it: 'Italienisch',
+  fr: 'Français',
+  it: 'Italiano',
 } as const;
 
 export type Lang = keyof typeof languages;
