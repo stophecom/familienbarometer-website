@@ -129,6 +129,7 @@ h4 {
 
 .heading-1__italic {
   font-style: italic;
+  color: var(--color-white);
 }
 
 .heading-2 {
