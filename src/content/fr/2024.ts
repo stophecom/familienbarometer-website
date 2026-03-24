@@ -4,7 +4,7 @@ const data: StudyPage = {
   year: 2024,
   title: 'Baromètre suisse des familles',
   heroImage: '/images/family-image-header.svg',
-  reportUrl: '/downloads/pax-familienbarometer-studie-2024.pdf',
+  reportUrl: '/downloads/Baromètre suisse des familles 2024.pdf',
 
   introHeading: "Baromètre suisse de la famille 2024 – en un coup d\u2019œil",
   leadText:

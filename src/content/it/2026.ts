@@ -4,8 +4,8 @@ const data: StudyPage = {
   year: 2026,
   title: 'Barometro svizzero delle famiglie',
   heroImage: '/images/family-image-header.svg',
-  reportUrl: '/downloads/pax_familienbarometer-2026.pdf',
-  mediaPackageUrl: '/downloads/medienpaket-2026.zip',
+  reportUrl: '/downloads/Barometro svizzero delle famiglie 2026.pdf',
+  mediaPackageUrl: '/downloads/Pacchetto multimediale 2026.zip',
 
   introHeading: 'Barometro svizzero delle famiglie 2026 – in sintesi',
   leadText:
