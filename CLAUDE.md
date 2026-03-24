@@ -8,7 +8,7 @@ Static multilingual website for the Swiss Familienbarometer (Family Barometer) s
 - **Languages:** TypeScript, HTML, CSS
 - **i18n:** 3 languages (DE, FR, IT) via Astro's built-in i18n with prefix routing
 - **Styling:** Plain CSS with custom properties (design tokens)
-- **Fonts:** Source Sans 3, Roboto (Google Fonts)
+- **Fonts:** Merriweather (headings), Roboto (body) via Google Fonts
 
 ## Commands
 - `npm run dev` — Start dev server

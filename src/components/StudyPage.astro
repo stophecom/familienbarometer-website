@@ -46,17 +46,13 @@ const pastStudiesHeading = {
   <!-- Section 1: Study Overview -->
   <section class="section section--light" id="section-1">
     <div class="container">
-      <div class="two-col">
-        <div>
-          <h2 class="heading-2 heading-2--coral">{data.introHeading}</h2>
-          <p class="text-intro">{data.leadText}</p>
-          <div class="text-body section1-body" set:html={data.introText} />
-        </div>
-        <div class="section1-charts">
-          {data.chartImages.map((src) => (
-            <img src={src} alt="" loading="lazy" class="chart-image" />
-          ))}
-        </div>
+      <h2 class="heading-2 heading-2--coral">{data.introHeading}</h2>
+      <p class="text-intro">{data.leadText}</p>
+      <div class="text-body section1-body" set:html={data.introText} />
+      <div class="section1-charts">
+        {data.chartImages.map((src) => (
+          <img src={src} alt="" loading="lazy" class="chart-image" />
+        ))}
       </div>
 
       {/* Slider section - image slides (only on 2026 homepage) */}
@@ -90,14 +86,10 @@ const pastStudiesHeading = {
   <!-- Section 2: Summary -->
   <section class="section section--coral" id="section-2">
     <div class="container">
-      <div class="two-col">
-        <div>
-          <h2 class="heading-2 heading-2--white">{data.summaryHeading}</h2>
-          <div class="text-body summary-text" set:html={data.summaryText} />
-        </div>
-        <div class="section2-illustration">
-          <img src="/images/family-image-section.svg" alt="" loading="lazy" />
-        </div>
+      <h2 class="heading-2 heading-2--white">{data.summaryHeading}</h2>
+      <div class="text-body summary-text" set:html={data.summaryText} />
+      <div class="section2-illustration">
+        <img src="/images/family-image-section.svg" alt="" loading="lazy" />
       </div>
     </div>
   </section>
@@ -144,9 +136,16 @@ const pastStudiesHeading = {
 
 <style>
   .section1-charts {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+  }
+
+  @media (min-width: 768px) {
+    .section1-charts {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   .chart-image {
@@ -172,15 +171,14 @@ const pastStudiesHeading = {
 
   .section2-illustration {
     display: flex;
-    align-items: flex-start;
     justify-content: center;
+    margin-top: var(--spacing-lg);
   }
 
   .section2-illustration img {
-    max-width: 100%;
+    max-width: 600px;
+    width: 100%;
     height: auto;
-    position: sticky;
-    top: 2rem;
   }
 
   /* Image Slider */
