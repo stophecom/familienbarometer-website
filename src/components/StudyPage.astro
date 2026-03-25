@@ -47,13 +47,17 @@ const pastStudiesHeading = {
   <!-- Section 1: Study Overview -->
   <section class="section section--light" id="section-1">
     <div class="container">
-      <h2 class="heading-2 heading-2--coral">{data.introHeading}</h2>
-      <p class="text-intro">{data.leadText}</p>
-      <div class="text-body section1-body" set:html={data.introText} />
-      <div class="section1-charts" role="group" aria-label={data.introHeading}>
-        {data.chartImages.map((src, i) => (
-          <img src={src} alt={`${data.introHeading} – Grafik ${i + 1}`} loading="lazy" class="chart-image" />
-        ))}
+      <div class="section1-layout">
+        <div class="section1-text">
+          <h2 class="heading-2 heading-2--coral">{data.introHeading}</h2>
+          <p class="text-intro">{data.leadText}</p>
+          <div class="text-body section1-body" set:html={data.introText} />
+        </div>
+        <div class="section1-charts" role="group" aria-label={data.introHeading}>
+          {data.chartImages.map((src, i) => (
+            <img src={src} alt={`${data.introHeading} – Grafik ${i + 1}`} loading="lazy" class="chart-image" />
+          ))}
+        </div>
       </div>
 
       {/* Slider section - image slides (only on 2026 homepage) */}
