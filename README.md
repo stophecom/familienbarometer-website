@@ -1,43 +1,54 @@
-# Astro Starter Kit: Minimal
+# Familienbarometer Website
 
-```sh
-npm create astro@latest -- --template minimal
+Static multilingual website for the **Swiss Familienbarometer** (Family Barometer), an annual study on the living conditions of families in Switzerland, published by [Pax](https://www.pax.ch/) and [Pro Familia Schweiz](https://www.profamilia.ch/).
+
+## Tech Stack
+
+- **Framework:** [Astro](https://astro.build/) (static site generation)
+- **Languages:** TypeScript, HTML, CSS
+- **i18n:** German, French, Italian — via Astro's built-in i18n routing
+- **Fonts:** Merriweather (headings) + Roboto (body) via Google Fonts
+
+## Getting Started
+
+```bash
+npm install
+npm run dev       # Start dev server at localhost:4321
+npm run build     # Build for production
+npm run preview   # Preview production build
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Adding Content for a New Year
 
-## 🚀 Project Structure
+1. Create content files in `src/content/{de,fr,it}/{year}.ts` (use an existing year as template)
+2. Update `src/utils/content.ts`: add the year to `studyYears` and update `currentYear`
+3. Add chart images to `public/images/{year}/`
+4. Add PDF/ZIP downloads to `public/downloads/`
 
-Inside of your Astro project, you'll see the following folders and files:
+## Project Structure
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```
+src/
+├── components/       # Astro components (Header, Footer, HeroSection, etc.)
+├── content/          # Study content per language/year (TypeScript modules)
+│   ├── de/           # German (2024, 2025, 2026)
+│   ├── fr/           # French
+│   └── it/           # Italian
+├── layouts/          # BaseLayout with SEO, GTM, fonts
+├── pages/            # Route pages ([lang]/, [lang]/[year], impressum, etc.)
+├── styles/           # Global CSS with custom properties
+└── utils/            # i18n helpers, content types
+public/
+├── downloads/        # PDF reports and ZIP media packages
+└── images/           # SVG illustrations, chart graphics, photos
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Commands
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+| Command            | Action                                |
+| :----------------- | :------------------------------------ |
+| `npm run dev`      | Start dev server at `localhost:4321`  |
+| `npm run build`    | Build for production to `./dist/`     |
+| `npm run preview`  | Preview production build              |
+| `npm run lint`     | Check formatting and linting          |
+| `npm run format`   | Auto-format all files                 |
