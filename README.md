@@ -1,6 +1,6 @@
 # Familienbarometer Website
 
-Static multilingual website for the **Swiss Familienbarometer** (Family Barometer), an annual study on the living conditions of families in Switzerland, published by [Pax](https://www.pax.ch/) and [Pro Familia Schweiz](https://www.profamilia.ch/).
+Static multilingual website for the **Schweizer Familienbarometer**, an annual study on the living conditions of families in Switzerland, published by [Pax](https://www.pax.ch/) and [Pro Familia Schweiz](https://www.profamilia.ch/).
 
 ## Tech Stack
 
@@ -45,10 +45,10 @@ public/
 
 ## Commands
 
-| Command            | Action                                |
-| :----------------- | :------------------------------------ |
-| `npm run dev`      | Start dev server at `localhost:4321`  |
-| `npm run build`    | Build for production to `./dist/`     |
-| `npm run preview`  | Preview production build              |
-| `npm run lint`     | Check formatting and linting          |
-| `npm run format`   | Auto-format all files                 |
+| Command           | Action                               |
+| :---------------- | :----------------------------------- |
+| `npm run dev`     | Start dev server at `localhost:4321` |
+| `npm run build`   | Build for production to `./dist/`    |
+| `npm run preview` | Preview production build             |
+| `npm run lint`    | Check formatting and linting         |
+| `npm run format`  | Auto-format all files                |
