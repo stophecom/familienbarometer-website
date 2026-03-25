@@ -53,90 +53,148 @@ const pastStudiesHeading = {
           <p class="text-intro">{data.leadText}</p>
           <div class="text-body section1-body" set:html={data.introText} />
         </div>
-        <div class="section1-charts" role="group" aria-label={data.introHeading}>
-          {data.chartImages.map((src, i) => (
-            <img src={src} alt={`${data.introHeading} – Grafik ${i + 1}`} loading="lazy" class="chart-image" />
-          ))}
+        <div
+          class="section1-charts"
+          role="group"
+          aria-label={data.introHeading}
+        >
+          {
+            data.chartImages.map((src, i) => (
+              <img
+                src={src}
+                alt={`${data.introHeading} – Grafik ${i + 1}`}
+                loading="lazy"
+                class="chart-image"
+              />
+            ))
+          }
         </div>
       </div>
 
       {/* Slider section - image slides (only on 2026 homepage) */}
-      {data.sliderImages && data.sliderImages.length > 0 && (
-        <div class="image-slider" data-slider>
-          <div class="image-slider__track" data-slider-track>
-            {data.sliderImages.map((src) => (
-              <div class="image-slider__slide">
-                <img src={src} alt="" loading="lazy" />
-              </div>
-            ))}
+      {
+        data.sliderImages && data.sliderImages.length > 0 && (
+          <div class="image-slider" data-slider>
+            <div class="image-slider__track" data-slider-track>
+              {data.sliderImages.map((src) => (
+                <div class="image-slider__slide">
+                  <img src={src} alt="" loading="lazy" />
+                </div>
+              ))}
+            </div>
+            <div class="image-slider__controls">
+              <button
+                class="slider__btn slider__prev"
+                data-slider-prev
+                aria-label="Previous"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M15 18L9 12L15 6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </button>
+              <div class="image-slider__pagination" data-slider-pagination />
+              <button
+                class="slider__btn slider__next"
+                data-slider-next
+                aria-label="Next"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M9 18L15 12L9 6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
-          <div class="image-slider__controls">
-            <button class="slider__btn slider__prev" data-slider-prev aria-label="Previous">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-              </svg>
-            </button>
-            <div class="image-slider__pagination" data-slider-pagination></div>
-            <button class="slider__btn slider__next" data-slider-next aria-label="Next">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      )}
+        )
+      }
     </div>
   </section>
 
   <!-- Section 2: Summary -->
   <section class="section section--coral" id="section-2">
     <div class="container">
-      <h2 class="heading-2 heading-2--white">{data.summaryHeading}</h2>
-      <div class="text-body summary-text" set:html={data.summaryText} />
-      <div class="section2-illustration">
-        <img src="/images/family-image-section.svg" alt="Illustration einer Familie" loading="lazy" />
+      <div class="section2-layout">
+        <div>
+          <h2 class="heading-2 heading-2--white">{data.summaryHeading}</h2>
+          <div class="text-body summary-text" set:html={data.summaryText} />
+        </div>
+        <div class="section2-illustration">
+          <img
+            src="/images/family-image-section.svg"
+            alt="Illustration einer Familie"
+            loading="lazy"
+          />
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Section 3: Events (optional) -->
-  {data.events && data.events.length > 0 && (
-    <section class="section section--light" id="section-3">
-      <div class="container">
-        <h2 class="heading-2 heading-2--coral">{data.eventsHeading || 'Events'}</h2>
-        <div class="card-grid">
-          {data.events.map((event) => (
-            <a
-              href={event.url}
-              class="event-teaser"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span class="event-teaser__title">{event.title}</span>
-              {event.image && (
-                <img src={event.image} alt="" loading="lazy" class="event-teaser__image" />
-              )}
-            </a>
-          ))}
+  {
+    data.events && data.events.length > 0 && (
+      <section class="section section--light" id="section-3">
+        <div class="container">
+          <h2 class="heading-2 heading-2--coral">
+            {data.eventsHeading || 'Events'}
+          </h2>
+          <div class="card-grid">
+            {data.events.map((event) => (
+              <a
+                href={event.url}
+                class="event-teaser"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span class="event-teaser__title">{event.title}</span>
+                {event.image && (
+                  <img
+                    src={event.image}
+                    alt=""
+                    loading="lazy"
+                    class="event-teaser__image"
+                  />
+                )}
+              </a>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
-  )}
+      </section>
+    )
+  }
 
   <!-- Section 4: Quotes -->
-  <QuoteSection
-    lang={lang}
-    heading={quoteHeading[lang]}
-    quotes={data.quotes}
-  />
+  <QuoteSection lang={lang} heading={quoteHeading[lang]} quotes={data.quotes} />
 
   <!-- Section 5: Past Studies -->
-  {data.pastStudies.length > 0 && (
-    <PastStudies
-      heading={pastStudiesHeading[lang]}
-      studies={data.pastStudies}
-    />
-  )}
+  {
+    data.pastStudies.length > 0 && (
+      <PastStudies
+        heading={pastStudiesHeading[lang]}
+        studies={data.pastStudies}
+      />
+    )
+  }
 </BaseLayout>
 
 <style>
@@ -144,12 +202,26 @@ const pastStudiesHeading = {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--spacing-md);
-    margin-top: var(--spacing-lg);
+    padding-inline: var(--spacing-lg);
+    padding-block: var(--spacing-lg);
   }
 
   @media (min-width: 768px) {
     .section1-charts {
-      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      padding-block: 0;
+    }
+  }
+
+  .section2-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  @media (min-width: 768px) {
+    .section2-layout {
+      grid-template-columns: 2fr 1fr;
     }
   }
 
