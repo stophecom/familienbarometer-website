@@ -282,6 +282,7 @@ h4 {
 .social-links {
   display: flex;
   gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
 }
 
 .social-links a {
