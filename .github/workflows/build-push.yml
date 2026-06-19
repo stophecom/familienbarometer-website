@@ -1,0 +1,44 @@
+name: Build & Push Image
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-push-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+
+      - name: Read version from package.json
+        id: version
+        run: echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@b5ca514318bd6ebac0fb2aedd5d36ec1b5c232a2 # v3.10.0
+
+      - name: Log in to container registry
+        uses: docker/login-action@5e57cd118135c172c3672efd75eb46360885c0ef # v3.6.0
+        with:
+          registry: ${{ secrets.CONTAINER_REGISTRY_HOSTNAME }}
+          username: ${{ secrets.CONTAINER_REGISTRY_USERNAME }}
+          password: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6.18.0
+        with:
+          context: ./
+          file: ./Dockerfile
+          push: true
+          cache-from: type=registry,ref=${{ secrets.CONTAINER_REGISTRY_HOSTNAME }}/pax-product/familienbarometer-website:buildcache
+          cache-to: type=registry,ref=${{ secrets.CONTAINER_REGISTRY_HOSTNAME }}/pax-product/familienbarometer-website:buildcache,mode=max
+          tags: |
+            ${{ secrets.CONTAINER_REGISTRY_HOSTNAME }}/pax-product/familienbarometer-website:latest
+            ${{ secrets.CONTAINER_REGISTRY_HOSTNAME }}/pax-product/familienbarometer-website:${{ steps.version.outputs.version }}

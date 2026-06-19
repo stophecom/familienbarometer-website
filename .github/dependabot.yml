@@ -1,0 +1,19 @@
+version: 2
+updates:
+  # Keep the pinned base-image digests in the Dockerfile current
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: weekly
+
+  # Keep the SHA-pinned actions in the workflow current
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+
+  # Keep npm dependencies current
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
