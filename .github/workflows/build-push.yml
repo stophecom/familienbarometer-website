@@ -37,8 +37,8 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          cache-from: type=registry,ref=${{ secrets.CONTAINER_REGISTRY_HOSTNAME }}/pax-product/familienbarometer-website:buildcache
-          cache-to: type=registry,ref=${{ secrets.CONTAINER_REGISTRY_HOSTNAME }}/pax-product/familienbarometer-website:buildcache,mode=max
+          cache-from: type=registry,ref=${{ secrets.CONTAINER_REGISTRY_HOSTNAME }}/pax-product/familienbarometer-website-frontend:buildcache
+          cache-to: type=registry,ref=${{ secrets.CONTAINER_REGISTRY_HOSTNAME }}/pax-product/familienbarometer-website-frontend:buildcache,mode=max
           tags: |
-            ${{ secrets.CONTAINER_REGISTRY_HOSTNAME }}/pax-product/familienbarometer-website:latest
-            ${{ secrets.CONTAINER_REGISTRY_HOSTNAME }}/pax-product/familienbarometer-website:${{ steps.version.outputs.version }}
+            ${{ secrets.CONTAINER_REGISTRY_HOSTNAME }}/pax-product/familienbarometer-website-frontend:latest
+            ${{ secrets.CONTAINER_REGISTRY_HOSTNAME }}/pax-product/familienbarometer-website-frontend:${{ steps.version.outputs.version }}
