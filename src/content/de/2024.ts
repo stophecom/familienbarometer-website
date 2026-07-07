@@ -12,10 +12,7 @@ const data: StudyPage = {
   introText: `<p>Mit dem Schweizer Familienbarometer 2024 veröffentlichen Pax und Pro Familia Schweiz zum zweiten Mal die Ergebnisse des Studienberichts. Die aktuellen Ergebnisse ermöglichen erstmals einen Vorjahresvergleich und damit das Aufzeigen einer zeitlichen Entwicklung.</p>
 <p>So sind einige Befunde in der diesjährigen Befragung noch stärker ausgeprägt und es zeigt sich, dass die angespannte finanzielle Situation der Familien zunehmend Auswirkungen auf verschiedene Bereiche des Familienlebens und das Verhalten hat.</p>`,
 
-  chartImages: [
-    '/images/2024/grafik-1-de.svg',
-    '/images/2024/grafik-2-de.svg',
-  ],
+  chartImages: ['/images/2024/grafik-1-de.svg', '/images/2024/grafik-2-de.svg'],
 
   summaryHeading:
     'Die finanzielle Situation von Familien in der Schweiz spitzt sich zu',

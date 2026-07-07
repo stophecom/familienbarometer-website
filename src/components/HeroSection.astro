@@ -14,7 +14,6 @@ interface Props {
 const { lang, title, year, reportUrl, mediaPackageUrl, heroImage } =
   Astro.props;
 
-
 // Split title into lines:
 // DE: "Schweizer" / "Familien" / "barometer" (italic)
 // FR: "Baromètre suisse" / "des familles" (italic for "des familles" part not needed, all coral)
@@ -47,12 +46,18 @@ const titleLines: { text: string; italic?: boolean }[] = (() => {
 
   <div class="hero__content container">
     <h1 class="heading-1">
-      {titleLines.map((line, i) => (
-        <>
-          {i > 0 && <br />}
-          {line.italic ? <span class="heading-1__italic">{line.text}</span> : line.text}
-        </>
-      ))}
+      {
+        titleLines.map((line, i) => (
+          <>
+            {i > 0 && <br />}
+            {line.italic ? (
+              <span class="heading-1__italic">{line.text}</span>
+            ) : (
+              line.text
+            )}
+          </>
+        ))
+      }
     </h1>
     <div class="hero__subtitle">
       <hr class="hr--white" />
@@ -107,7 +112,13 @@ const titleLines: { text: string; italic?: boolean }[] = (() => {
     <div class="hero__image-dark"></div>
     <div class="hero__image-coral"></div>
     <div class="hero__image-container">
-      <img src={heroImage} alt="Illustration einer Familie" width="1140" height="400" loading="eager" />
+      <img
+        src={heroImage}
+        alt={t(lang, 'alt.family')}
+        width="1140"
+        height="400"
+        loading="eager"
+      />
     </div>
   </div>
 </section>
@@ -195,5 +206,4 @@ const titleLines: { text: string; italic?: boolean }[] = (() => {
     height: auto;
     display: block;
   }
-
 </style>

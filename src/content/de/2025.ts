@@ -11,10 +11,7 @@ const data: StudyPage = {
     'Das Familienbarometer von Pax und Pro Familia Schweiz bildet als fundiertes Messinstrument die aktuelle Lebensrealität von Familien in der Schweiz sowie deren Wandel über die Zeit ab. Diese wird jährlich erhoben und schafft eine robuste, langfristige Datenbasis für familien- und sozialpolitische Debatten sowie den unternehmerischen Diskurs.',
   introText: `<p>Die dritte Ausgabe des Schweizer Familienbarometers weist auf eine hohe Konstanz hinsichtlich der Relevanz von finanziellen Themen für Familien in der Schweiz und der Wahrnehmung ihrer finanziellen Situation hin. Zusammen mit den für diese Ausgabe neu betrachteten Themen in den Bereichen Vorsorge und Druck auf Familien liefert das Familienbarometer erneut einen wertvollen Einblick in die Lebensrealität von Familien in der Schweiz und setzt als aktuelle Datengrundlage Impulse für familienpolitische Debatten sowie die Ausgestaltung von Rahmenbedingungen, die den Bedürfnissen von Familien Rechnung tragen.</p>`,
 
-  chartImages: [
-    '/images/2025/grafik-1-de.svg',
-    '/images/2025/grafik-2-de.svg',
-  ],
+  chartImages: ['/images/2025/grafik-1-de.svg', '/images/2025/grafik-2-de.svg'],
 
   summaryHeading: 'Finanzielle Themen weiter im Fokus',
   summaryText: `<p>Es sind weiterhin finanzielle Themen, allen voran die Krankenkassenprämien und die Inflation, die Familien in der Schweiz am stärksten beschäftigen. Bei einzelnen Themen zeigen sich auch regionale Unterschiede, so etwa beim Thema Schulwesen und Bildungspolitik, das Familien in der Deutschschweiz stärker beschäftigt, oder beim Thema Jugendgewalt, das vor allem Familien in der lateinischen Schweiz bewegt. Eine Entwicklung über die Zeit lässt sich beim Thema Umgang mit Medien und Social Media feststellen, welches in der Tendenz etwas wichtiger wurde. Eine Entwicklung in die gegenläufige Richtung lässt sich bei den Themen Klimawandel und Umweltschutz sowie Energieversorgung und -sicherheit beobachten, die jeweils über die Zeit an Relevanz verloren.</p>

@@ -31,10 +31,7 @@ const { lang, heading, quotes } = Astro.props;
             <p class="quote-person__title">{quote.title}</p>
             <p class="quote-person__text">&laquo;{quote.text}&raquo;</p>
             {quote.email && (
-              <a
-                class="quote-person__email"
-                href={`mailto:${quote.email}`}
-              >
+              <a class="quote-person__email" href={`mailto:${quote.email}`}>
                 <svg
                   width="16"
                   height="16"

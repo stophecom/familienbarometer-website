@@ -29,7 +29,17 @@
       "mcp__Claude_Preview__preview_start",
       "Bash(git push:*)",
       "WebFetch(domain:www.pax.ch)",
-      "Bash(ls -la /Users/stophe/Projects/familienbarometer-website/public/favicon*)"
+      "Bash(ls -la /Users/stophe/Projects/familienbarometer-website/public/favicon*)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(ls /Users/stophe/Projects | tail -40; echo ---; find /Users/stophe/Projects -maxdepth 3 -name \"manifest.json\" -not -path \"*/node_modules/*\" -newermt \"2026-01-01\" 2>/dev/null | head)",
+      "Bash(cd /Users/stophe/Projects/scrt-link-v2/apps/extension && echo \"=== App.svelte ===\" && cat entrypoints/popup/App.svelte; echo; echo \"=== KeyEntry.svelte ===\" && cat entrypoints/popup/lib/KeyEntry.svelte; echo \"=== client base URL ===\" && grep -rEi \"scrt.link|baseurl|fetch|http\" ../../packages/*/src 2>/dev/null | grep -i \"scrt.link\\\\|http\" | head; find /Users/stophe/Projects/scrt-link-v2 -maxdepth 4 -type d -name client 2>/dev/null | head)",
+      "Bash(python3 -c \"import PIL; print\\('PIL', PIL.__version__\\)\")",
+      "Bash(python3 -c ' *)",
+      "Bash(pip3 install *)",
+      "Bash(python3 -c \"from PIL import Image; im=Image.open\\('/Users/stophe/Projects/familienbarometer-website/public/images/slider/slide-1-de.png'\\).convert\\('RGBA'\\); print\\('tl',im.getpixel\\(\\(5,5\\)\\),'size',im.size\\)\")",
+      "Bash(magick slide-icon-1.png -background \"#394454\" -flatten /tmp/check-icon1.png)",
+      "Bash(magick slide-icon-4.png -background \"#394454\" -flatten /tmp/check-icon4.png)",
+      "Bash(git checkout *)"
     ]
   }
 }

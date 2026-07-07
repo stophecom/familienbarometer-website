@@ -6,16 +6,13 @@ const data: StudyPage = {
   heroImage: '/images/family-image-header.svg',
   reportUrl: '/downloads/Baromètre suisse des familles 2024.pdf',
 
-  introHeading: "Baromètre suisse de la famille 2024 – en un coup d\u2019œil",
+  introHeading: 'Baromètre suisse de la famille 2024 – en un coup d\u2019œil',
   leadText:
     "Le Baromètre des familles de Pax et Pro Familia Suisse a été lancé en 2023. En tant qu'instrument de mesure, il reflète la réalité de vie actuelle des familles en Suisse ainsi que son évolution au fil du temps. Le Baromètre des familles est établi chaque année et crée une base de données robuste et à long terme pour les débats de politique familiale et sociale ainsi que pour les entreprises.",
   introText: `<p>Avec le Baromètre suisse de la famille 2024, Pax et Pro Familia Suisse publient pour la deuxième fois les résultats du rapport d'étude. Pour la première fois, les résultats actuels permettent de comparer l'année précédente et ainsi de montrer une évolution dans le temps.</p>
 <p>Ainsi, certains des résultats de l'enquête de cette année sont encore plus prononcés et il s'avère que la situation financière tendue des familles a un impact de plus en plus important sur divers domaines de la vie familiale et sur le comportement.</p>`,
 
-  chartImages: [
-    '/images/2024/grafik-1-fr.svg',
-    '/images/2024/grafik-2-fr.svg',
-  ],
+  chartImages: ['/images/2024/grafik-1-fr.svg', '/images/2024/grafik-2-fr.svg'],
 
   summaryHeading:
     'La situation financière des familles en Suisse atteint son paroxysme',
