@@ -9,29 +9,49 @@ const data: StudyPage = {
 
   introHeading: 'Baromètre suisse de la famille 2026 – en un coup d\u2019œil',
   leadText:
-    "Avec le Baromètre des familles suisses, Pro Familia Suisse et Pax fournissent chaque année un aperçu solide de la réalité vécue par les familles en Suisse et créent une base de données pour les discussions politiques, sociales et économiques.",
+    'Avec le Baromètre des familles suisses, Pro Familia Suisse et Pax fournissent chaque année un aperçu solide de la réalité vécue par les familles en Suisse et créent une base de données pour les discussions politiques, sociales et économiques.',
   introText: `<p>Pour cette quatrième édition, l'entreprise de conseil et de recherche Empiricon AG a interrogé 2'036 familles de toutes les régions du pays dans le cadre d'une enquête représentative. L'étude met en lumière ce qui préoccupe les familles, analyse leur satisfaction et leurs perspectives, et aborde la conciliation entre vie familiale et vie professionnelle ainsi que les thèmes des finances et de la prévoyance. L'édition de cette année se concentre en outre sur l'utilisation des médias numériques et la transmission des connaissances financières. Les résultats ont été analysés de manière différenciée selon la région linguistique, le nombre et l'âge des enfants, le type de famille et le revenu du ménage.</p>`,
 
-  chartImages: [
-    '/images/grafik-1-fr_2026.svg',
-    '/images/grafik-2-fr_2026.svg',
-  ],
+  chartImages: ['/images/grafik-1-fr_2026.svg', '/images/grafik-2-fr_2026.svg'],
 
-  sliderImages: [
-    '/images/slider/slide-1-de.png',
-    '/images/slider/slide-2-de.png',
-    '/images/slider/slide-3-de.png',
-    '/images/slider/slide-4-de.png',
-    '/images/slider/slide-5-de.png',
+  sliderItems: [
+    {
+      icon: '/images/slider/slide-icon-1.png',
+      heading: 'L’argent reste le sujet numéro un',
+      text: 'Pour 49% des familles interrogées, les primes d’assurance maladie, et pour 37% la hausse des prix, font partie des sujets qui les préoccupent le plus.',
+    },
+    {
+      icon: '/images/slider/slide-icon-2.png',
+      heading:
+        'Grande satisfaction aujourd’hui, attentes pessimistes pour l’avenir',
+      text: '79% des personnes interrogées se disent plutôt ou très satisfaites de leur vie de famille actuelle. 76% s’attendent à ce que la situation générale des familles en Suisse se détériore plutôt ou fortement au cours des trois prochaines années.',
+    },
+    {
+      icon: '/images/slider/slide-icon-3.png',
+      heading:
+        'Éducation aux médias : un soutien attendu des plateformes et des écoles',
+      text: 'Pour les accompagner dans l’éducation aux médias, 49% des familles souhaitent une meilleure protection des enfants par les fournisseurs de réseaux sociaux, et autant l’interdiction des téléphones portables à l’école. 47% jugent souhaitable un soutien général des écoles et 44% des restrictions légales.',
+    },
+    {
+      icon: '/images/slider/slide-icon-4.png',
+      heading:
+        'Mères et pères assument presque aussi souvent l’éducation financière',
+      text: 'Dans 63% des familles, c’est principalement la mère et dans 58% le père qui explique aux enfants comment gérer l’argent. Mères et pères peuvent en assumer conjointement la responsabilité principale.',
+    },
+    {
+      icon: '/images/slider/slide-icon-5.png',
+      heading:
+        'Près d’une famille sur deux souhaite davantage d’offres de formation sur les questions d’argent',
+      text: '47% des familles estiment qu’il faut davantage d’offres de formation de qualité sur les questions financières pour les enfants et les jeunes.',
+    },
   ],
 
   summaryHeading:
     'Médias numériques comme facteur déterminant dans le quotidien des familles',
-  summaryText: `<p>Les préoccupations financières restent au premier plan des sujets de préoccupation des familles en Suisse, avec en tête les primes d'assurance maladie et l'inflation. Des différences régionales apparaissent sur certains sujets\u00a0: le système scolaire et la politique éducative préoccupent davantage les familles de Suisse alémanique, tandis que la violence juvénile est une source d'inquiétude plus marquée en Suisse latine. Le thème de l'usage des médias et des réseaux sociaux a gagné en importance au fil du temps, tandis que l'intérêt pour les questions climatiques, environnementales et énergétiques tend à diminuer.</p>
-<p>La satisfaction des familles quant à leur propre vie familiale reste élevée, mais leurs perspectives sur l'évolution générale de leur situation en Suisse demeurent pessimistes pour les années à venir.</p>
-<p>En matière de prévoyance, les familles estiment qu'il est le plus urgent d'agir dans le domaine de la prévoyance professionnelle afin de garantir le niveau des rentes et d'améliorer la protection des travailleurs à temps partiel et des bas salaires. La réduction de la redistribution des actifs des travailleurs vers les bénéficiaires de rentes est jugée moins urgente. L'AVS demeure le pilier central de la prévoyance vieillesse pour les familles, suivie par la prévoyance professionnelle et les économies du pilier 3a. Cependant, pour les ménages dont le revenu brut dépasse 100'000 CHF, la prévoyance professionnelle prend la première place, devant l'AVS.</p>
-<p>Les familles interrogées considèrent que leur vie familiale est plus souvent affectée par la pression ressentie par les parents que par celle subie par leurs enfants. Le principal facteur de stress identifié est la conciliation entre vie professionnelle et vie familiale. L'amélioration de cette conciliation, en complément des mesures de soutien financier, fait partie des principales attentes des familles vis-à-vis des politiques familiales.</p>
-<p>Par ailleurs, une part significative des familles continue de percevoir sa situation financière comme tendue. Près d'un tiers d'entre elles indique ainsi ne pas être en mesure d'épargner.</p>`,
+  summaryText: `<p>Les médias numériques sont devenus une composante centrale de la vie de famille – porteurs d'opportunités comme de défis. Environ un tiers des familles utilise consciemment les offres numériques pour des activités communes comme les films, la musique ou les jeux. Dans le même temps, un nombre comparable de familles rapporte que la consommation de médias réduit le temps passé ensemble. Pour un quart d'entre elles, elle entraîne davantage de conflits, tandis que d'autres familles découvrent, grâce aux contenus numériques, de nouveaux sujets de conversation et centres d'intérêt. La grande majorité des parents se sent en principe à l'aise en matière d'éducation aux médias, mais souhaite un soutien plus fort de la part des plateformes de réseaux sociaux et des écoles, par exemple à travers une meilleure protection des enfants, l'interdiction des téléphones portables en classe ou des règles légales claires, comme un âge minimum pour l'accès aux réseaux sociaux.</p>
+<p>L'argent reste le sujet dominant pour les familles en Suisse\u00a0: près de la moitié des personnes interrogées se fait beaucoup de souci pour les primes d'assurance maladie, suivies de la hausse des prix, des questions de santé et des coûts du logement. Parallèlement, l'usage des médias numériques et des réseaux sociaux continue de gagner en importance et atteint désormais un niveau de pertinence comparable à celui de la politique éducative. C'est surtout en Suisse alémanique que ce thème préoccupe nettement plus de familles qu'en Suisse romande ou au Tessin.</p>
+<p>Au-delà des questions numériques, l'argent demeure le thème dominant du quotidien des familles. Près de la moitié des personnes interrogées se fait beaucoup de souci pour les primes d'assurance maladie, suivies de la hausse des prix, des questions de santé et des coûts du logement. La politique éducative reste elle aussi une préoccupation centrale pour beaucoup, avec de fortes variations régionales. Malgré ces charges, la plupart des familles se disent satisfaites de leur vie familiale actuelle. Le pessimisme prévaut néanmoins pour les années à venir\u00a0: trois quarts s'attendent à une détérioration de la situation générale des familles en Suisse. La situation financière reste tendue pour beaucoup – en particulier pour les familles avec de jeunes enfants, dont le revenu suffit souvent tout juste.</p>
+<p>En matière d'éducation financière, les parents se sentent bien armés. Les mères comme les pères en assument souvent la responsabilité principale, avec le soutien de l'école. Dans le même temps, près de la moitié des familles souhaite davantage d'offres de formation de qualité sur les questions financières pour les enfants et les jeunes.</p>`,
 
   quotes: [
     {
@@ -66,7 +86,7 @@ const data: StudyPage = {
   meta: {
     title: 'Baromètre des familles 2026 - Pax',
     description:
-      "Le Baromètre suisse des familles 2026\u00a0: aperçu de la réalité vécue par les familles en Suisse. Médias numériques, finances et prévoyance.",
+      'Le Baromètre suisse des familles 2026\u00a0: aperçu de la réalité vécue par les familles en Suisse. Médias numériques, finances et prévoyance.',
   },
 };
 

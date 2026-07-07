@@ -12,17 +12,38 @@ const data: StudyPage = {
     'Con il Barometro delle famiglie svizzere, Pro Familia Svizzera e Pax offrono ogni anno approfondimenti solidi sulla realtà di vita delle famiglie in Svizzera e creano una base di dati per le discussioni politiche, sociali ed economiche.',
   introText: `<p>Per la quarta edizione, l'azienda di consulenza e ricerca Empiricon AG ha intervistato 2'036 famiglie provenienti da tutte le regioni del Paese nell'ambito di un'indagine rappresentativa. L'analisi mostra ciò che muove le famiglie, esamina la loro soddisfazione e le loro prospettive e affronta la conciliabilità tra famiglia e lavoro, nonché i temi delle finanze e della previdenza. L'edizione di quest'anno pone inoltre un'attenzione particolare all'uso dei media digitali e alla trasmissione delle competenze finanziarie. I risultati sono stati valutati in modo differenziato in base alla regione linguistica, al numero e all'età dei figli, al tipo di famiglia e al reddito del nucleo familiare.</p>`,
 
-  chartImages: [
-    '/images/grafik-1-it_2026.svg',
-    '/images/grafik-2-it_2026.svg',
-  ],
+  chartImages: ['/images/grafik-1-it_2026.svg', '/images/grafik-2-it_2026.svg'],
 
-  sliderImages: [
-    '/images/slider/slide-1-de.png',
-    '/images/slider/slide-2-de.png',
-    '/images/slider/slide-3-de.png',
-    '/images/slider/slide-4-de.png',
-    '/images/slider/slide-5-de.png',
+  sliderItems: [
+    {
+      icon: '/images/slider/slide-icon-1.png',
+      heading: 'Il denaro resta il tema principale',
+      text: 'Per il 49% delle famiglie intervistate i premi delle casse malati e per il 37% l’aumento dei prezzi rientrano tra i temi che le preoccupano maggiormente.',
+    },
+    {
+      icon: '/images/slider/slide-icon-2.png',
+      heading:
+        'Grande soddisfazione oggi, aspettative pessimistiche per il futuro',
+      text: 'Il 79% degli intervistati dichiara di essere abbastanza o molto soddisfatto della propria vita familiare attuale. Il 76% si aspetta che la situazione generale delle famiglie in Svizzera peggiori, in parte o fortemente, nei prossimi tre anni.',
+    },
+    {
+      icon: '/images/slider/slide-icon-3.png',
+      heading:
+        'Educazione ai media: si chiede il sostegno di piattaforme e scuole',
+      text: 'Per sostenere l’educazione ai media, il 49% delle famiglie desidera una migliore protezione dei bambini da parte dei fornitori di social media e altrettante il divieto dei cellulari a scuola. Il 47% ritiene auspicabile un sostegno generale da parte delle scuole e il 44% restrizioni legali.',
+    },
+    {
+      icon: '/images/slider/slide-icon-4.png',
+      heading:
+        'Madri e padri sono responsabili dell’educazione finanziaria con simile frequenza',
+      text: 'Nel 63% delle famiglie è principalmente la madre e nel 58% il padre a spiegare ai figli come gestire il denaro. Madri e padri possono assumerne contemporaneamente la responsabilità principale.',
+    },
+    {
+      icon: '/images/slider/slide-icon-5.png',
+      heading:
+        'Quasi una famiglia su due desidera più offerte formative sui temi finanziari',
+      text: 'Il 47% delle famiglie afferma che servono più offerte formative di qualità sui temi finanziari per bambini e ragazzi.',
+    },
   ],
 
   summaryHeading:
@@ -50,6 +71,11 @@ const data: StudyPage = {
   ],
 
   pastStudies: [
+    {
+      year: 2025,
+      label: 'Barometro svizzero delle famiglie 2025',
+      url: '/it/2025',
+    },
     {
       year: 2024,
       label: 'Barometro svizzero delle famiglie 2024',

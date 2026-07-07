@@ -12,10 +12,7 @@ const data: StudyPage = {
   introText: `<p>Con il barometro svizzero delle famiglie 2024, Pax e Pro Familia Svizzera pubblicano per la seconda volta i risultati del rapporto di studio. I risultati attuali consentono per la prima volta di effettuare un confronto con lo scorso anno e quindi di tracciare un'evoluzione nel tempo.</p>
 <p>Alcuni risultati del sondaggio di quest'anno sono, ad esempio, ancora più evidenti e rivelano come la difficile situazione finanziaria delle famiglie abbia un impatto crescente su diversi ambiti della vita familiare.</p>`,
 
-  chartImages: [
-    '/images/2024/grafik-1-it.svg',
-    '/images/2024/grafik-2-it.svg',
-  ],
+  chartImages: ['/images/2024/grafik-1-it.svg', '/images/2024/grafik-2-it.svg'],
 
   summaryHeading:
     'La situazione finanziaria delle famiglie in Svizzera si aggrava',
@@ -37,7 +34,7 @@ const data: StudyPage = {
     {
       name: 'Philippe Gnaegi',
       title: 'direttore Pro Familia Svizzera',
-      text: "La tesa situazione finanziaria colpisce sempre più diversi ambiti della vita. Se le famiglie devono aumentare il carico di lavoro, le sfide legate alla cura dei bambini aumentano. La conciliabilità tra lavoro e famiglia diventa più difficile.",
+      text: 'La tesa situazione finanziaria colpisce sempre più diversi ambiti della vita. Se le famiglie devono aumentare il carico di lavoro, le sfide legate alla cura dei bambini aumentano. La conciliabilità tra lavoro e famiglia diventa più difficile.',
       image: '/images/person1.jpg',
       email: 'philippe.gnaegi@profamilia.ch',
     },

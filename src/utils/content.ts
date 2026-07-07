@@ -10,7 +10,7 @@ export interface StudyPage {
   leadText: string;
   introText: string;
   chartImages: string[];
-  sliderImages?: string[];
+  sliderItems?: SliderItem[];
   summaryHeading: string;
   summaryText: string;
   quotes: Quote[];
@@ -18,6 +18,12 @@ export interface StudyPage {
   events?: EventItem[];
   eventsHeading?: string;
   meta: MetaData;
+}
+
+export interface SliderItem {
+  icon: string;
+  heading: string;
+  text: string;
 }
 
 export interface Quote {

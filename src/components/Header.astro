@@ -13,13 +13,19 @@ const yearPath = year ? `/${year}` : '';
 ---
 
 <header class="header" role="banner">
-  <nav class="header__nav container" aria-label="Main navigation">
+  <nav class="header__nav container" aria-label={t(lang, 'aria.mainNav')}>
     <!-- Home link (shown on all pages except home) -->
-    {!isHome && (
-      <a href={`/${lang}/`} class="header__home" aria-label="Home">
-        Familienbarometer
-      </a>
-    )}
+    {
+      !isHome && (
+        <a
+          href={`/${lang}/`}
+          class="header__home"
+          aria-label={t(lang, 'aria.home')}
+        >
+          Familienbarometer
+        </a>
+      )
+    }
 
     <!-- Spacer to push language to the right -->
     <div class="header__spacer"></div>
@@ -40,8 +46,7 @@ const yearPath = year ? `/${year}` : '';
           fill="none"
           aria-hidden="true"
         >
-          <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"
-          ></path>
+          <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"></path>
         </svg>
       </button>
       <ul class="header__dropdown" role="menu">

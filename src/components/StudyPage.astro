@@ -5,6 +5,7 @@ import QuoteSection from './QuoteSection.astro';
 import PastStudies from './PastStudies.astro';
 import type { StudyPage } from '../utils/content';
 import type { Lang } from '../utils/i18n';
+import { t } from '../utils/i18n';
 
 interface Props {
   data: StudyPage;
@@ -62,7 +63,7 @@ const pastStudiesHeading = {
             data.chartImages.map((src, i) => (
               <img
                 src={src}
-                alt={`${data.introHeading} – Grafik ${i + 1}`}
+                alt={`${data.introHeading} – ${t(lang, 'alt.chart')} ${i + 1}`}
                 loading="lazy"
                 class="chart-image"
               />
@@ -71,14 +72,31 @@ const pastStudiesHeading = {
         </div>
       </div>
 
-      {/* Slider section - image slides (only on 2026 homepage) */}
+      {/* Slider section - key findings (only on 2026 homepage) */}
       {
-        data.sliderImages && data.sliderImages.length > 0 && (
-          <div class="image-slider" data-slider>
+        data.sliderItems && data.sliderItems.length > 0 && (
+          <div
+            class="image-slider"
+            data-slider
+            data-slide-label={t(lang, 'aria.slide')}
+          >
             <div class="image-slider__track" data-slider-track>
-              {data.sliderImages.map((src) => (
+              {data.sliderItems.map((item) => (
                 <div class="image-slider__slide">
-                  <img src={src} alt="" loading="lazy" />
+                  <div class="study-slide">
+                    <h3 class="study-slide__heading">{item.heading}</h3>
+                    <div class="study-slide__body">
+                      <img
+                        class="study-slide__icon"
+                        src={item.icon}
+                        alt=""
+                        width="140"
+                        height="140"
+                        loading="lazy"
+                      />
+                      <p class="study-slide__text">{item.text}</p>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -86,7 +104,7 @@ const pastStudiesHeading = {
               <button
                 class="slider__btn slider__prev"
                 data-slider-prev
-                aria-label="Previous"
+                aria-label={t(lang, 'aria.prevSlide')}
               >
                 <svg
                   width="24"
@@ -107,7 +125,7 @@ const pastStudiesHeading = {
               <button
                 class="slider__btn slider__next"
                 data-slider-next
-                aria-label="Next"
+                aria-label={t(lang, 'aria.nextSlide')}
               >
                 <svg
                   width="24"
@@ -142,7 +160,7 @@ const pastStudiesHeading = {
         <div class="section2-illustration">
           <img
             src="/images/family-image-section.svg"
-            alt="Illustration einer Familie"
+            alt={t(lang, 'alt.family')}
             loading="lazy"
           />
         </div>
@@ -156,7 +174,7 @@ const pastStudiesHeading = {
       <section class="section section--light" id="section-3">
         <div class="container">
           <h2 class="heading-2 heading-2--coral">
-            {data.eventsHeading || 'Events'}
+            {data.eventsHeading || t(lang, 'nav.events')}
           </h2>
           <div class="card-grid">
             {data.events.map((event) => (
@@ -274,10 +292,51 @@ const pastStudiesHeading = {
     min-width: 0;
   }
 
-  .image-slider__slide img {
-    width: 100%;
-    height: auto;
+  /* Key-finding slide (text + icon on dark card) */
+  .study-slide {
+    background: var(--color-dark-blue);
+    color: var(--color-white);
     border-radius: 4px;
+    padding: var(--spacing-lg);
+  }
+
+  .study-slide__heading {
+    font-family: var(--font-heading);
+    color: var(--color-coral);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .study-slide__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+
+  .study-slide__icon {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+  }
+
+  .study-slide__text {
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+
+  @media (min-width: 768px) {
+    .study-slide__body {
+      flex-direction: row;
+      align-items: center;
+      gap: var(--spacing-lg);
+    }
+
+    .study-slide__icon {
+      width: 140px;
+      height: 140px;
+    }
   }
 
   .image-slider__controls {
@@ -372,6 +431,7 @@ const pastStudiesHeading = {
     if (!track || !slides || slides.length === 0) return;
 
     let currentIndex = 0;
+    const slideLabel = slider.getAttribute('data-slide-label') || 'Slide';
 
     function buildDots() {
       if (!pagination || !slides) return;
@@ -379,7 +439,7 @@ const pastStudiesHeading = {
       for (let i = 0; i < slides.length; i++) {
         const dot = document.createElement('button');
         dot.className = `slider__dot${i === currentIndex ? ' is-active' : ''}`;
-        dot.setAttribute('aria-label', `Slide ${i + 1}`);
+        dot.setAttribute('aria-label', `${slideLabel} ${i + 1}`);
         dot.addEventListener('click', () => goTo(i));
         pagination.appendChild(dot);
       }
