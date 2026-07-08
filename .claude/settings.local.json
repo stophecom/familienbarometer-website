@@ -39,7 +39,10 @@
       "Bash(python3 -c \"from PIL import Image; im=Image.open\\('/Users/stophe/Projects/familienbarometer-website/public/images/slider/slide-1-de.png'\\).convert\\('RGBA'\\); print\\('tl',im.getpixel\\(\\(5,5\\)\\),'size',im.size\\)\")",
       "Bash(magick slide-icon-1.png -background \"#394454\" -flatten /tmp/check-icon1.png)",
       "Bash(magick slide-icon-4.png -background \"#394454\" -flatten /tmp/check-icon4.png)",
-      "Bash(git checkout *)"
+      "Bash(git checkout *)",
+      "Bash(git stash *)",
+      "Bash(python3 -c \"import json; json.load\\(open\\('.claude/settings.local.json'\\)\\); print\\('valid json'\\)\")",
+      "Bash(git rebase *)"
     ]
   }
 }

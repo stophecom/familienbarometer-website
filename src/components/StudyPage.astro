@@ -15,6 +15,59 @@ interface Props {
 
 const { data, lang, isCurrentYear = false } = Astro.props;
 
+const siteUrl = 'https://familienbarometer.ch';
+const pageUrl = `${siteUrl}/${lang}${isCurrentYear ? '' : `/${data.year}`}`;
+
+// Structured data describing this year's study as a research Report, plus a
+// breadcrumb trail for archive years. Publishers/authors reference the
+// Organization nodes defined site-wide in BaseLayout via their @id.
+const publishers = [
+  { '@id': `${siteUrl}/#pax` },
+  { '@id': `${siteUrl}/#profamilia` },
+];
+
+const structuredData: Record<string, unknown>[] = [
+  {
+    '@type': 'Report',
+    '@id': `${pageUrl}#report`,
+    name: `${data.title} ${data.year}`,
+    headline: data.introHeading,
+    description: data.meta.description,
+    datePublished: String(data.year),
+    inLanguage: `${lang}-CH`,
+    url: pageUrl,
+    isPartOf: { '@id': `${siteUrl}/#website` },
+    author: publishers,
+    publisher: publishers,
+    about: { '@type': 'Thing', name: 'Familien in der Schweiz' },
+    associatedMedia: {
+      '@type': 'MediaObject',
+      encodingFormat: 'application/pdf',
+      contentUrl: `${siteUrl}${encodeURI(data.reportUrl)}`,
+    },
+  },
+];
+
+if (!isCurrentYear) {
+  structuredData.push({
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Familienbarometer',
+        item: `${siteUrl}/${lang}`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: String(data.year),
+        item: pageUrl,
+      },
+    ],
+  });
+}
+
 const quoteHeading = {
   de: 'Verantwortliche',
   fr: 'Responsables',
@@ -34,6 +87,7 @@ const pastStudiesHeading = {
   lang={lang}
   year={isCurrentYear ? undefined : data.year}
   isHome={isCurrentYear}
+  structuredData={structuredData}
 >
   <!-- Hero -->
   <HeroSection

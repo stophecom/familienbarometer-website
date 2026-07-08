@@ -12,6 +12,8 @@ interface Props {
   canonicalPath?: string;
   year?: number;
   isHome?: boolean;
+  /** Page-specific JSON-LD nodes merged into the site-wide @graph. */
+  structuredData?: Record<string, unknown>[];
 }
 
 const {
@@ -21,12 +23,45 @@ const {
   canonicalPath,
   year,
   isHome = false,
+  structuredData = [],
 } = Astro.props;
 
 const siteUrl = 'https://familienbarometer.ch';
 const canonical = canonicalPath
   ? `${siteUrl}${canonicalPath}`
   : `${siteUrl}/${lang}${year ? `/${year}` : ''}`;
+
+// Site-wide structured data: the two publishing organisations and the
+// website itself. Page templates append their own nodes (e.g. a Report per
+// study year) via the `structuredData` prop; everything is emitted as one
+// @graph so nodes can cross-reference each other by @id.
+const jsonLdGraph = [
+  {
+    '@type': 'WebSite',
+    '@id': `${siteUrl}/#website`,
+    name: 'Familienbarometer',
+    alternateName: 'Schweizer Familienbarometer',
+    url: siteUrl,
+    inLanguage: ['de-CH', 'fr-CH', 'it-CH'],
+    publisher: [
+      { '@id': `${siteUrl}/#pax` },
+      { '@id': `${siteUrl}/#profamilia` },
+    ],
+  },
+  {
+    '@type': 'Organization',
+    '@id': `${siteUrl}/#pax`,
+    name: 'Pax, Schweizerische Lebensversicherungs-Gesellschaft AG',
+    url: 'https://www.pax.ch',
+  },
+  {
+    '@type': 'Organization',
+    '@id': `${siteUrl}/#profamilia`,
+    name: 'Pro Familia Schweiz',
+    url: 'https://www.profamilia.ch',
+  },
+  ...structuredData,
+];
 
 const gtmId = 'GTM-5HJ7VCSJ';
 
@@ -114,15 +149,7 @@ const backToTopLabel = {
       type="application/ld+json"
       set:html={JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'WebSite',
-        name: 'Familienbarometer',
-        url: siteUrl,
-        publisher: {
-          '@type': 'Organization',
-          name: 'Pax, Schweizerische Lebensversicherungs-Gesellschaft AG',
-          url: 'https://www.pax.ch',
-        },
-        inLanguage: ['de-CH', 'fr-CH', 'it-CH'],
+        '@graph': jsonLdGraph,
       })}
     />
 
