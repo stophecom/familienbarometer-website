@@ -410,7 +410,7 @@
 }
 
 .e27 .lineart--draw.is-drawn .lineart__path {
-  transition: stroke-dashoffset var(--draw-dur, 2.6s)
+  transition: stroke-dashoffset var(--draw-dur, 3.6s)
     cubic-bezier(0.6, 0, 0.3, 1);
   stroke-dashoffset: 0;
 }
@@ -533,8 +533,8 @@
 .e27 .intro27__illo {
   width: auto;
   height: auto;
-  max-height: 360px;
-  max-width: 68%;
+  max-height: 440px;
+  max-width: 84%;
   color: var(--e27-navy);
 }
 
