@@ -1,6 +1,8 @@
 ---
+import Edition2027 from '../../components/edition2027/Edition2027.astro';
 import StudyPageComponent from '../../components/StudyPage.astro';
-import { getStudyPage, currentYear } from '../../utils/content';
+import { getEdition2027 } from '../../utils/edition2027';
+import { getStudyPage } from '../../utils/content';
 import type { Lang } from '../../utils/i18n';
 import { languages } from '../../utils/i18n';
 
@@ -9,11 +11,22 @@ export function getStaticPaths() {
 }
 
 const lang = Astro.params.lang as Lang;
-const data = await getStudyPage(lang, currentYear);
 
-if (!data) {
+// Current edition (2027) uses the redesigned experience.
+const edition = await getEdition2027(lang);
+
+// Until a language is translated (FR/IT), fall back to the latest archive
+// study rendered with the classic template so the locale stays functional.
+const fallback = edition ? null : await getStudyPage(lang, 2026);
+
+if (!edition && !fallback) {
   return Astro.redirect('/de/', 302);
 }
 ---
 
-<StudyPageComponent data={data} lang={lang} isCurrentYear />
+{edition && <Edition2027 data={edition} lang={lang} />}
+{
+  !edition && fallback && (
+    <StudyPageComponent data={fallback} lang={lang} isCurrentYear />
+  )
+}

@@ -1,17 +1,16 @@
 ---
 import StudyPageComponent from '../../components/StudyPage.astro';
-import { getStudyPage, studyYears, currentYear } from '../../utils/content';
+import { getStudyPage, archiveYears } from '../../utils/content';
 import type { Lang } from '../../utils/i18n';
 import { languages } from '../../utils/i18n';
 
 export function getStaticPaths() {
   const paths = [];
   for (const lang of Object.keys(languages)) {
-    // Archive years only (not current year — that's the index page)
-    for (const year of studyYears) {
-      if (year !== currentYear) {
-        paths.push({ params: { lang, year: String(year) } });
-      }
+    // Archive years only (2024–2026). The current year (2027) is the
+    // redesigned index page and uses its own template/data model.
+    for (const year of archiveYears) {
+      paths.push({ params: { lang, year: String(year) } });
     }
   }
   return paths;

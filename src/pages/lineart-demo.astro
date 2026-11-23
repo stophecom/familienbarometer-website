@@ -1,0 +1,197 @@
+---
+import '../styles/edition2027.css';
+import LineArt from '../components/edition2027/LineArt.astro';
+import { lineArt } from '../utils/lineart';
+import type { LineArtName } from '../utils/lineart';
+
+const names = Object.keys(lineArt) as LineArtName[];
+
+const usage: Record<string, string> = {
+  cradle: 'Hero & Fazit',
+  children: 'Kennzahlen',
+  kneelbaby: 'Zufriedenheit & Perspektiven',
+  umbrella: 'Finanzen & Vorsorge',
+  media: 'Digitale Medien & Erziehung',
+  family: 'Intro / Methodik',
+  motherbaby: 'Mutter & Baby',
+  dancing: 'Tanzende Familie',
+  standing: 'Familie stehend',
+  embrace: 'Umarmung',
+  groupembrace: 'Familie nah',
+  childblocks: 'Kind beim Spielen',
+  liftchild: 'Kind hochheben',
+  cupbook: 'Pause mit Tasse & Buch',
+  coins: 'Vorsorge / Sparen',
+  thinking: 'Nachdenken',
+  phonebubbles: 'Handy & Austausch',
+  swingchild: 'Toben mit Kind',
+  clocklaptop: 'Arbeit & Zeit',
+  piggybank: 'Sparschwein',
+  sittingphone: 'Medienkonsum (Kind)',
+  laptop: 'Lernen am Laptop',
+};
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Line-Art Bibliothek – Familienbarometer 2027</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Roboto:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="e27">
+      <section class="block">
+        <div class="wrap">
+          <span class="eyebrow" style="color:var(--e27-coral)">
+            Familienbarometer 2027
+          </span>
+          <h1 class="demo-title">Line-Art Bibliothek</h1>
+          <p class="demo-lead">
+            Alle aus der Broschüre vektorisierten Liniengrafiken (Centerline).
+            Jede zeichnet sich beim Sichtbarwerden live von einem Linienende
+            her. Klicke «Nochmal zeichnen», um die Animation zu wiederholen.
+          </p>
+
+          <div class="demo-grid">
+            {
+              names.map((n) => (
+                <figure class="demo-card">
+                  <div class="demo-card__art">
+                    <LineArt name={n} draw label={`Illustration ${n}`} />
+                  </div>
+                  <figcaption class="demo-card__meta">
+                    <div>
+                      <span class="demo-card__name">{n}</span>
+                      <span class="demo-card__usage">{usage[n] ?? '—'}</span>
+                    </div>
+                    <button
+                      type="button"
+                      class="btn27 btn27--outline"
+                      data-replay
+                    >
+                      Nochmal zeichnen
+                    </button>
+                  </figcaption>
+                </figure>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <style>
+      .e27 .demo-title {
+        font-family: var(--e27-font-display);
+        font-size: var(--e27-step-4);
+        color: var(--e27-navy);
+        margin: 0.6rem 0 0.8rem;
+      }
+      .e27 .demo-lead {
+        max-width: 60ch;
+        color: var(--e27-muted);
+        margin-bottom: 2.6rem;
+      }
+      .e27 .demo-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.4rem;
+      }
+      @media (min-width: 640px) {
+        .e27 .demo-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (min-width: 1000px) {
+        .e27 .demo-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      .e27 .demo-card {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        border: 1px solid var(--e27-line);
+        border-radius: var(--e27-radius);
+        background: var(--e27-surface);
+        box-shadow: var(--e27-shadow);
+        overflow: hidden;
+      }
+      .e27 .demo-card__art {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 260px;
+        padding: 1.5rem;
+        background: var(--e27-paper);
+        color: var(--e27-navy);
+      }
+      .e27 .demo-card__art .lineart {
+        max-height: 240px;
+        width: auto;
+        max-width: 100%;
+      }
+      .e27 .demo-card__meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1rem 1.2rem;
+      }
+      .e27 .demo-card__name {
+        display: block;
+        font-family: var(--e27-font-body);
+        font-weight: 800;
+        color: var(--e27-navy);
+      }
+      .e27 .demo-card__usage {
+        display: block;
+        font-size: var(--e27-step--1);
+        color: var(--e27-muted);
+      }
+      .e27 .demo-card__meta .btn27 {
+        padding: 0.5rem 0.9rem;
+        font-size: var(--e27-step--1);
+        flex-shrink: 0;
+      }
+    </style>
+
+    <script>
+      const io = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-drawn');
+              obs.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.25 },
+      );
+      document
+        .querySelectorAll('.lineart--draw')
+        .forEach((el) => io.observe(el));
+
+      document.querySelectorAll('[data-replay]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const card = btn.closest('.demo-card');
+          const art = card?.querySelector(
+            '.lineart--draw',
+          ) as HTMLElement | null;
+          if (!art) return;
+          art.classList.remove('is-drawn');
+          void art.offsetWidth; // force reflow so the transition restarts
+          requestAnimationFrame(() => art.classList.add('is-drawn'));
+        });
+      });
+    </script>
+  </body>
+</html>

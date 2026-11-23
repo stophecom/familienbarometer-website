@@ -1,0 +1,619 @@
+---
+import '../../styles/edition2027.css';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero2027 from './Hero2027.astro';
+import TrendChart from './TrendChart.astro';
+import LineArt from './LineArt.astro';
+import { icon } from '../../utils/icons';
+import type { Edition2027Data } from '../../utils/edition2027';
+import type { Lang } from '../../utils/i18n';
+import { t } from '../../utils/i18n';
+
+interface Props {
+  data: Edition2027Data;
+  lang: Lang;
+}
+
+const { data, lang } = Astro.props;
+const siteUrl = 'https://familienbarometer.ch';
+const pageUrl = `${siteUrl}/${lang}`;
+
+// Lookup of every trend chart (flagship + section charts) by id, so a stat
+// tile can reference and reveal the relevant graph when opened.
+const chartById = Object.fromEntries(
+  [data.flagship, ...data.sections.map((s) => s.chart)].map((c) => [c.id, c]),
+);
+
+const structuredData: Record<string, unknown>[] = [
+  {
+    '@type': 'Report',
+    '@id': `${pageUrl}#report-2027`,
+    name: `${data.title} ${data.year}`,
+    headline: data.introHeading,
+    description: data.meta.description,
+    datePublished: String(data.year),
+    inLanguage: `${lang}-CH`,
+    url: pageUrl,
+    isPartOf: { '@id': `${siteUrl}/#website` },
+    author: [{ '@id': `${siteUrl}/#pax` }, { '@id': `${siteUrl}/#profamilia` }],
+    publisher: [
+      { '@id': `${siteUrl}/#pax` },
+      { '@id': `${siteUrl}/#profamilia` },
+    ],
+    about: { '@type': 'Thing', name: 'Familien in der Schweiz' },
+    temporalCoverage: `${data.years[0]}/${data.years[data.years.length - 1]}`,
+  },
+];
+---
+
+<BaseLayout
+  title={data.meta.title}
+  description={data.meta.description}
+  lang={lang}
+  isHome
+  structuredData={structuredData}
+>
+  <div class="e27">
+    <!-- HERO -->
+    <Hero2027
+      data={data}
+      reportLabel={t(lang, 'header.report')}
+      mediaLabel={t(lang, 'header.mediaPackage')}
+    />
+
+    <!-- INTRO -->
+    <section class="intro27 block" id="intro">
+      <div class="wrap">
+        <div class="intro27__grid">
+          <div class="intro27__art" data-reveal>
+            <LineArt name="family" draw className="intro27__illo" />
+          </div>
+          <div data-reveal style="--reveal-delay:120ms">
+            <span class="eyebrow">
+              <Fragment set:html={icon('info', { size: 18 })} />
+              {data.previewBadge}
+            </span>
+            <h2>{data.introHeading}</h2>
+            <p class="intro27__lead">{data.introLead}</p>
+            <button
+              type="button"
+              class="btn27 btn27--outline intro27__more"
+              data-dialog-open="intro-methodik"
+              aria-haspopup="dialog"
+            >
+              <Fragment set:html={icon('book-open', { size: 20 })} />
+              Methodik & Stichprobe
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <dialog
+        class="e27-dialog"
+        id="intro-methodik"
+        aria-labelledby="intro-methodik-title"
+      >
+        <div class="e27-dialog__panel">
+          <button
+            type="button"
+            class="e27-dialog__close"
+            data-dialog-close
+            aria-label="Dialog schliessen"
+          >
+            <Fragment set:html={icon('x', { size: 22 })} />
+          </button>
+          <span class="eyebrow">
+            <Fragment set:html={icon('info', { size: 18 })} />
+            Methodik & Stichprobe
+          </span>
+          <h3 id="intro-methodik-title" class="e27-dialog__title">
+            Wie das Familienbarometer erhoben wird
+          </h3>
+          <div class="e27-dialog__body" set:html={data.introBody} />
+        </div>
+      </dialog>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats27 block" id="erkenntnisse">
+      <div class="wrap">
+        <div class="stats27__intro">
+          <div class="stats27__head" data-reveal>
+            <span class="eyebrow">
+              <Fragment set:html={icon('trending-up', { size: 18 })} />
+              {data.year}
+            </span>
+            <h2>{data.statsHeading}</h2>
+            <p>{data.statsLead}</p>
+          </div>
+          <div
+            class="stats27__illo-wrap"
+            data-reveal
+            style="--reveal-delay:120ms"
+            aria-hidden="true"
+          >
+            <LineArt name="children" draw className="stats27__illo" />
+          </div>
+        </div>
+        <div class="stat-grid">
+          {
+            data.stats.map((s, i) => {
+              const chart = s.chartId ? chartById[s.chartId] : null;
+              return (
+                <article
+                  class="stat-tile"
+                  data-stat-card={String(i)}
+                  style={`view-transition-name:stat-card-${i}`}
+                >
+                  <button
+                    class="stat-tile__summary"
+                    type="button"
+                    data-reveal
+                    style={`--reveal-delay:${i * 90}ms`}
+                    {...(chart
+                      ? {
+                          'data-stat-trigger': String(i),
+                          'aria-expanded': 'false',
+                          'aria-controls': `stat-detail-${i}`,
+                        }
+                      : { disabled: true })}
+                  >
+                    <span class="stat-tile__icon" set:html={icon(s.icon)} />
+                    <div
+                      class="stat-tile__value"
+                      data-count={s.value}
+                      data-suffix={s.suffix ?? ''}
+                    >
+                      0{s.suffix ?? ''}
+                    </div>
+                    <h3 class="stat-tile__label">{s.label}</h3>
+                    <p class="stat-tile__desc">{s.description}</p>
+                    {chart && (
+                      <span class="stat-tile__cue" aria-hidden="true">
+                        <Fragment
+                          set:html={icon('chevron-down', { size: 16 })}
+                        />
+                        Verlauf ansehen
+                      </span>
+                    )}
+                  </button>
+
+                  {chart && (
+                    <div
+                      class="stat-tile__detail"
+                      id={`stat-detail-${i}`}
+                      data-stat-detail={String(i)}
+                      hidden
+                    >
+                      <div class="stat-detail__head">
+                        <p class="stat-detail__eyebrow">
+                          <span class="stat-detail__badge">{`${s.value}${s.suffix ?? ''}`}</span>
+                          {s.label}
+                        </p>
+                        <button
+                          type="button"
+                          class="stat-detail__close"
+                          data-stat-close
+                        >
+                          <Fragment set:html={icon('x', { size: 18 })} />
+                          Minimieren
+                        </button>
+                      </div>
+                      <TrendChart
+                        chart={chart}
+                        years={data.years}
+                        variant="onlight"
+                      />
+                      {s.detail && <p class="stat-detail__note">{s.detail}</p>}
+                    </div>
+                  )}
+                </article>
+              );
+            })
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- FLAGSHIP TREND -->
+    <section class="trend27 block" id="trend">
+      <div class="wrap">
+        <div class="trend27__head" data-reveal>
+          <span class="eyebrow">
+            <Fragment set:html={icon('trending-up', { size: 18 })} />
+            {`${data.years[0]} – ${data.years[data.years.length - 1]}`}
+          </span>
+          <h2>{data.trendHeading}</h2>
+          <p>{data.trendLead}</p>
+        </div>
+        <TrendChart chart={data.flagship} years={data.years} variant="light" />
+      </div>
+    </section>
+
+    <!-- THEME SECTIONS -->
+    {
+      data.sections.map((sec, i) => (
+        <section
+          class={`theme27 block ${i % 2 === 1 ? 'theme27--flip' : ''}`}
+          id={sec.id}
+        >
+          <div class="wrap">
+            <div class="theme27__grid">
+              <div class="theme27__text" data-reveal>
+                {sec.illo && (
+                  <LineArt name={sec.illo} draw className="theme27__illo" />
+                )}
+                <span class="eyebrow">
+                  <Fragment set:html={icon(sec.chart.icon, { size: 18 })} />
+                  {sec.eyebrow}
+                </span>
+                <h2>{sec.heading}</h2>
+                <p class="theme27__lead">{sec.lead}</p>
+                <p class="theme27__body">{sec.body}</p>
+              </div>
+              <div class="theme27__chart">
+                <TrendChart
+                  chart={sec.chart}
+                  years={data.years}
+                  variant="onlight"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      ))
+    }
+
+    <!-- SUMMARY -->
+    <section class="summary27 block" id="fazit">
+      <div class="wrap">
+        <div class="summary27__grid">
+          <div data-reveal>
+            <span class="eyebrow" style="color:#fff">
+              <Fragment set:html={icon('heart', { size: 18 })} />
+              Fazit
+            </span>
+            <h2>{data.summaryHeading}</h2>
+            <div class="summary27__text" set:html={data.summaryText} />
+          </div>
+          <div class="summary27__art" data-reveal style="--reveal-delay:120ms">
+            <LineArt
+              name="cradle"
+              draw
+              duration={3}
+              label={t(lang, 'alt.family')}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUOTES -->
+    <section class="quotes27 block" id="verantwortliche">
+      <div class="wrap">
+        <h2 data-reveal>{data.quotesHeading}</h2>
+        <div class="quote-grid">
+          {
+            data.quotes.map((q, i) => (
+              <figure
+                class="quote-card"
+                data-reveal
+                style={`--reveal-delay:${i * 120}ms`}
+              >
+                <span class="quote-card__mark" aria-hidden="true">
+                  &#8220;
+                </span>
+                <blockquote class="quote-card__text">{q.text}</blockquote>
+                <figcaption class="quote-card__person">
+                  <img
+                    class="quote-card__img"
+                    src={q.image}
+                    alt={q.name}
+                    loading="lazy"
+                    width="58"
+                    height="58"
+                  />
+                  <div>
+                    <div class="quote-card__name">{q.name}</div>
+                    <div class="quote-card__title">{q.title}</div>
+                    {q.email && (
+                      <a class="quote-card__mail" href={`mailto:${q.email}`}>
+                        {q.email}
+                      </a>
+                    )}
+                  </div>
+                </figcaption>
+              </figure>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHIVE -->
+    <section class="archive27 block" id="archiv">
+      <div class="wrap">
+        <div class="archive27__head" data-reveal>
+          <span class="eyebrow">
+            <Fragment set:html={icon('package', { size: 18 })} />
+            Archiv
+          </span>
+          <h2>{data.archiveHeading}</h2>
+          <p>{data.archiveLead}</p>
+        </div>
+        <div class="archive-grid">
+          {
+            data.archive.map((a, i) => (
+              <a
+                class="archive-card"
+                href={a.url}
+                data-reveal
+                style={`--reveal-delay:${i * 90}ms`}
+              >
+                <div>
+                  <div class="archive-card__year">{a.year}</div>
+                  <div class="archive-card__label">{a.label}</div>
+                  <div class="archive-card__blurb">{a.blurb}</div>
+                </div>
+                <span class="archive-card__cta">
+                  {t(lang, 'nav.pastStudies')}
+                  <Fragment set:html={icon('arrow-right', { size: 16 })} />
+                </span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<script>
+  // ---- Scroll reveal ----
+  const reveal = () => {
+    const els = document.querySelectorAll('.e27 [data-reveal]');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach((el) => el.classList.add('is-revealed'));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -8% 0px' },
+    );
+    els.forEach((el) => io.observe(el));
+  };
+
+  // ---- Self-drawing line charts: revealed by a one-time trigger ----
+  // Scrolling into view *triggers* a time-based draw; it does not drive it.
+  const drawCharts = () => {
+    const charts = Array.from(
+      document.querySelectorAll('.e27 [data-linechart]'),
+    ) as HTMLElement[];
+    if (charts.length === 0) return;
+
+    if (!('IntersectionObserver' in window)) {
+      charts.forEach((c) => c.classList.add('is-drawn'));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-drawn');
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.35 },
+    );
+    charts.forEach((c) => io.observe(c));
+  };
+
+  // ---- Count-up stat tiles ----
+  const countUp = () => {
+    const tiles = document.querySelectorAll(
+      '.e27 [data-count]',
+    ) as NodeListOf<HTMLElement>;
+    const prefersReduced = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+
+    const run = (el: HTMLElement) => {
+      const target = parseInt(el.dataset.count || '0', 10);
+      const suffix = el.dataset.suffix || '';
+      if (prefersReduced) {
+        el.textContent = `${target}${suffix}`;
+        return;
+      }
+      const dur = 1100;
+      const t0 = performance.now();
+      const tick = (now: number) => {
+        const p = Math.min(1, (now - t0) / dur);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = `${Math.round(target * eased)}${suffix}`;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+
+    if (!('IntersectionObserver' in window)) {
+      tiles.forEach(run);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            run(e.target as HTMLElement);
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.6 },
+    );
+    tiles.forEach((el) => io.observe(el));
+  };
+
+  // ---- Self-drawing line illustrations (live "pen" draw) ----
+  const drawLines = () => {
+    const arts = document.querySelectorAll('.e27 .lineart--draw');
+    if (arts.length === 0) return;
+    if (!('IntersectionObserver' in window)) {
+      arts.forEach((a) => a.classList.add('is-drawn'));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-drawn');
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.25 },
+    );
+    arts.forEach((a) => io.observe(a));
+  };
+
+  // ---- Dialog / popup ----
+  const dialogs = () => {
+    document.querySelectorAll('[data-dialog-open]').forEach((btn) => {
+      const id = btn.getAttribute('data-dialog-open');
+      const dlg = id
+        ? (document.getElementById(id) as HTMLDialogElement | null)
+        : null;
+      if (!dlg) return;
+      btn.addEventListener('click', () => dlg.showModal());
+    });
+    document.querySelectorAll('dialog.e27-dialog').forEach((node) => {
+      const dlg = node as HTMLDialogElement;
+      dlg
+        .querySelectorAll('[data-dialog-close]')
+        .forEach((b) => b.addEventListener('click', () => dlg.close()));
+      // click on the backdrop (the dialog element itself) closes it
+      dlg.addEventListener('click', (e) => {
+        if (e.target === dlg) dlg.close();
+      });
+    });
+  };
+
+  // ---- Interactive stat cards: open the relevant chart (View Transition) ----
+  const statCards = () => {
+    const triggers = Array.from(
+      document.querySelectorAll('.e27 [data-stat-trigger]'),
+    ) as HTMLElement[];
+    const details = Array.from(
+      document.querySelectorAll('.e27 [data-stat-detail]'),
+    ) as HTMLElement[];
+    const cards = Array.from(
+      document.querySelectorAll('.e27 [data-stat-card]'),
+    ) as HTMLElement[];
+    if (triggers.length === 0 || details.length === 0) return;
+
+    const prefersReduced = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+    const startViewTransition = (
+      document as Document & {
+        startViewTransition?: (_cb: () => void) => void;
+      }
+    ).startViewTransition;
+
+    let openIndex: number | null = null;
+
+    const drawDetailChart = (panel: HTMLElement) => {
+      const chart = panel.querySelector('[data-linechart]');
+      if (!chart) return;
+      // reset, then re-add on a later frame so the line redraws on each open
+      chart.classList.remove('is-drawn');
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => chart.classList.add('is-drawn')),
+      );
+    };
+
+    const render = (next: number | null) => {
+      cards.forEach((card) => {
+        card.classList.toggle(
+          'is-active',
+          String(next) === card.getAttribute('data-stat-card'),
+        );
+      });
+      details.forEach((d) => {
+        d.hidden = String(next) !== d.getAttribute('data-stat-detail');
+      });
+      triggers.forEach((t) => {
+        t.setAttribute(
+          'aria-expanded',
+          String(next) === t.getAttribute('data-stat-trigger')
+            ? 'true'
+            : 'false',
+        );
+      });
+      openIndex = next;
+    };
+
+    const setOpen = (index: number) => {
+      const target = index === openIndex ? null : index;
+      const run = () => render(target);
+      if (!prefersReduced && typeof startViewTransition === 'function') {
+        startViewTransition.call(document, run);
+      } else {
+        run();
+      }
+      if (target !== null) {
+        const panel = details.find(
+          (d) => d.getAttribute('data-stat-detail') === String(target),
+        );
+        const card = cards.find(
+          (c) => c.getAttribute('data-stat-card') === String(target),
+        );
+        if (panel) drawDetailChart(panel);
+        if (card) {
+          window.setTimeout(
+            () =>
+              card.scrollIntoView({
+                behavior: prefersReduced ? 'auto' : 'smooth',
+                block: 'nearest',
+              }),
+            prefersReduced ? 0 : 160,
+          );
+        }
+      }
+    };
+
+    triggers.forEach((trigger) => {
+      const index = Number(trigger.getAttribute('data-stat-trigger'));
+      trigger.addEventListener('click', () => setOpen(index));
+    });
+    details.forEach((d) => {
+      d.querySelector('[data-stat-close]')?.addEventListener('click', () => {
+        if (openIndex !== null) setOpen(openIndex);
+      });
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && openIndex !== null) setOpen(openIndex);
+    });
+  };
+
+  const init = () => {
+    reveal();
+    drawCharts();
+    drawLines();
+    countUp();
+    dialogs();
+    statCards();
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+</script>

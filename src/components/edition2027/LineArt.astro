@@ -1,0 +1,44 @@
+---
+/*
+ * Generische Linien-Illustration aus der Broschüren-Bildwelt
+ * (Marken-Asset von Pax / Pro Familia Schweiz), centerline-vektorisiert.
+ * Zeichnet sich beim Sichtbarwerden "live" von einem Linienende her
+ * (stroke-dashoffset). Farbe folgt `currentColor`.
+ */
+import { lineArt } from '../../utils/lineart';
+import type { LineArtName } from '../../utils/lineart';
+
+interface Props {
+  name: LineArtName;
+  className?: string;
+  draw?: boolean;
+  /** Accessible label; omit for a purely decorative illustration. */
+  label?: string;
+  /** Draw duration in seconds. */
+  duration?: number;
+}
+
+const { name, className = '', draw = true, label, duration } = Astro.props;
+const art = lineArt[name];
+---
+
+<svg
+  class={`lineart ${draw ? 'lineart--draw' : ''} ${className}`}
+  viewBox={art.viewBox}
+  fill="none"
+  role={label ? 'img' : 'presentation'}
+  aria-label={label}
+  aria-hidden={label ? undefined : 'true'}
+  style={duration ? `--draw-dur:${duration}s` : undefined}
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    class="lineart__path"
+    d={art.d}
+    stroke="currentColor"
+    stroke-width={art.strokeWidth}
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    vector-effect="non-scaling-stroke"
+    pathLength="1"></path>
+</svg>

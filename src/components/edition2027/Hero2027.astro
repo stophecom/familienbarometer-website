@@ -1,0 +1,62 @@
+---
+import { icon } from '../../utils/icons';
+import LineArt from './LineArt.astro';
+import type { Edition2027Data } from '../../utils/edition2027';
+
+interface Props {
+  data: Edition2027Data;
+  reportLabel: string;
+  mediaLabel: string;
+}
+
+const { data, reportLabel, mediaLabel } = Astro.props;
+---
+
+<section class="hero27">
+  <div class="hero27__bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero27__inner">
+      <div data-reveal>
+        <p class="eyebrow hero27__kicker">Ausgabe {data.year}</p>
+        <h1 class="hero27__title">
+          <span class="t-coral">Schweizer</span><br />Familien<br /><span
+            class="t-italic">barometer</span
+          >
+        </h1>
+        <p class="hero27__lede">{data.heroLede}</p>
+        <div class="hero27__actions">
+          <a
+            href={data.reportUrl}
+            class="btn27 btn27--primary"
+            target="_blank"
+            rel="noopener"
+          >
+            <Fragment set:html={icon('download', { size: 20 })} />
+            {reportLabel}
+          </a>
+          {
+            data.mediaPackageUrl && (
+              <a
+                href={data.mediaPackageUrl}
+                class="btn27 btn27--ghost"
+                target="_blank"
+                rel="noopener"
+              >
+                <Fragment set:html={icon('package', { size: 20 })} />
+                {mediaLabel}
+              </a>
+            )
+          }
+        </div>
+      </div>
+
+      <div class="hero27__art" aria-hidden="true">
+        <LineArt name="swingchild" draw duration={3} />
+      </div>
+    </div>
+    <p class="hero27__scrollcue">
+      <Fragment set:html={icon('arrow-down', { size: 18 })} />
+      {data.scrollCue}
+    </p>
+  </div>
+</section>

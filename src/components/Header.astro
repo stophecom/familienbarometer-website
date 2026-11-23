@@ -1,6 +1,7 @@
 ---
 import type { Lang } from '../utils/i18n';
 import { languages, t } from '../utils/i18n';
+import { archiveYears } from '../utils/content';
 
 interface Props {
   lang: Lang;
@@ -27,11 +28,47 @@ const yearPath = year ? `/${year}` : '';
       )
     }
 
-    <!-- Spacer to push language to the right -->
+    <!-- Spacer to push menus to the right -->
     <div class="header__spacer"></div>
 
+    <!-- Archive Dropdown -->
+    <div class="header__menu">
+      <button
+        class="header__dropdown-trigger"
+        aria-expanded="false"
+        aria-haspopup="true"
+      >
+        {t(lang, 'nav.archive')}
+        <svg
+          class="header__chevron"
+          width="12"
+          height="8"
+          viewBox="0 0 12 8"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"></path>
+        </svg>
+      </button>
+      <ul class="header__dropdown" role="menu">
+        {
+          archiveYears.map((y) => (
+            <li role="none">
+              <a
+                role="menuitem"
+                href={`/${lang}/${y}`}
+                aria-current={year === y ? 'page' : undefined}
+              >
+                {`Familienbarometer ${y}`}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
     <!-- Language Dropdown -->
-    <div class="header__lang">
+    <div class="header__menu header__lang">
       <button
         class="header__dropdown-trigger"
         aria-expanded="false"
@@ -53,8 +90,9 @@ const yearPath = year ? `/${year}` : '';
         {
           (Object.entries(languages) as [Lang, string][]).map(
             ([code, label]) => (
-              <li role="menuitem">
+              <li role="none">
                 <a
+                  role="menuitem"
                   href={`/${code}${yearPath}`}
                   aria-current={code === lang ? 'page' : undefined}
                 >
@@ -82,7 +120,7 @@ const yearPath = year ? `/${year}` : '';
   .header__nav {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
     padding-top: 1.5rem;
   }
 
@@ -103,8 +141,8 @@ const yearPath = year ? `/${year}` : '';
     flex: 1;
   }
 
-  /* Language Dropdown */
-  .header__lang {
+  /* Dropdown menus (archive + language) */
+  .header__menu {
     position: relative;
   }
 
@@ -119,7 +157,14 @@ const yearPath = year ? `/${year}` : '';
     font-size: 0.9375rem;
     font-weight: 600;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 0.5rem 0.65rem;
+    border-radius: 999px;
+    transition: background-color 0.2s;
+  }
+
+  .header__dropdown-trigger:hover,
+  .header__dropdown-trigger[aria-expanded='true'] {
+    background-color: rgba(255, 255, 255, 0.12);
   }
 
   .header__chevron {
@@ -133,12 +178,15 @@ const yearPath = year ? `/${year}` : '';
   .header__dropdown {
     display: none;
     position: absolute;
-    top: 100%;
+    top: calc(100% + 0.35rem);
     right: 0;
     background: var(--color-dark-blue);
-    min-width: 160px;
+    min-width: 200px;
     padding: 0.5rem 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+    list-style: none;
+    margin: 0;
   }
 
   .header__dropdown.is-open {
@@ -147,35 +195,60 @@ const yearPath = year ? `/${year}` : '';
 
   .header__dropdown a {
     display: block;
-    padding: 0.5rem 1rem;
+    padding: 0.55rem 1rem;
     font-size: 0.9375rem;
+    color: var(--color-white);
+    text-decoration: none;
+    white-space: nowrap;
     transition: background-color 0.2s;
   }
 
   .header__dropdown a:hover,
   .header__dropdown a[aria-current='page'] {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .header__dropdown a:focus-visible {
+    outline: 2px solid var(--color-coral);
+    outline-offset: -2px;
   }
 </style>
 
 <script>
-  // Language dropdown toggle
-  document.querySelectorAll('.header__dropdown-trigger').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!expanded));
-      btn.nextElementSibling?.classList.toggle('is-open');
+  const menus = Array.from(document.querySelectorAll('.header__menu'));
+
+  function closeAll(except?: Element) {
+    menus.forEach((menu) => {
+      if (menu === except) return;
+      menu.querySelector('.header__dropdown')?.classList.remove('is-open');
+      menu
+        .querySelector('.header__dropdown-trigger')
+        ?.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  menus.forEach((menu) => {
+    const trigger = menu.querySelector('.header__dropdown-trigger');
+    const dropdown = menu.querySelector('.header__dropdown');
+    if (!trigger || !dropdown) return;
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const willOpen = !dropdown.classList.contains('is-open');
+      closeAll(menu);
+      dropdown.classList.toggle('is-open', willOpen);
+      trigger.setAttribute('aria-expanded', String(willOpen));
     });
   });
 
-  // Close dropdown when clicking outside
+  // Close on outside click
   document.addEventListener('click', (e) => {
     const target = e.target as HTMLElement;
-    if (!target.closest('.header__lang')) {
-      document.querySelectorAll('.header__dropdown').forEach((d) => {
-        d.classList.remove('is-open');
-        d.previousElementSibling?.setAttribute('aria-expanded', 'false');
-      });
-    }
+    if (!target.closest('.header__menu')) closeAll();
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeAll();
   });
 </script>

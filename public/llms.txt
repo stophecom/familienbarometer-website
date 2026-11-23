@@ -1,0 +1,27 @@
+# Schweizer Familienbarometer
+
+> Jährliche, repräsentative Studie von Pro Familia Schweiz und Pax zur Lebensrealität von Familien in der Schweiz. Seit 2023 erhoben durch Empiricon AG (über 2'000 befragte Familien pro Jahr). Themen: Finanzen & Vorsorge, Zufriedenheit & Zukunftserwartungen, Vereinbarkeit von Familie und Beruf, digitale Medien und Erziehung. Mehrsprachig (DE/FR/IT).
+
+Hinweis: Die Ausgabe 2027 ist aktuell eine Design-Vorschau; die Werte 2023–2026 stammen aus den bisherigen Erhebungen.
+
+## Ausgaben
+- [Familienbarometer 2027 (Vorschau)](https://familienbarometer.ch/de): Fünf-Jahres-Trend mit interaktiven, animierten Liniengrafiken.
+- [Familienbarometer 2026](https://familienbarometer.ch/de/2026): Digitale Medien, Finanzen und Vorsorge.
+- [Familienbarometer 2025](https://familienbarometer.ch/de/2025): Vereinbarkeit von Familie und Beruf.
+- [Familienbarometer 2024](https://familienbarometer.ch/de/2024): Was Familien in der Schweiz bewegt.
+
+## Kernbefunde im Zeitverlauf (2023–2026, Auswahl)
+- Krankenkassenprämien als stärkstes Thema: 34% (2023) → 47% (2024) → 45% (2025) → 49% (2026).
+- Inflation/steigende Preise: 22% → 37% → 39% → 37%.
+- Umgang mit Medien/Social Media (steigend): 16% → 18% → 20% → 22%.
+- Zufriedenheit mit dem Familienleben (eher/sehr zufrieden): rund 76–80% stabil.
+- Erwartung einer Verschlechterung der allgemeinen Lage für Familien (nächste 3 Jahre): mehrheitlich 68–79%.
+
+## Herausgeber
+- Pro Familia Schweiz – Dachverband der Familienorganisationen: https://www.profamilia.ch
+- Pax – Schweizerische Lebensversicherungs-Gesellschaft AG: https://www.pax.ch
+
+## Sprachen
+- Deutsch: https://familienbarometer.ch/de
+- Français: https://familienbarometer.ch/fr
+- Italiano: https://familienbarometer.ch/it

@@ -1,0 +1,174 @@
+---
+import type { TrendChart } from '../../utils/edition2027';
+import { icon } from '../../utils/icons';
+
+interface Props {
+  chart: TrendChart;
+  years: number[];
+  /** 'light' card on dark bg, or 'onlight' card with border on light bg. */
+  variant?: 'light' | 'onlight';
+}
+
+const { chart, years, variant = 'light' } = Astro.props;
+
+const colorVar: Record<string, string> = {
+  coral: 'var(--e27-coral)',
+  navy: 'var(--e27-navy)',
+  teal: 'var(--e27-teal)',
+  gold: 'var(--e27-gold)',
+  slate: 'var(--e27-slate)',
+};
+
+// --- geometry ---------------------------------------------------------------
+const W = 760;
+const H = 380;
+const padL = 40;
+const padR = 58;
+const padT = 26;
+const padB = 38;
+const plotW = W - padL - padR;
+const plotH = H - padT - padB;
+const n = years.length;
+
+// Data-driven y-axis: zoom into the actual value range (with padding) so the
+// changes over time read as steeper curves instead of flat lines near 0.
+const allValues = chart.series.flatMap((s) => s.values);
+const dataMin = Math.min(...allValues);
+const dataMax = Math.max(...allValues);
+const spanV = Math.max(1, dataMax - dataMin);
+const padV = Math.max(2, spanV * 0.15);
+const yMin = Math.max(0, Math.floor((dataMin - padV) / 5) * 5);
+const yMax = Math.ceil((dataMax + padV) / 5) * 5;
+
+// nice gridline step aiming for ~4–5 lines
+const rawStep = (yMax - yMin) / 4;
+const niceStep =
+  rawStep <= 5 ? 5 : rawStep <= 10 ? 10 : rawStep <= 15 ? 15 : 20;
+
+const x = (i: number) => padL + (i / (n - 1)) * plotW;
+const y = (v: number) => padT + (1 - (v - yMin) / (yMax - yMin)) * plotH;
+
+const ticks: number[] = [];
+for (let t = yMin; t <= yMax + 0.001; t += niceStep) ticks.push(Math.round(t));
+
+// build per-series path data (one continuous line across all years)
+const series = chart.series.map((s) => ({
+  ...s,
+  stroke: colorVar[s.color] ?? 'var(--e27-coral)',
+  path: s.values
+    .map(
+      (v, i) => `${i === 0 ? 'M' : 'L'} ${x(i).toFixed(1)} ${y(v).toFixed(1)}`,
+    )
+    .join(' '),
+  dots: s.values.map((v, i) => ({ cx: x(i), cy: y(v) })),
+  endVal: s.values[n - 1],
+  endY: y(s.values[n - 1]),
+}));
+---
+
+<figure
+  class={`chart-card ${variant === 'onlight' ? 'chart-card--onlight' : ''}`}
+  data-reveal
+>
+  <figcaption>
+    <p class="chart-card__title">{chart.heading}</p>
+    <p class="chart-card__q">{chart.question}</p>
+  </figcaption>
+
+  <div class="chart-legend">
+    {
+      chart.series.map((s) => (
+        <span class="chart-legend__item">
+          <span
+            class="chart-legend__swatch"
+            style={`background:${colorVar[s.color] ?? 'var(--e27-coral)'}`}
+          />
+          {s.label}
+          {s.note && <span class="chart-legend__note">· {s.note}</span>}
+        </span>
+      ))
+    }
+  </div>
+
+  <svg
+    class="linechart"
+    viewBox={`0 0 ${W} ${H}`}
+    role="img"
+    aria-label={`${chart.heading}. ${chart.series
+      .map(
+        (s) =>
+          `${s.label}: ${years.map((yr, i) => `${yr} ${s.values[i]}${chart.unit ?? '%'}`).join(', ')}`,
+      )
+      .join('. ')}`}
+    data-linechart
+  >
+    <!-- gridlines + y labels -->
+    {
+      ticks.map((tv) => (
+        <g>
+          <line
+            class="grid-line"
+            x1={padL}
+            y1={y(tv)}
+            x2={W - padR}
+            y2={y(tv)}
+          />
+          <text class="axis-label" x={padL - 8} y={y(tv) + 4} text-anchor="end">
+            {tv}
+            {chart.unit ?? '%'}
+          </text>
+        </g>
+      ))
+    }
+
+    <!-- x labels (years) -->
+    {
+      years.map((yr, i) => (
+        <text
+          class="axis-label"
+          x={x(i)}
+          y={H - padB + 22}
+          text-anchor="middle"
+        >
+          {yr}
+        </text>
+      ))
+    }
+
+    <!-- series -->
+    {
+      series.map((s) => (
+        <g style={`color:${s.stroke}`}>
+          <path
+            class="series-line"
+            d={s.path}
+            stroke={s.stroke}
+            pathLength="1"
+          />
+          {s.dots.map((d) => (
+            <circle
+              class="series-dot"
+              cx={d.cx}
+              cy={d.cy}
+              r="4.5"
+              fill={s.stroke}
+            />
+          ))}
+          <text
+            x={W - padR + 8}
+            y={s.endY + 4}
+            style={`fill:${s.stroke};font-size:12px;font-weight:700;font-family:var(--e27-font-body)`}
+          >
+            {s.endVal}
+            {chart.unit ?? '%'}
+          </text>
+        </g>
+      ))
+    }
+  </svg>
+
+  <p class="chart-card__insight">
+    <Fragment set:html={icon('info')} />
+    <span>{chart.insight}</span>
+  </p>
+</figure>

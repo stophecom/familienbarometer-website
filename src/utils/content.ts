@@ -68,6 +68,12 @@ export async function getStudyPage(
   }
 }
 
-/** Get list of all available study years */
-export const studyYears = [2026, 2025, 2024] as const;
-export const currentYear = 2026;
+/** Get list of all available study years (current first) */
+export const studyYears = [2027, 2026, 2025, 2024] as const;
+export const currentYear = 2027;
+
+/**
+ * Years that still use the classic archive template (StudyPage).
+ * 2027 uses its own redesigned Edition2027 experience and richer data model.
+ */
+export const archiveYears = [2026, 2025, 2024] as const;
