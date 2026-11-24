@@ -1,5 +1,5 @@
 # Pinned by digest for reproducible, patch-auditable builds (bump via Dependabot)
-FROM node:22-slim@sha256:d9f850096136edbc402debdd8729579a288aac64574ada0ff4db26b6ae58b0b2 AS build
+FROM node:25-slim@sha256:81db02c4b671288a03915da9534dbd54f96d0e7c24d80ccc54f5b36b2e684370 AS build
 
 ENV HUSKY=0
 ENV NODE_OPTIONS=--max_old_space_size=4096
