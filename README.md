@@ -53,25 +53,31 @@ public/
 | `npm run lint`    | Check formatting and linting         |
 | `npm run format`  | Auto-format all files                |
 
-## Access protection (Basic Auth)
+## Access protection
 
-The site can be hidden behind one shared HTTP Basic Auth login, applied by nginx
-in front of everything — pages, images and JavaScript alike. This is the nginx
-equivalent of the shared-password gate on `pax-interactive-history` (which runs
-on Vercel edge middleware; this project is a static nginx container, so the gate
-lives in the container instead).
-
-Set these on the **running container** (deployment/runtime env, not the build or
-GitHub secrets):
+The site can be hidden behind one shared password until launch. Both deploy
+targets read the **same `BASIC_AUTH_PASSWORD`**, so a single variable controls
+access everywhere:
 
 | Variable              | Required | Default             | Purpose                                            |
 | :-------------------- | :------- | :------------------ | :------------------------------------------------- |
 | `BASIC_AUTH_PASSWORD` | to gate  | _(unset)_           | Shared password. **Set it → the site is private.** |
-| `BASIC_AUTH_USER`     | no       | `familienbarometer` | Username for the login prompt.                     |
+| `BASIC_AUTH_USER`     | no       | `familienbarometer` | Username (nginx Basic Auth prompt only).           |
 
-- The password file is generated from these at container start
-  (`docker-entrypoint.d/40-basic-auth.sh`); credentials never live in the image.
-- **No `BASIC_AUTH_PASSWORD` → the site is public**, so the same image goes live
-  at launch by simply clearing the variable (no rebuild). Changing the password
-  takes effect on the next container start.
-- `/healthz` stays open for liveness/readiness probes.
+**Unset `BASIC_AUTH_PASSWORD` → the site is public**, so launch needs no code
+change — just clear the variable and redeploy.
+
+### Vercel (static CDN)
+
+`middleware.ts` at the repo root is Vercel Edge Middleware: Vercel runs it before
+every request (pages, images, JS alike) and shows a branded password page, with a
+30-day HMAC-signed cookie after login — changing the password logs everyone out.
+Set `BASIC_AUTH_PASSWORD` in the Vercel project settings for **every** environment,
+then redeploy (variables only reach deployments created after they were saved).
+This mirrors the gate on `pax-interactive-history`.
+
+### nginx container (Docker image)
+
+`docker-entrypoint.d/40-basic-auth.sh` builds an HTTP Basic Auth password file
+from the env at container start (credentials never live in the image); set the
+variables on the **running container**. `/healthz` stays open for probes.
