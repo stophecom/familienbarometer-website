@@ -52,3 +52,26 @@ public/
 | `npm run preview` | Preview production build             |
 | `npm run lint`    | Check formatting and linting         |
 | `npm run format`  | Auto-format all files                |
+
+## Access protection (Basic Auth)
+
+The site can be hidden behind one shared HTTP Basic Auth login, applied by nginx
+in front of everything — pages, images and JavaScript alike. This is the nginx
+equivalent of the shared-password gate on `pax-interactive-history` (which runs
+on Vercel edge middleware; this project is a static nginx container, so the gate
+lives in the container instead).
+
+Set these on the **running container** (deployment/runtime env, not the build or
+GitHub secrets):
+
+| Variable              | Required | Default             | Purpose                                            |
+| :-------------------- | :------- | :------------------ | :------------------------------------------------- |
+| `BASIC_AUTH_PASSWORD` | to gate  | _(unset)_           | Shared password. **Set it → the site is private.** |
+| `BASIC_AUTH_USER`     | no       | `familienbarometer` | Username for the login prompt.                     |
+
+- The password file is generated from these at container start
+  (`docker-entrypoint.d/40-basic-auth.sh`); credentials never live in the image.
+- **No `BASIC_AUTH_PASSWORD` → the site is public**, so the same image goes live
+  at launch by simply clearing the variable (no rebuild). Changing the password
+  takes effect on the next container start.
+- `/healthz` stays open for liveness/readiness probes.

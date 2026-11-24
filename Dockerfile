@@ -24,7 +24,19 @@ RUN npm run build
 # --- Runtime ---
 FROM nginx:stable-alpine@sha256:db30a8e56d06281277a92493b045cb034016e931706ca8e937cf0a7807815775 AS runtime
 
+# htpasswd (apache2-utils) is used by the entrypoint to build the Basic Auth
+# password file from env at container start.
+RUN apk add --no-cache apache2-utils
+
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=build /app/dist /usr/share/nginx/html
+
+# Default: no Basic Auth (public). 40-basic-auth.sh rewrites this from env at
+# startup. Shipping a real file keeps nginx valid even if the script is skipped.
+RUN printf '# Basic Auth is configured at runtime by 40-basic-auth.sh\n' > /etc/nginx/auth.conf
+
+# Runs before nginx via the stock nginx entrypoint (/docker-entrypoint.d/*.sh).
+COPY docker-entrypoint.d/40-basic-auth.sh /docker-entrypoint.d/40-basic-auth.sh
+RUN chmod +x /docker-entrypoint.d/40-basic-auth.sh
 
 EXPOSE 8080
